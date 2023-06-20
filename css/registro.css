@@ -55,3 +55,9 @@ form > input {
     border-radius: 10px;
     transition: 0.5s;
 }
+
+#main {
+    margin: 10% auto;
+    min-height: 22svh;
+    max-height: fit-content;
+}
