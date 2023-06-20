@@ -14,16 +14,16 @@
             <h1>Registro</h1>
         </div>
         <form action="/php/registrar_funcionario.php" method="post">
-            <input type="text" placeholder="Nome Completo">
-            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Nome Completo" name="registrar_nome">
+            <input type="email" placeholder="Email" name="registrar_email">
             <ul>
-                <label for="nivel">Nivel: </label>
-                <select name="nivel">
+                <label for="registrar_nivel">Nivel: </label>
+                <select name="registrar_nivel">
                     <option value="Adminsitrador">Adminsitrador</option>
                     <option value="Docente">Docente</option>
                 </select>
             </ul>
-            <input type="password" placeholder="Senha">
+            <input type="password" placeholder="Senha" name="registrar_senha">
             <input type="password" placeholder="Confirmar Senha">
             <input type="submit" value="Salvar">
         </form>
