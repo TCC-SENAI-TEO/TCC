@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("/img/gif_wallpaper1920x1080.gif");
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    width: 16svw;
+    min-height: 30svh;
+    max-height: fit-content;
+    margin: 8% auto;
+    align-items: center;
+    min-width: fit-content;
+    padding: 0.5%;
+    background-color: rgb(26, 26, 28);
+    border-radius: 10px;
+    color: white;
+    box-shadow: 1px 1px 10px black;
+}
+
+form {
+    margin-top: 5%;
+    font-size: larger;
+    min-width: 70%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+form > ul {
+    list-style-type: none;
+    display: flex;  
+    align-items: center;
+    gap: 10px;
+    align-items: center;
+}
+
+select, option {
+    font-size: 12pt;
+    border-radius: 0px;
+    padding: 2%;
+}
+
+form > input {
+    font-size: 13.4pt;
+    padding: 0 0 0 1%;
+    height: 4svh;
+    border-radius: 10px;
+    transition: 0.5s;
+}
