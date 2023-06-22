@@ -8,13 +8,23 @@ ul {
 }
 
 header {
-    width: 100%;
-    align-items: center;
-}
-
-.topo {
     display: flex;
     align-items: center;
-    justify-content: center;
+    align-content: center;
+    justify-content: space-between;
 }
 
+.perfil {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.img_perfil {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: black;
+    margin: 0;
+}
