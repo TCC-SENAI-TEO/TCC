@@ -6,22 +6,17 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-@media only screen and (max-width: 495px){
+@media only screen and (max-width: 768px) {
     .titulo {
         margin: auto !important;
+        font-size: 30pt !important;
     }
 
     .registro {
         display: none;
     }
-}
 
-@media only screen and (max-width: 768px) {
-    .titulo {
-        font-size: 30pt !important;
-    }
-
-    .img_perfil {
+    .img_perfil{
         display: none;
     }
     .senai_logo {
@@ -41,6 +36,7 @@ header {
     min-width: 100svw;
     max-width: fit-content;
     overflow: hidden;
+    color: white;
 }
 
 .titulo {
@@ -50,12 +46,21 @@ header {
 
 .perfil {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     gap: 5px;
     align-items: center;
     font-size: 10pt;
     margin-right: .5svw;
 }
+
+.sair {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.teste {
+    text-align: center;
+} 
 
 .img_perfil {
     width: 3.5svw;
@@ -67,4 +72,49 @@ header {
 .senai_logo {
     width: 14svw;
     height: 10svh;
+}
+
+main {
+    display: flex;
+    margin-top: 2%;
+}
+
+.salas_status {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.salas {
+    display: flex;
+    flex-wrap: nowrap;
+    
+}
+
+.salas > div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 50%;
+    border: 2px solid black;
+    min-width: fit-content;
+    flex-wrap: wrap;
+    width: 25svw;
+    box-shadow: 5px 5px 5px black;
+}
+
+.botao {
+    margin: auto;
+    width: 5svw;
+    height: 3svh;
+    border-radius: 7px;
+}
+
+.add_sala {
+    margin-top: 20%;
+    background-color: grey;
+    padding: 2%;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-align: center;
 }
