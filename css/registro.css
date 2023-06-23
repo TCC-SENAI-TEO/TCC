@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url("/img/gif_wallpaper1920x1080.gif");
+    background-image: url("../img/gif_wallpaper1920x1080.gif");
 }
 
 main {
@@ -14,7 +14,7 @@ main {
     width: 16svw;
     min-height: 30svh;
     max-height: fit-content;
-    margin: 8% auto;
+    margin: 8% auto 1%;
     align-items: center;
     min-width: fit-content;
     padding: 0.5%;
@@ -54,10 +54,40 @@ form > input {
     height: 4svh;
     border-radius: 10px;
     transition: 0.5s;
-}
+}   
 
 #main {
-    margin: 10% auto;
+    margin: 10% auto 4%;
     min-height: 22svh;
     max-height: fit-content;
+}
+
+.erro {
+    display: flex;
+    flex-direction: column;
+    margin: 0% auto;
+    width: fit-content;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(242, 54, 52);
+    color: white;
+    align-items: center;
+    width: 13svw;
+}
+
+.certo {
+    display: flex;
+    flex-direction: column;
+    margin: 0% auto;
+    width: fit-content;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(142, 214, 151);
+    color: white;
+    align-items: center;
+    width: 13svw;
+}
+
+.erro > span {
+    font-size: x-large;
 }
