@@ -1,6 +1,32 @@
+/*#005ca9*/
+
 * {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 495px){
+    .titulo {
+        margin: auto !important;
+    }
+
+    .registro {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .titulo {
+        font-size: 30pt !important;
+    }
+
+    .img_perfil {
+        display: none;
+    }
+    .senai_logo {
+        display: none;
+    }
 }
 
 ul {
@@ -10,21 +36,35 @@ ul {
 header {
     display: flex;
     align-items: center;
-    align-content: center;
     justify-content: space-between;
+    background-color: #005ca9;
+    min-width: 100svw;
+    max-width: fit-content;
+    overflow: hidden;
+}
+
+.titulo {
+    font-size: 40pt;
+    margin-left: 4.5svw;
 }
 
 .perfil {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 5px;
     align-items: center;
+    font-size: 10pt;
+    margin-right: .5svw;
 }
 
 .img_perfil {
-    width: 30px;
-    height: 30px;
+    width: 3.5svw;
+    height: 6svh;
     border-radius: 100%;
     background-color: black;
-    margin: 0;
+}
+
+.senai_logo {
+    width: 14svw;
+    height: 10svh;
 }
