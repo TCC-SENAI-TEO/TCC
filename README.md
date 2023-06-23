@@ -10,15 +10,15 @@ A aplicação visa listar todas as salas da escola, e exibir se estão em uso ou
 
 - Prototipação inicial do projeto (Feito)
 
-- Interface login e registro (Não feito)
+- Interface login e registro (Feito)
 
-- Interface docente reserva de sala (Não feito)
+- Interface docente reserva de sala (Em andamento)
 
 - Interface administrador reserva de sala (Não feito)
 
-- Conexão com PHP (Não feito)
+- Conexão com PHP (Em andamento)
 
-- Banco de dados com usuários e senhas (Não feito)
+- Banco de dados com usuários e senhas (Em andamento)
 
 - Banco de dados das salas (Não feito)
 
