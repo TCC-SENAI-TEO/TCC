@@ -7,8 +7,16 @@ var $cadastrar_sala_btn = document.getElementById('cadastrar_sala_btn')
 
 $cadastrar_sala_btn.addEventListener('click', () => {
 
-    var novaSala = document.createElement('div')
-    var conteudo = document.createTextNode("teste")
-    novaSala.appendChild(conteudo)
+    var hora_inicial = 'Data/hora inicio: '
+    var hora_final = 'Data/hora fim: '
+    var novaSala = document.createElement('h1')
+    var codigo = document.createTextNode("Sala " + $texto_codigo_sala.value)
+    if (novaSala.classList) {
+        novaSala.classList.add("sala");
+    }
+    else {
+        novaSala.className += "sala";
+    }
+    novaSala.appendChild(codigo)
     $salas.appendChild(novaSala)
 })
