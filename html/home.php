@@ -1,11 +1,14 @@
+<?php 
+session_start(); //inicia a sessão do usuario para que se possa pegasr as informações contidas nela posteriormente
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/css/home.css">
-        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../css/home.css">
+        <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
         <title>Home</title>
     </head>
     <body>
@@ -16,8 +19,10 @@
             <div class="perfil">
                 <div class="img_perfil"></div>
                 <div class="teste">
-                    <p class="registro">0000000@docentesenaimg.com.br</p>
-                    <p class="sair">Sair</p>
+                    <?php
+                       echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
+                    ?>
+                    <a href="../php/logout_login.php">Sair</a>
                 </div>
             </div>
         </header>
@@ -31,12 +36,28 @@
                 <a href="add_sala.html" target="_blank" class="link add_sala" id="add_sala">Adicionar sala</a>
             </ul>
             <div class="tela_criar_sala" id="tela_criar_sala">
-                <form action="registar_sala" method="post">
+                <form action="../php/registrar_sala.php" method="post">
                     <input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala">
                     <input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala">
                     <input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala">
-                    <input type="button" value="Cadastrar" id="cadastrar_sala_btn">
+                    <input type="submit" value="Cadastrar" id="cadastrar_sala_btn">
                 </form>
+                <?php 
+                    if(@$_SESSION['error_codigo'] == 1) {
+                        echo"<div class='erro'> 
+                                <span>A sala inserida já foi registrada</span> 
+                            </div>";
+                            session_unset();
+                            session_destroy();
+        
+                    } else if(@$_SESSION['error_codigo'] == 2) {
+                        echo"<div class='certo'> 
+                                <span>A criação da sala foi bem sucedida</span> 
+                            </div>";
+                            session_unset();
+                            session_destroy();
+                    } 
+                ?>
             </div>
             <div class="salas"  id="salas">
                 <div class="sala">

@@ -53,9 +53,8 @@ header {
     margin-right: .5svw;
 }
 
-.sair {
-    text-decoration: underline;
-    cursor: pointer;
+a {
+    color: white;
 }
 
 .teste {
@@ -117,4 +116,34 @@ main {
     border: 2px solid black;
     border-radius: 8px;
     text-align: center;
+}
+
+.erro {
+    display: flex;
+    flex-direction: column;
+    margin: 0% auto;
+    width: fit-content;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(242, 54, 52);
+    color: white;
+    align-items: center;
+    min-width: fit-content;;
+}
+
+.certo {
+    display: flex;
+    flex-direction: column;
+    margin: 2% auto 0%;
+    width: fit-content;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(142, 214, 151);
+    color: white;
+    align-items: center;
+    min-width: fit-content;
+}
+
+.erro > span {
+    font-size: x-large;
 }

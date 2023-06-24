@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Login</title>
     <link rel="stylesheet" href="../css/registro.css">
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
@@ -21,13 +21,15 @@
     </main>
         <?php 
             session_start();
-            if($_SESSION['error'] == 1) {
+            if(@$_SESSION['error'] == 1) {
                 echo"<div class='erro'> 
                         <span>Login ou senha inválidos</span> 
                     </div>";
             } else {
                 echo "";
             }
+            session_unset();
+            session_destroy();
         ?>
     
 </body>

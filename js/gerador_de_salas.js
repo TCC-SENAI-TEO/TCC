@@ -48,6 +48,4 @@ $cadastrar_sala_btn.addEventListener('click', () => {
     nova_sala.appendChild(data_inicio)
     h4_nova_sala.appendChild(codigo_sala)
 
-
-    alert(responsavel.classList)
 })
