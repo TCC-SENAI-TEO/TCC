@@ -87,7 +87,7 @@ main {
 
 .salas {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     
 }
 
