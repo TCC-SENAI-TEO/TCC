@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 * {
     margin: 0;
     padding: 0;
@@ -28,3 +29,181 @@ header {
     background-color: black;
     margin: 0;
 }
+=======
+/*#005ca9*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+    .titulo {
+        margin: auto !important;
+        font-size: 30pt !important;
+    }
+
+    .registro {
+        display: none;
+    }
+
+    .img_perfil{
+        display: none;
+    }
+    .senai_logo {
+        display: none;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #005ca9;
+    min-width: 100svw;
+    max-width: fit-content;
+    overflow: hidden;
+    color: white;
+}
+
+.titulo {
+    font-size: 40pt;
+    margin-left: 4.5svw;
+}
+
+.perfil {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+    align-items: center;
+    font-size: 10pt;
+    margin-right: .5svw;
+}
+
+a {
+    color: white;
+}
+
+.teste {
+    text-align: center;
+} 
+
+.img_perfil {
+    width: 3.5svw;
+    height: 6svh;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.senai_logo {
+    width: 14svw;
+    height: 10svh;
+}
+
+main {
+    display: flex;
+    margin: 2% 0 0 0;
+    justify-content: space-between;
+}
+
+form {
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: fit-content;
+    border: solid black 2px;
+    flex-wrap: wrap;
+}
+
+form > input {
+    border-radius: 5px;
+    padding: 0.5%;
+}
+
+.salas_status {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.salas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    width: 50%;
+}
+
+.salas > div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 2%;
+    margin-top: 2%;
+    border: 2px solid black;
+    min-width: fit-content;
+    flex-wrap: wrap;
+    padding: 1%;
+    width: 13svw;
+    box-shadow: 5px 5px 5px black;
+}
+
+.botao {
+    margin: auto;
+    width: 5svw;
+    height: 3svh;
+    border-radius: 7px;
+}
+
+.add_sala {
+    margin-top: 20%;
+    background-color: grey;
+    padding: 2%;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.erro {
+    display: flex;
+    margin: 2% auto;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(242, 54, 52);
+    color: white;
+    align-items: center;
+    min-width: fit-content;
+    font-size: large;
+    word-wrap: break-word;
+    width: 12svw;
+}
+
+.certo {
+    display: flex;
+    margin: 2% auto 0%;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(142, 214, 151);
+    color: white;
+    align-items: center;
+    width: 12svw;
+    min-width: fit-content;
+    text-align: center;
+    font-size: large;
+    word-wrap: break-word;
+}
+
+.fechar {
+    align-self: flex-end;
+    margin-bottom: auto;
+    font-size: small;
+    border-radius: 30px;
+    padding: 1% 2%;
+    background-color: red;
+}
+>>>>>>> Stashed changes
