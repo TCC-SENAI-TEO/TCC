@@ -32,37 +32,38 @@ include "../php/conectar_banco_de_dados.php"
         </header>
 
         <main>
-            <ul class="salas_status">
-                <li><h3 class=" salas_totais">Salas: </h3></li>
-                <li><h3 class=" sala_disponiveis">Salas disponiveis: </h3></li>
-                <li><h3 class=" sala_interditadas">Salas interditadas: </h3></li>
-                <li><h3 class=" sala_ocupadas">Salas ocupadas: </h3></li>
-                <a href="add_sala.html" target="_blank" class="link add_sala" id="add_sala">Adicionar sala</a>
-            </ul>
-            <div class="tela_criar_sala" id="tela_criar_sala">
-                <form action="../php/registrar_sala.php" method="post">
-                    <input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">
-                    <input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala" >
-                    <input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>
-                    <input type="submit" value="Cadastrar" id="cadastrar_sala_btn">
-                </form>
-                <?php 
-                    if(@$_SESSION['error_codigo'] == 1) {
-                        echo"<div class='erro' id='erro'>
-                                <span>A sala inserida já foi registrada</span> 
-                                <div class='fechar' id='fechar_erro'>X</div>
-                            </div>";
-                            $_SESSION['error_codigo'] = 0;
-                            
-                    } else if(@$_SESSION['error_codigo'] == 2) {
-                        echo"<div class='certo' id='certo'>
-                                <span>A criação da sala foi bem sucedida</span> 
-                                <div class='fechar' id='fechar_certo'>X</div>
-                            </div>";
-                            $_SESSION['error_codigo'] = 0;
-                    } 
-                ?>
-            </div>
+            <aside>
+                <ul class="salas_status">
+                    <li><h3 class=" salas_totais">Salas: </h3></li>
+                    <li><h3 class=" sala_disponiveis">Salas disponiveis: </h3></li>
+                    <li><h3 class=" sala_interditadas">Salas interditadas: </h3></li>
+                    <li><h3 class=" sala_ocupadas">Salas ocupadas: </h3></li>
+                </ul>
+                <div class="tela_criar_sala" id="tela_criar_sala">
+                        <form action="../php/registrar_sala.php" method="post">
+                        <input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">
+                        <input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala" >
+                        <input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>
+                        <input type="submit" value="Cadastrar" id="cadastrar_sala_btn">
+                    </form>
+                    <?php
+                        if(@$_SESSION['error_codigo'] == 1) {
+                            echo"<div class='erro' id='erro'>
+                                    <span>A sala inserida já foi registrada</span>
+                                    <div class='fechar' id='fechar_erro'>X</div>
+                                </div>";
+                                $_SESSION['error_codigo'] = 0;
+                
+                        } else if(@$_SESSION['error_codigo'] == 2) {
+                            echo"<div class='certo' id='certo'>
+                                    <span>A criação da sala foi bem sucedida</span>
+                                    <div class='fechar' id='fechar_certo'>X</div>
+                                </div>";
+                                $_SESSION['error_codigo'] = 0;
+                        }
+                    ?>
+                </div>
+            </aside>
             <!-- <div class="salas"  id="salas">
                 <div class="sala">
                     <h4 class="tag">Sala 102E - Informatica</h4>
