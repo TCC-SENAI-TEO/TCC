@@ -10,12 +10,12 @@
         session_start();
         $_SESSION['error'] = "0";
         $_SESSION['email_funcionario'] = $email;
-        header("Location: ../html/home.php");  
+        $_SESSION['login'] = true;
+        header("Location: ../html/home.php");
     } else {
         session_start();
         $_SESSION['error'] = "1";
         header('Location: ../html/login.php');
     }
-
 
 ?>

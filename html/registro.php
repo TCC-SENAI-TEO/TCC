@@ -1,3 +1,16 @@
+<?php 
+session_start(); //inicia a sessão do usuario para que se possa pegar as informações contidas nela posteriormente
+include '../php/conectar_banco_de_dados.php';
+$email = $_SESSION['email_funcionario'];
+$verificar = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$email'");
+$verificar = mysqli_fetch_assoc($verificar);
+$verificar = $verificar['nivel'];
+if($_SESSION['login'] != true || $verificar != 1) { //verifica se o usuario fez login anteriormente
+    header("Location: ../html/login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -29,26 +42,19 @@
         </form>
     </main>
         <?php 
-            session_start();
             if(@$_SESSION['error'] == 1) {
                 echo"<div class='erro'> 
                         <span>Verifique novamente se inseriou corretamente os dados</span> 
                     </div>";
-                    session_unset();
-                    session_destroy();
 
             } else if(@$_SESSION['error'] == 2) {
                 echo"<div class='erro'> 
                         <span>O Email inserido já está registrado</span> 
                     </div>";
-                    session_unset();
-                    session_destroy();
             }   else if(@$_SESSION['error'] == 3) { //false
                 echo"<div class='certo'> 
                         <span>O registro foi feito com sucesso!</span> 
                     </div>";
-                    session_unset();
-                    session_destroy();
             }
         ?>
     
