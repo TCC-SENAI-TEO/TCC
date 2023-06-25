@@ -1,5 +1,12 @@
-/*#005ca9*/
+/*cores
+#005ca9
 
+Cores status {
+    vermelha - #ff7068ec
+    amarelo - #fdfd96
+    verde - #77dd77
+}
+*/
 * {
     margin: 0;
     padding: 0;
@@ -114,7 +121,7 @@ form > input {
     flex-direction: column;
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: 270px;
+    flex-basis: 250px;
     gap: 5px;
     margin-left: 2%;
     margin-top: 2%;
@@ -122,6 +129,7 @@ form > input {
     padding: 1%;
     width: 10svw;
     box-shadow: 5px 5px 5px black;
+    background-color: #77dd77e1;
 }
 
 .tag {
