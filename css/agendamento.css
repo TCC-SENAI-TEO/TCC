@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .titulo {
+        font-size: 30pt !important;
+    }
+}
+
+header {
+    display: flex;
+    color: white;
+    background-color: #005ca9;
+    flex-direction: row-reverse;
+}
+
+.titulo {
+    margin: auto !important;
+    font-size: 40pt;
+}
+
+.voltar {
+    text-decoration: none;
+    color: white;
+    font-size: 15pt;
+    align-self: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 10% auto;
+    width: 20svw;
+    min-width: fit-content;
+    gap: 20px;
+    justify-content: space-between;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px black;
+}
+
+form > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+section > ul {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    width: 100%;
+}

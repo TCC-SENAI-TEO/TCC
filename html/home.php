@@ -6,7 +6,7 @@ if($_SESSION['login'] != true) { //verifica se o usuario fez login anteriormente
 include "../php/conectar_banco_de_dados.php"
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

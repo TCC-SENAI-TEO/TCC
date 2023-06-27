@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/agendamento.css">
+    <title>Agendamento</title>
+</head>
+<body>
+    <header>
+        <h1 class="titulo">Sala 101B - Informática</h1>
+        <a class="voltar" href="home.php">Voltar</a>
+    </header>
+    <main>
+        <form action="../php/agendar_sala.php" method="post">
+            <input type="email" disabled name="email" placeholder="email">
+            <section>
+                <ul>
+                    <label for="h1">07:00</label>
+                    <input type="checkbox" name="h1">
+                </ul>
+                <ul>
+                    <label for="h2">07:00</label>
+                    <input type="checkbox" name="h2">
+                </ul>
+                <ul>
+                    <label for="h3">07:00</label>
+                    <input type="checkbox" name="h3">
+                </ul>
+
+                <ul>
+                    <label for="h4">07:00</label>
+                    <input type="checkbox" name="h4">
+                </ul>
+
+                <ul>
+                    <label for="h5">07:00</label>
+                    <input type="checkbox" name="h5">
+                </ul>
+
+                <ul>
+                    <label for="h6">07:00</label>
+                    <input type="checkbox" name="h6">
+                </ul>
+            </section>
+            <input type="submit" name="submit" value="Agendar">
+        </form>
+    </main>
+</body>
+</html>
