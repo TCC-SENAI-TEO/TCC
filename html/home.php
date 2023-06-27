@@ -31,15 +31,15 @@ include "../php/conectar_banco_de_dados.php"
             </div>
         </header>
 
+                <div class="salas_status">
+                    <h3 class=" salas_totais">Salas: </h3>
+                    <h3 class=" sala_disponiveis">Salas disponiveis: </h3>
+                    <h3 class=" sala_interditadas">Salas interditadas: </h3>
+                    <h3 class=" sala_ocupadas">Salas ocupadas: </h3>
+                </div>
+
         <main>
-            <aside>
-                <ul class="salas_status">
-                    <li><h3 class=" salas_totais">Salas: </h3></li>
-                    <li><h3 class=" sala_disponiveis">Salas disponiveis: </h3></li>
-                    <li><h3 class=" sala_interditadas">Salas interditadas: </h3></li>
-                    <li><h3 class=" sala_ocupadas">Salas ocupadas: </h3></li>
-                </ul>
-                <div class="tela_criar_sala" id="tela_criar_sala">
+        <div class="tela_criar_sala" id="tela_criar_sala">
                         <form action="../php/registrar_sala.php" method="post">
                         <input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">
                         <input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala" >
@@ -63,17 +63,6 @@ include "../php/conectar_banco_de_dados.php"
                         }
                     ?>
                 </div>
-            </aside>
-            <!-- <div class="salas"  id="salas">
-                <div class="sala">
-                    <h4 class="tag">Sala 102E - Informatica</h4>
-                    <p class="tag">Responsavel: Claudio</p>
-                    <p class="tag">Data/hora Inicio: 26/07/23 - 13:00</p>       #VOU USAR DE BASE PARA TESTE
-                    <p class="tag">Data/hora Fim:  26/07/23 - 13:50</p>
-                    <p class="tag">Qtd: 40</p>
-                    <input type="button" value="-----------" class="botao reservar desocupar">
-                </div>
-            </div> !-->
             <div class="salas">
                 <?php 
                     $quantidade_salas = mysqli_query($ConexaoSQL, "SELECT * from salas");   //faz o query no banco de dados
@@ -100,7 +89,7 @@ include "../php/conectar_banco_de_dados.php"
                                 "<p class='tag'>Data/hora Inicio: 00/00</p>".
                                 "<p class='tag'>Data/hora Fim: 00/00</p>".
                                 "<p class='tag'>Qtd: ".$capacidade."</p>".
-                                "<input type='button' value='----------' class'botao reservar desocupar'>".
+                                "<input type='button' value='Agendar' class='botao reservar desocupar'>".
                                 "</div>";
                                 
                     }

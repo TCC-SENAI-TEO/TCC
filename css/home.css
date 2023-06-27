@@ -19,15 +19,20 @@ Cores status {
         font-size: 30pt !important;
     }
 
-    .registro {
+    main {
+        flex-direction: column;
+    }
+
+    .registro, .img_perfil, .senai_logo {
         display: none;
     }
 
-    .img_perfil{
-        display: none;
+    .salas_status {
+        display: flex;
+        flex-direction: column !important;
     }
-    .senai_logo {
-        display: none;
+    .salas_status > h3 {
+        display: flex;
     }
 }
 
@@ -86,15 +91,13 @@ main {
 }
 
 form {
-    margin-top: 20%;
-    background-color: grey;
-    padding: 2%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    width: fit-content;
-    border: solid black 2px;
     flex-wrap: wrap;
+    gap: 5px;
+    border: solid black 2px;
+    padding: 0.3%;
+    background-color: grey;
 }
 
 form > input {
@@ -102,10 +105,20 @@ form > input {
     padding: 0.5%;
 }
 
+.tela_criar_sala {
+    display: flex;
+    flex-wrap: wrap;  
+    flex-basis: 100px;
+}
+
 .salas_status {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap !important;
     gap: 2px;
+    max-width: fit-content;
+    min-width: 100svw;
 }
 
 .salas {
@@ -132,20 +145,19 @@ form > input {
     background-color: #77dd77e1;
 }
 
-.tag {
-    flex-wrap: nowrap;
-}
-
-
 .botao {
     margin: auto;
+    min-width: fit-content;
     width: 5svw;
     height: 3svh;
     border-radius: 7px;
 }
 
-.add_sala {
+.tela_criar_sala {
+    align-self: center;
+}
 
+.add_sala {
     padding: 2%;
     border: 2px solid black;
     border-radius: 8px;
