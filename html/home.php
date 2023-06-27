@@ -21,7 +21,7 @@ include "../php/conectar_banco_de_dados.php"
             <img src="../img/senai.png" alt="Logo Senai" class="senai_logo">
             <h1 class="titulo">Painel central</h1>
             <div class="perfil">
-                <div class="img_perfil"></div>
+                <div><img src="../img/imagem_funcionario.png" alt="imagem_funcionario" class="img_perfil"></div>
                 <div class="teste">
                     <?php
                        echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
@@ -39,41 +39,42 @@ include "../php/conectar_banco_de_dados.php"
                     <li><h3 class=" sala_interditadas">Salas interditadas: </h3></li>
                     <li><h3 class=" sala_ocupadas">Salas ocupadas: </h3></li>
                 </ul>
-                <div class="tela_criar_sala" id="tela_criar_sala">
-                        <form action="../php/registrar_sala.php" method="post">
-                        <input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">
-                        <input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala" >
-                        <input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>
-                        <input type="submit" value="Cadastrar" id="cadastrar_sala_btn">
-                    </form>
-                    <?php
-                        if(@$_SESSION['error_codigo'] == 1) {
-                            echo"<div class='erro' id='erro'>
-                                    <span>A sala inserida já foi registrada</span>
-                                    <div class='fechar' id='fechar_erro'>X</div>
-                                </div>";
-                                $_SESSION['error_codigo'] = 0;
-                
-                        } else if(@$_SESSION['error_codigo'] == 2) {
-                            echo"<div class='certo' id='certo'>
-                                    <span>A criação da sala foi bem sucedida</span>
-                                    <div class='fechar' id='fechar_certo'>X</div>
-                                </div>";
-                                $_SESSION['error_codigo'] = 0;
-                        }
+                <?php
+                    $verificar = $_SESSION['email_funcionario'];
+                    $nivel = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$verificar'");
+                    $nivel = mysqli_fetch_assoc($nivel);
+                    $nivel = $nivel['nivel'];
+                    if($nivel == 1) {
+                            echo'<div class="tela_criar_sala">'.            
+                                '<form action="../php/registrar_sala.php" method="post">'.
+                                '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">'.
+                                '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala">'.
+                                '<input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>'.
+                                '<input type="submit" value="Cadastrar" id="cadastrar_sala_btn">'.
+                                '</form>';
+
+                    }
+                    if(@$_SESSION['error_codigo'] == 1) {
+                        echo"<div class='erro' id='erro'>
+                                <span>A sala inserida já foi registrada</span>
+                                <div class='fechar' id='fechar_erro'>X</div>
+                            </div>";
+                            $_SESSION['error_codigo'] = 0;
+            
+                    } else if(@$_SESSION['error_codigo'] == 2) {
+                        echo"<div class='certo' id='certo'>
+                                <span>A criação da sala foi bem sucedida</span>
+                                <div class='fechar' id='fechar_certo'>X</div>
+                            </div>";
+                            $_SESSION['error_codigo'] = 0;
+
+                    }
+                    if($nivel == 1) {
+                        echo '</div>';
+                    }
                     ?>
-                </div>
+                
             </aside>
-            <!-- <div class="salas"  id="salas">
-                <div class="sala">
-                    <h4 class="tag">Sala 102E - Informatica</h4>
-                    <p class="tag">Responsavel: Claudio</p>
-                    <p class="tag">Data/hora Inicio: 26/07/23 - 13:00</p>       #VOU USAR DE BASE PARA TESTE
-                    <p class="tag">Data/hora Fim:  26/07/23 - 13:50</p>
-                    <p class="tag">Qtd: 40</p>
-                    <input type="button" value="-----------" class="botao reservar desocupar">
-                </div>
-            </div> !-->
             <div class="salas">
                 <?php 
                     $quantidade_salas = mysqli_query($ConexaoSQL, "SELECT * from salas");   //faz o query no banco de dados
@@ -99,10 +100,9 @@ include "../php/conectar_banco_de_dados.php"
                                 "<p class='tag'> Responsavel Claudio ".$i."</p>".
                                 "<p class='tag'>Data/hora Inicio: 00/00</p>".
                                 "<p class='tag'>Data/hora Fim: 00/00</p>".
-                                "<p class='tag'>Qtd: ".$capacidade."</p>".
-                                "<input type='button' value='----------' class'botao reservar desocupar'>".
+                                "<p class='tag'>Quantidade: ".$capacidade."</p>".
+                                "<input type='button' value='Agendar' class='botao'>".
                                 "</div>";
-                                
                     }
                 ?>
             </div>

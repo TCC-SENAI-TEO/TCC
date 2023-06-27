@@ -70,9 +70,10 @@ a {
 
 .img_perfil {
     width: 3.5svw;
+    padding: 3%;
     height: 6svh;
     border-radius: 100%;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 .senai_logo {
@@ -139,6 +140,7 @@ form > input {
 
 .botao {
     margin: auto;
+    min-width: fit-content;
     width: 5svw;
     height: 3svh;
     border-radius: 7px;

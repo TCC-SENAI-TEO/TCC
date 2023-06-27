@@ -5,6 +5,7 @@ $email = $_SESSION['email_funcionario'];
 $verificar = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$email'");
 $verificar = mysqli_fetch_assoc($verificar);
 $verificar = $verificar['nivel'];
+
 if($_SESSION['login'] != true || $verificar != 1) { //verifica se o usuario fez login anteriormente
     header("Location: ../html/login.php");
 }
