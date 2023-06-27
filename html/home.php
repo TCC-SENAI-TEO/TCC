@@ -105,7 +105,9 @@ include "../php/conectar_banco_de_dados.php"
                 ?>
             </div>
         </main>
-
+        <form action="../php/agendar_sala.php" method="post">
+            <input type="submit">
+        </form>
         <script src="../js/gerador_de_salas.js"></script>
         <script src="../js/fechar_janela.js"></script>
     </body>
