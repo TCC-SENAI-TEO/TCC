@@ -75,9 +75,10 @@ a {
 
 .img_perfil {
     width: 3.5svw;
+    padding: 3%;
     height: 6svh;
     border-radius: 100%;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 .senai_logo {

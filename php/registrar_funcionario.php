@@ -1,12 +1,10 @@
 <?php
     include '../php/conectar_banco_de_dados.php'; 
 
-
-
-    $nome = $_POST['registrar_nome'];
-    $email = $_POST['registrar_email'];
-    $nivel = $_POST['registrar_nivel'];
-    $senha = $_POST['registrar_senha'];
+    $nome = mysqli_real_escape_string($ConexaoSQL, $_POST['registrar_nome']);
+    $email = mysqli_real_escape_string($ConexaoSQL, $_POST['registrar_email']);
+    $nivel = mysqli_real_escape_string($ConexaoSQL, $_POST['registrar_nivel']);
+    $senha = mysqli_real_escape_string($ConexaoSQL, $_POST['registrar_senha']);
 
     if($nome == "" || $email == "" || $nivel == "" || $senha == "") {
         session_start();

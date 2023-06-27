@@ -1,9 +1,9 @@
 <?php
     include '../php/conectar_banco_de_dados.php';
 
-    $codigo_sala = $_POST['codigo_sala'];
-    $descrição = $_POST['descricao_sala'];
-    $capacidade = $_POST['quantidade_sala'];
+    $codigo_sala = mysqli_real_escape_string($ConexaoSQL, $_POST['codigo_sala']);
+    $descrição =  mysqli_real_escape_string($ConexaoSQL, $_POST['descricao_sala']);
+    $capacidade = mysqli_real_escape_string($ConexaoSQL,$_POST['quantidade_sala']);
 
     $verificar_codigo = mysqli_query($ConexaoSQL, "SELECT * FROM salas WHERE codigo = '$codigo_sala'");
 
