@@ -46,7 +46,7 @@ include "../php/conectar_banco_de_dados.php"
                     $nivel = $nivel['nivel'];
                     if($nivel == 1) {
                             echo'<div class="tela_criar_sala">'.            
-                                '<form action="../php/registrar_sala.php" method="post">'.
+                                '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
                                 '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">'.
                                 '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala">'.
                                 '<input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>'.
@@ -93,21 +93,23 @@ include "../php/conectar_banco_de_dados.php"
                         $capacidade = mysqli_fetch_array($capacidade);
                         $capacidade = $capacidade['capacidade']; //usar esse
 
-                        echo "<div class='sala'>
-                                <h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
-                                "<p class='tag'> Responsavel Claudio ".$i."</p>".
-                                "<p class='tag'>Data/hora Inicio: 00/00</p>".
-                                "<p class='tag'>Data/hora Fim: 00/00</p>".
-                                "<p class='tag'>Quantidade: ".$capacidade."</p>".
-                                "<input type='button' value='Agendar' class='botao'>".
-                                "</div>";
+                        echo "<div class='sala'>".
+                                "<form action='../php/agendar_sala_tratamento.php' class='agendamento' method='post'>".
+                                    "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
+                                    "<p class='tag'> Responsavel Claudio ".$i."</p>".
+                                    "<p class='tag'>Data/hora Inicio: 00/00</p>".
+                                    "<p class='tag'>Data/hora Fim: 00/00</p>".
+                                    "<p class='tag'>Quantidade: ".$capacidade."</p>".
+                                    "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                                    "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                                    "<input type='submit' value='Agendar' class='botao'>".
+                                    "</form>".
+                                    "</div>";                
+                                                      
                     }
                 ?>
             </div>
         </main>
-        <form action="../php/agendar_sala.php" method="post">
-            <input type="submit">
-        </form>
         <script src="../js/gerador_de_salas.js"></script>
         <script src="../js/fechar_janela.js"></script>
     </body>

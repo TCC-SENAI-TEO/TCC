@@ -90,7 +90,7 @@ main {
     margin: 2% 0 0 0;
 }
 
-form {
+.registrar_sala {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -100,10 +100,17 @@ form {
     background-color: grey;
 }
 
-form > input {
+.agendamento {
+    display: flex;
+    flex-direction: column;
+}
+
+.registrar_sala > input {
     border-radius: 5px;
     padding: 0.5%;
 }
+
+
 
 .tela_criar_sala {
     display: flex;
