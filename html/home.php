@@ -22,7 +22,7 @@ include "../php/conectar_banco_de_dados.php"
             <h1 class="titulo">Painel central</h1>
             <div class="perfil">
                 <div><img src="../img/imagem_funcionario.png" alt="imagem_funcionario" class="img_perfil"></div>
-                <div class="teste">
+                <div class="div_sair">
                     <?php
                        echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
                     ?>
