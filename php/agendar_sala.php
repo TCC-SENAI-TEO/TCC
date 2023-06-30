@@ -19,7 +19,7 @@
             $professor = mysqli_fetch_assoc($professor);
             $professor = $professor['id'];
         
-            $horarios = mysqli_query($ConexaoSQL, "SELECT id FROM horarios WHERE inicio = '$horarios'");
+            $horarios = mysqli_query($ConexaoSQL, "SELECT id FROM horario WHERE inicio = '$horarios'");
             $horarios = mysqli_fetch_assoc($horarios);
             $horarios = $horarios['id'];
         

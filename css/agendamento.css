@@ -3,12 +3,6 @@
     padding: 0;
 }
 
-@media only screen and (max-width: 768px) {
-    .titulo {
-        font-size: 30pt !important;
-    }
-}
-
 header {
     display: flex;
     color: white;
@@ -22,10 +16,15 @@ header {
 }
 
 .voltar {
-    text-decoration: none;
+    text-decoration: underline;
     color: white;
     font-size: 15pt;
     align-self: center;
+    margin-left: .5%;
+}
+
+.voltar:hover {
+    color: rgb(204, 204, 204);
 }
 
 form {
@@ -46,6 +45,37 @@ form > section {
     align-items: center;
     width: 100%;
     gap: 5px;
+}
+
+aside {
+    width: fit-content;
+}
+
+.div_horario {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: fit-content;
+    min-width: 20svw;
+}
+
+.date, .data_txt{
+    max-width: fit-content;
+    min-width: 9svw;
+    height: fit-content;
+}
+
+.data_txt {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 10svw;
+}
+
+input[type='submit'] {
+    max-width: fit-content;
+    min-width: 8svw;
+    margin: 1svh auto;
 }
 
 section > ul {
@@ -92,4 +122,58 @@ section > ul {
     padding: 1% 2%;
     color: white;
     background-color: rgb(0, 0, 0);
+}
+
+@media only screen and (max-width: 768px) {
+    .titulo {
+        font-size: 30pt;
+    }
+
+    .voltar {
+        font-size: 8pt;
+    }
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100% !important;
+        gap: 1px !important;
+    }
+    .div_horario {
+        flex-direction: column !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center;
+        gap: 1px !important;
+    }
+    .date, .data_txt {
+        width: fit-content !important;
+        flex-wrap: nowrap;
+    }
+
+    section > ul {
+        justify-content: center !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .titulo {
+        font-size: 20pt;
+    }
+
+    .voltar {
+        font-size: 10pt;
+    } 
+}
+
+@media only screen and (max-width: 320px) {
+    .titulo {
+        font-size: 15pt;
+    }
+
+    .voltar {
+        font-size: 7pt;
+    } 
 }
