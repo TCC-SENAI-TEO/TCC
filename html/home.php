@@ -33,7 +33,7 @@ include "../php/conectar_banco_de_dados.php"
 
                 <div class="salas_status">
                     <h3 class=" salas_totais">Salas: </h3>
-                    <h3 class=" sala_salas_disponiveis">Salas salas_disponiveis: </h3>
+                    <h3 class=" sala_salas_disponiveis">Salas disponiveis: </h3>
                     <h3 class=" sala_interditadas">Salas interditadas: </h3>
                     <h3 class=" sala_ocupadas">Salas ocupadas: </h3>
                 </div>
@@ -57,7 +57,7 @@ include "../php/conectar_banco_de_dados.php"
                 </select>
                     </li>
                 </ul>
-            <a class="encaminhar_usuario" href="../html/usuario_agendamentos.html">Meus agendamentos</a>
+            <a class="encaminhar_usuario" href="../html/usuario_interface.html">Meus agendamentos</a>
                 <?php
 
                     $verificar = $_SESSION['email_funcionario'];
