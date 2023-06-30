@@ -40,6 +40,22 @@ ul {
     list-style: none;
 }
 
+.ul_data {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+}
+
+.ul_data > li {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#horario {
+    font-size: larger;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -105,6 +121,7 @@ main {
     flex-direction: column;
 }
 
+
 .registrar_sala > input {
     border-radius: 5px;
     padding: 0.5%;
@@ -149,7 +166,19 @@ main {
     padding: 1%;
     width: 10svw;
     box-shadow: 5px 5px 5px black;
-    background-color: #77dd77e1;
+}
+
+.salas_disponivel {
+    background-color: #77dd77;
+}
+
+
+.salas_interditado {
+    background-color: #fdfd96;
+}
+
+.salas_fechado {
+    background-color: #ff7068ec;
 }
 
 .botao {
