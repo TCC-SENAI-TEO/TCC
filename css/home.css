@@ -13,29 +13,6 @@ Cores status {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-@media only screen and (max-width: 768px) {
-    .titulo {
-        margin: auto !important;
-        font-size: 30pt !important;
-    }
-
-    main {
-        flex-direction: column;
-    }
-
-    .registro, .img_perfil, .senai_logo {
-        display: none;
-    }
-
-    .salas_status {
-        display: flex;
-        flex-direction: column !important;
-    }
-    .salas_status > h3 {
-        display: flex;
-    }
-}
-
 ul {
     list-style: none;
 }
@@ -68,7 +45,6 @@ header {
 
 .titulo {
     font-size: 40pt;
-    margin-left: 4.5svw;
 }
 
 .perfil {
@@ -84,21 +60,21 @@ a {
     color: white;
 }
 
-.teste {
+.div_sair {
     text-align: center;
 } 
 
 .img_perfil {
     width: 3.5svw;
     padding: 3%;
-    height: 6svh;
+    height: auto;
     border-radius: 100%;
     background-color: rgb(255, 255, 255);
 }
 
 .senai_logo {
     width: 14svw;
-    height: 10svh;
+    height: auto;
 }
 
 main {
@@ -236,4 +212,45 @@ main {
     border-radius: 30px;
     padding: 1% 2%;
     background-color: red;
+}
+
+@media only screen and (max-width: 1380px) {
+    .senai_logo {
+        width: 18.9svw;
+    }
+    .img_perfil {
+        width: 3.5svw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .titulo {
+        margin: auto;
+        font-size: 30pt;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    .registro, .img_perfil, .senai_logo {
+        display: none;
+    }
+
+    .salas_status {
+        display: flex;
+        flex-direction: column;
+    }
+    .salas_status > h3 {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .titulo {
+        font-size: 20pt;
+    }
+    a {
+        font-size: 10pt;
+    }
 }

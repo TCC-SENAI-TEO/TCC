@@ -9,8 +9,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" href="../css/agendamento.css">
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <title>Agendamento</title>
 </head>
 <body>
@@ -27,13 +28,13 @@
                 echo "<input type='email' disabled placeholder='email' value='$email'>";
             ?>
             <aside>
-                <ul>
-                    <label>Data de inicio</label>
-                    <input type="date" name="data_inicio">
+                <ul class='div_horario'>
+                    <label class="data_txt" for="data_inicio">Data de inicio: </label>
+                    <input type="date" name="data_inicio" class='date'>
                 </ul>
-                <ul>
-                    <label>Data de termino</label>
-                    <input type="date" name="data_termino">
+                <ul class='div_horario'>
+                    <label class="data_txt" for="data_termino">Data de termino: </label>
+                    <input type="date" name="data_termino" class='date'>
                 </ul>
             </aside>
             <section>
