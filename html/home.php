@@ -57,7 +57,7 @@ include "../php/conectar_banco_de_dados.php"
                 </select>
                     </li>
                 </ul>
-
+            <a class="encaminhar_usuario" href="../html/usuario_agendamentos.html">Meus agendamentos</a>
                 <?php
 
                     $verificar = $_SESSION['email_funcionario'];
@@ -172,7 +172,6 @@ include "../php/conectar_banco_de_dados.php"
             </div>
         </main>
         <script src="../js/data.js"></script>
-        <script src="../js/gerador_de_salas.js"></script>
         <script src="../js/fechar_janela.js"></script>
     </body>
 </html>

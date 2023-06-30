@@ -17,18 +17,6 @@ ul {
     list-style: none;
 }
 
-.ul_data {
-    display: flex;
-    gap: 6px;
-    flex-direction: column;
-}
-
-.ul_data > li {
-    gap: 10px;
-    display: flex;
-    align-items: center;
-}
-
 #horario {
     font-size: larger;
 }
@@ -82,6 +70,26 @@ main {
     margin: 2% 0 0 0;
 }
 
+.ul_data {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.ul_data > li {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.encaminhar_usuario {
+    color: black;
+    text-decoration: none;
+}
+
 .registrar_sala {
     display: flex;
     flex-direction: column;
@@ -103,12 +111,9 @@ main {
     padding: 0.5%;
 }
 
-
-
 .tela_criar_sala {
     display: flex;
     flex-wrap: wrap;  
-    flex-basis: 100px;
 }
 
 .salas_status {
@@ -178,7 +183,6 @@ main {
 
 .erro {
     display: flex;
-    margin: 2% auto;
     border: 2px solid black;
     padding: 1%;
     background-color: RGB(242, 54, 52);
@@ -192,7 +196,6 @@ main {
 
 .certo {
     display: flex;
-    margin: 2% auto 0%;
     border: 2px solid black;
     padding: 1%;
     background-color: RGB(142, 214, 151);
@@ -231,6 +234,8 @@ main {
 
     main {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .registro, .img_perfil, .senai_logo {
