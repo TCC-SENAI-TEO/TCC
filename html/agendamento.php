@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if($_SESSION['login'] != true) { //verifica se o usuario fez login anteriormente
+        header("Location: ../html/login.php");
+    }
 ?>
 
 <!DOCTYPE html>
