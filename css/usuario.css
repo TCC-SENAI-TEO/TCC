@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    color: white;
+    background-color: #005ca9;
+    width: 100%;
+}
+
+.titulo {
+    margin: auto;
+    font-size: 40pt;
+}
+
+.voltar {
+    text-decoration: underline;
+    color: white;
+    font-size: 15pt;
+    align-self: center;
+    margin-left: .5%;
+}
+.voltar:hover {
+    color: rgb(204, 204, 204);
+}
+
+main {
+    display: flex;
+    margin-top: 15%;
+    width: 100%;
+}
+
+table {
+    margin: auto;
+    width: 80%;
+    border-collapse:  collapse;
+    border: 2px solid black;
+}
+
+th, td {
+    border: 2px solid black;
+    width: 50svw;
+    text-align: center;
+}
+
+@media only screen and (max-width: 380px) {
+    .titulo {
+        font-size: 30pt;
+    }
+    
+    .voltar {
+        font-size: 10pt;
+    }
+    
+    table {
+        font-size: 10pt;
+        width: fit-content;
+    }
+}
+
