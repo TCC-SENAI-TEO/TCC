@@ -134,7 +134,7 @@ include "../php/conectar_banco_de_dados.php"
                         $horario_termino_assoc = mysqli_fetch_array($horario_termino);
                         @$horario_termino_result = $horario_termino_assoc['fim'];
 
-                        $professor = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join funcionarios on agendamentos.id_funcionarios = funcionarios.id");
+                        $professor = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
                         $professor_assoc = mysqli_fetch_array($professor);
                         @$professor_result = $professor_assoc['nome'];
 
@@ -156,10 +156,10 @@ include "../php/conectar_banco_de_dados.php"
                             echo "<div class='salas salas_disponivel'>".
                                     "<form action='../php/agendar_sala_tratamento.php' class='agendamentos' method='post'>".
                                         "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
-                                        "<p class='tag'> Responsavel Claudio ".$i."</p>".
-                                        "<p class='tag'>Data/hora Inicio: 00/00</p>".
-                                        "<p class='tag'>Data/hora Fim: 00/00</p>".
-                                        "<p class='tag'>Quantidade: ".$capacidade."</p>".
+                                        "<p class='tag'><strong>Responsável:</strong> Livre </p>".
+                                        "<p class='tag'><strong>Inicio:</strong>: Livre</p>".
+                                        "<p class='tag'><strong>Termino</strong>: Livre</p>".
+                                        "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
                                         "<input type='hidden' name='codigo_sala' value='$codigo'>".
                                         "<input type='hidden' name='descricao_sala' value='$descricao'>".
                                         "<input type='submit' value='Agendar' class='botao'>".
