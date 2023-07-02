@@ -57,7 +57,7 @@ include "../php/conectar_banco_de_dados.php"
                 </select>
                     </li>
                 </ul>
-            <a class="encaminhar_usuario" href="../html/usuario_interface.html">Meus agendamentos</a>
+            <a class="encaminhar_usuario" href="../html/usuario_interface.php">Meus agendamentos</a>
                 <?php
 
                     $verificar = $_SESSION['email_funcionario'];

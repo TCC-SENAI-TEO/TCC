@@ -28,13 +28,13 @@ header {
 
 main {
     display: flex;
-    margin-top: 15%;
+    margin-top: 5%;
     width: 100%;
 }
 
 table {
     margin: auto;
-    width: 80%;
+    width: 90%;
     border-collapse:  collapse;
     border: 2px solid black;
 }
