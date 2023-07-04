@@ -67,25 +67,29 @@ include "../php/conectar_banco_de_dados.php"
                 $horarios = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN horario on agendamentos.id_horario = horario.id WHERE email = '$email' and agendamentos.id = '$a'");
                 $horarios_assoc = mysqli_fetch_assoc($horarios);
                 $horarios_result = $horarios_assoc['inicio'];
+
+                $verificar_data = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN salas on agendamentos.id_sala = salas.id INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE agendamentos.inicio = '$data_result' AND email = '$email' AND salas.codigo = '$codigo_sala_result'"); //VERIFICA QUANTAS VEZES REPETIU AS LINHAS
+
+                echo mysqli_num_rows($verificar_data);
                 
                 echo "<tr>
                 <td>".$codigo_sala_result."</td>
                 <td>".$data_result."</td>".
                 "<td>".verificar_horario(1)."</td>".
                 "<td>".verificar_horario(2)."</td>".
-                        "<td>".verificar_horario(3)."</td>".
-                        "<td>".verificar_horario(4)."</td>".
-                        "<td>".verificar_horario(5)."</td>".
-                        "<td>".verificar_horario(6)."</td>".
-                        "</tr>";
+                "<td>".verificar_horario(3)."</td>".
+                "<td>".verificar_horario(4)."</td>".
+                "<td>".verificar_horario(5)."</td>".
+                "<td>".verificar_horario(6)."</td>".
+                "</tr>";
                         
 
             }
                     
-                    function verificar_horario($teste) {
-                        global $horarios_result;
-                        if($teste == 1 && $horarios_result == "7:00") {
-                            return "X";
+            function verificar_horario($teste) {
+                global $horarios_result;
+                if($teste == 1 && $horarios_result == "7:00") {
+                    return "X";
                 }
                 else if($teste == 2 && $horarios_result == "7:50") {
                     return "X";
