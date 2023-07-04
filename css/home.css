@@ -70,19 +70,73 @@ main {
     margin: 2% 0 0 0;
 }
 
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.ul_data {
+    display: flex;
+    width: fit-content;
+}
+
+.verificador_sala {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    min-width: 1svw;
+}
+
+.verificador_sala > select{
+    width: 7svw;
+}
+
+.encaminhar_usuario {
+    color: black;
+}
+
+.registrar_sala {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0.3%;
+}
+
+#data {
+    width: 7svw;
+}
+
+.registrar_sala > input {
+    width: 7svw;
+}
+
+/*
 .ul_data {
     display: flex;
     gap: 6px;
+    margin: auto;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: fit-content;
 }
 
-.ul_data > li {
-    gap: 10px;
+.ul_data > form {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+
+}
+
+form > select {
+    min-width: fit-content;
 }
 
 .encaminhar_usuario {
@@ -115,6 +169,19 @@ main {
     display: flex;
     flex-wrap: wrap;  
 }
+
+.tela_criar_sala {
+    align-self: center;
+}
+
+.add_sala {
+    padding: 2%;
+    border: 2px solid black;
+    border-radius: 8px;
+    text-align: center;
+}
+
+*/
 
 .salas_status {
     display: flex;
@@ -153,7 +220,6 @@ main {
     background-color: #77dd77;
 }
 
-
 .salas_interditado {
     background-color: #fdfd96;
 }
@@ -170,15 +236,8 @@ main {
     border-radius: 7px;
 }
 
-.tela_criar_sala {
-    align-self: center;
-}
-
-.add_sala {
-    padding: 2%;
-    border: 2px solid black;
-    border-radius: 8px;
-    text-align: center;
+.preto {
+    color: black;
 }
 
 .erro {
@@ -236,6 +295,10 @@ main {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    aside {
+        margin: auto;
     }
 
     .registro, .img_perfil, .senai_logo {

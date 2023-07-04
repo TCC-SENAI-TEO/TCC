@@ -30,70 +30,68 @@ include "../php/conectar_banco_de_dados.php"
                 </div>
             </div>
         </header>
-
-                <div class="salas_status">
-                    <h3 class=" salas_totais">Salas: </h3>
-                    <h3 class=" sala_salas_disponiveis">Salas disponiveis: </h3>
-                    <h3 class=" sala_interditadas">Salas interditadas: </h3>
-                    <h3 class=" sala_ocupadas">Salas ocupadas: </h3>
-                </div>
-
+            <div class="salas_status">
+                <h3 class=" salas_totais">Salas: </h3>
+                <h3 class=" sala_salas_disponiveis">Salas disponiveis: </h3>
+                <h3 class=" sala_interditadas">Salas interditadas: </h3>
+                <h3 class=" sala_ocupadas">Salas ocupadas: </h3>
+            </div>
         <main>
-            <div>
-                <ul class="ul_data">
-                    <form action="../php/verificar_sala_disponivel.php" method="post">
-                        <li><input type="date" id="data" name="data"></li>
-                        <label for="horario">Horario</label>
-                            <select name="horario">
-                                <option value="7:00">7:00</option>
-                                <option value="7:50">7:50</option>
-                                <option value="8:40">8:40</option>
-                                <option value="9:50">9:50</option>
-                                <option value="10:40">10:40</option>
-                                <option value="11:30">11:30</option>
-                            </select>
-                            <li><input type="submit" value="Verificar"></li>
-                    </form>
-                </select>
-                    </li>
-                </ul>
-            <a class="encaminhar_usuario" href="../html/usuario_interface.php">Meus agendamentos</a>
-                <?php
+            <aside>
+                    <ul class="ul_data">
+                        <form action="../php/verificar_sala_disponivel.php" method="post" class="verificador_sala">
+                            <li><input type="date" id="data" name="data"></li>
+                            <label for="horario">Horario</label>
+                                <select name="horario">
+                                    <option value="7:00">7:00</option>
+                                    <option value="7:50">7:50</option>
+                                    <option value="8:40">8:40</option>
+                                    <option value="9:50">9:50</option>
+                                    <option value="10:40">10:40</option>
+                                    <option value="11:30">11:30</option>
+                                </select>
+                                <li><input type="submit" value="Verificar"></li>
+                        </form>
+                        </li>
+                    </ul>
+                    <a class="encaminhar_usuario" href="../html/usuario_interface.php">Meus agendamentos</a>
+                    <?php
 
-                    $verificar = $_SESSION['email_funcionario'];
-                    $nivel = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$verificar'");
-                    $nivel = mysqli_fetch_assoc($nivel);
-                    $nivel = $nivel['nivel'];
-                    if($nivel == 1) {
-                            echo'<div class="tela_criar_sala">'.            
-                                '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
-                                '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">'.
-                                '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala">'.
-                                '<input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>'.
-                                '<input type="submit" value="Cadastrar" id="cadastrar_sala_btn">'.
-                                '</form>';
+                        $verificar = $_SESSION['email_funcionario'];
+                        $nivel = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$verificar'");
+                        $nivel = mysqli_fetch_assoc($nivel);
+                        $nivel = $nivel['nivel'];
+                        if($nivel == 1) {
+                                echo           
+                                    '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
+                                    '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">'.
+                                    '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala">'.
+                                    '<input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>'.
+                                    '<input type="submit" value="Cadastrar" id="cadastrar_sala_btn">'.
+                                    '</form>';
 
-                    }
-                    if(@$_SESSION['error_codigo'] == 1) {
-                        echo"<div class='erro' id='erro'>
-                                <span>A sala inserida já foi registrada</span>
-                                <div class='fechar' id='fechar_erro'>X</div>
-                            </div>";
-                            $_SESSION['error_codigo'] = 0;
-            
-                    } else if(@$_SESSION['error_codigo'] == 2) {
-                        echo"<div class='certo' id='certo'>
-                                <span>A criação da sala foi bem sucedida</span>
-                                <div class='fechar' id='fechar_certo'>X</div>
-                            </div>";
-                            $_SESSION['error_codigo'] = 0;
+                        }
+                        if(@$_SESSION['error_codigo'] == 1) {
+                            echo"<div class='erro' id='erro'>
+                                    <span>A sala inserida já foi registrada</span>
+                                    <div class='fechar' id='fechar_erro'>X</div>
+                                </div>";
+                                $_SESSION['error_codigo'] = 0;
+                
+                        } else if(@$_SESSION['error_codigo'] == 2) {
+                            echo"<div class='certo' id='certo'>
+                                    <span>A criação da sala foi bem sucedida</span>
+                                    <div class='fechar' id='fechar_certo'>X</div>
+                                </div>";
+                                $_SESSION['error_codigo'] = 0;
 
-                    }
-                    if($nivel == 1) {
-                        echo '</div>';
-                    }
-                    ?>
-                </div>
+                        }
+                        if($nivel == 1) {
+                            echo 
+                            '<a href="../html/registro.php" class="preto">Registrar</a>';
+                        }
+                        ?>
+                </aside>
             <div class="salas">
                 <?php 
                     $quantidade_salas = mysqli_query($ConexaoSQL, "SELECT * from salas");   //faz o query no banco de dados
