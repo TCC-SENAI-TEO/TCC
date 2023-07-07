@@ -32,10 +32,10 @@ include "../php/conectar_banco_de_dados.php"
         </header>
 
                 <div class="salas_status">
-                    <h3 class=" salas_totais">Salas: </h3>
-                    <h3 class=" sala_salas_disponiveis">Salas disponiveis: </h3>
-                    <h3 class=" sala_interditadas">Salas interditadas: </h3>
-                    <h3 class=" sala_ocupadas">Salas ocupadas: </h3>
+                    <h3 class=" salas_totais" id="salas_totais"></h3>
+                    <h3 class=" sala_disponiveis" id="salas_disponiveis"></h3>
+                    <h3 class=" sala_interditadas" id="salas_interditadas"></h3>
+                    <h3 class=" sala_ocupadas" id="salas_ocupadas"></h3>
                 </div>
 
         <main>
@@ -140,20 +140,22 @@ include "../php/conectar_banco_de_dados.php"
 
 
                         if($salas_disponiveis = mysqli_num_rows($salas_disponiveis) > 0) {
-                            echo "<div class='salas salas_fechado'>".
+                            echo 
+                                "<div class='salas salas_fechado'>".
                                     "<form /action='../php/agendar_sala_tratamento.php' class='agendamentos' method='post'>".
-                                    "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
-                                    "<p class='tag'><strong>Responsável:</strong> ".$professor_result."</p>".
-                                    "<p class='tag'><strong>Inicio:</strong> ".$horario_inico_result."</p>".
-                                    "<p class='tag'><strong>Termino</strong> ".$horario_termino_result."</p>".
-                                    "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
-                                    "<input type='hidden' name='codigo_sala' value='$codigo'>".
-                                    "<input type='hidden' name='descricao_sala' value='$descricao'>".
-                                    "<input type='submit' value='Agendar' class='botao'>".
+                                        "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
+                                        "<p class='tag'><strong>Responsável:</strong> ".$professor_result."</p>".
+                                        "<p class='tag'><strong>Inicio:</strong> ".$horario_inico_result."</p>".
+                                        "<p class='tag'><strong>Termino</strong> ".$horario_termino_result."</p>".
+                                        "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
+                                        "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                                        "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                                        "<input type='submit' value='Agendar' class='botao'>".
                                     "</form>".
                                 "</div>";         
                         } else {
-                            echo "<div class='salas salas_disponivel'>".
+                            echo 
+                                "<div class='salas salas_disponivel'>".
                                     "<form action='../php/agendar_sala_tratamento.php' class='agendamentos' method='post'>".
                                         "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
                                         "<p class='tag'><strong>Responsável:</strong> Livre </p>".
@@ -163,14 +165,15 @@ include "../php/conectar_banco_de_dados.php"
                                         "<input type='hidden' name='codigo_sala' value='$codigo'>".
                                         "<input type='hidden' name='descricao_sala' value='$descricao'>".
                                         "<input type='submit' value='Agendar' class='botao'>".
-                                        "</form>".
-                                    "</div>";   
+                                    "</form>".
+                                "</div>";   
                         }            
                                                       
                     }
                 ?>
             </div>
         </main>
+        <script src="../js/pegar_numeros_sala.js"></script>
         <script src="../js/data.js"></script>
         <script src="../js/fechar_janela.js"></script>
     </body>

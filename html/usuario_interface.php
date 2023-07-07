@@ -71,15 +71,16 @@ include "../php/conectar_banco_de_dados.php"
 
                 echo mysqli_num_rows($verificar_data);
                 
-                echo "<tr>
-                <td>".$codigo_sala_result."</td>
-                <td>".$data_result."</td>".
-                "<td>".verificar_horario(1)."</td>".
-                "<td>".verificar_horario(2)."</td>".
-                "<td>".verificar_horario(3)."</td>".
-                "<td>".verificar_horario(4)."</td>".
-                "<td>".verificar_horario(5)."</td>".
-                "<td>".verificar_horario(6)."</td>".
+                echo 
+                "<tr>
+                    <td>".$codigo_sala_result."</td>
+                    <td>".$data_result."</td>".
+                    "<td>".verificar_horario(1)."</td>".
+                    "<td>".verificar_horario(2)."</td>".
+                    "<td>".verificar_horario(3)."</td>".
+                    "<td>".verificar_horario(4)."</td>".
+                    "<td>".verificar_horario(5)."</td>".
+                    "<td>".verificar_horario(6)."</td>".
                 "</tr>";
                         
 
