@@ -32,19 +32,24 @@ include "../php/conectar_banco_de_dados.php"
         </header>
 
                 <div class="salas_status">
-                    <h3 class=" salas_totais" id="salas_totais"></h3>
-                    <h3 class=" sala_disponiveis" id="salas_disponiveis"></h3>
+                    <div class="salas_status_coluna">
+                        <h3 class=" salas_totais" id="salas_totais"></h3>
+                        <h3 class=" sala_disponiveis" id="salas_disponiveis"></h3>
+                    </div>
+                    <div class="salas_status_coluna">
                     <h3 class=" sala_interditadas" id="salas_interditadas"></h3>
                     <h3 class=" sala_ocupadas" id="salas_ocupadas"></h3>
+                    </div>
+
                 </div>
 
         <main>
             <aside>
                     <ul class="ul_data">
                         <form action="../php/verificar_sala_disponivel.php" method="post" class="verificador_sala">
-                            <li><input type="date" id="data" name="data"></li>
+                            <li><input type="date" id="data" class="tamanho_fixo"name="data"></li>
                             <label for="horario">Horario</label>
-                                <select name="horario">
+                                <select name="horario" class="tamanho_fixo">
                                     <option value="7:00">7:00</option>
                                     <option value="7:50">7:50</option>
                                     <option value="8:40">8:40</option>
@@ -52,11 +57,11 @@ include "../php/conectar_banco_de_dados.php"
                                     <option value="10:40">10:40</option>
                                     <option value="11:30">11:30</option>
                                 </select>
-                                <li><input type="submit" value="Verificar"></li>
+                               <input type="submit" value="Verificar" class="verificar_sala_btn tamanho_fixo">
                         </form>
                         </li>
                     </ul>
-                    <a class="encaminhar_usuario" href="../html/usuario_interface.php">Meus agendamentos</a>
+                    <a class="encaminhar_usuario_btn tamanho_fixo" href="../html/usuario_interface.php">Meus agendamentos</a>
                     <?php
 
                         $verificar = $_SESSION['email_funcionario'];
@@ -66,10 +71,10 @@ include "../php/conectar_banco_de_dados.php"
                         if($nivel == 1) {
                                 echo           
                                     '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
-                                    '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3">'.
-                                    '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala">'.
-                                    '<input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1>'.
-                                    '<input type="submit" value="Cadastrar" id="cadastrar_sala_btn">'.
+                                    '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3" class="tamanho_fixo">'.
+                                    '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala" class="tamanho_fixo">'.
+                                    '<input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1 class="tamanho_fixo">'.
+                                    '<input type="submit" value="Cadastrar" id="cadastrar_sala_btn" class="tamanho_fixo">'.
                                     '</form>';
 
                         }
@@ -90,7 +95,7 @@ include "../php/conectar_banco_de_dados.php"
                         }
                         if($nivel == 1) {
                             echo 
-                            '<a href="../html/registro.php" class="preto">Registrar</a>';
+                            '<a href="../html/registro.php" class="registro_funcionario_btn tamanho_fixo">Registrar</a>';
                         }
                         ?>
                 </aside>

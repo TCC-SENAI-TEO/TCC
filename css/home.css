@@ -50,7 +50,7 @@ a {
 
 .div_sair {
     text-align: center;
-} 
+}   
 
 .img_perfil {
     width: 3.5svw;
@@ -70,21 +70,27 @@ main {
     margin: 2% 0 0 0;
 }
 
+/* MENU LATERAL*/
+
 aside {
     display: flex;
     flex-direction: column;
+    margin: auto;
+    align-self: center;
     justify-content: center;
     align-items: center;
-    width: fit-content;
-}
-
-.ul_data {
-    display: flex;
-    width: fit-content;
+    max-width: fit-content;
+    min-width: 14svw;
+    height: fit-content;
+    background-color: grey;
+    border: 2px solid black;
+    box-shadow: 6px 6px 6px black;
+    gap: 8px;
 }
 
 .verificador_sala {
     display: flex;
+    padding-top: 3%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -92,106 +98,60 @@ aside {
     min-width: 1svw;
 }
 
-.verificador_sala > select{
-    width: 7svw;
-}
-
-.encaminhar_usuario {
-    color: black;
+.tamanho_fixo {
+    max-width: fit-content;
+    min-width: 7svw;
+    height: fit-content;
 }
 
 .registrar_sala {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: 5px;
-    padding: 0.3%;
-}
-
-#data {
-    width: 7svw;
-}
-
-.registrar_sala > input {
-    width: 7svw;
-}
-
-/*
-.ul_data {
-    display: flex;
-    gap: 6px;
-    margin: auto;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     width: fit-content;
-}
-
-.ul_data > form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-form > select {
-    min-width: fit-content;
-}
-
-.encaminhar_usuario {
-    color: black;
-    text-decoration: none;
-}
-
-.registrar_sala {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     gap: 5px;
-    border: solid black 2px;
-    padding: 0.3%;
-    background-color: grey;
+    padding: .3%;
 }
 
-.agendamento {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.registrar_sala > input {
+.registro_funcionario_btn, .encaminhar_usuario_btn, .verificar_sala_btn, #cadastrar_sala_btn {
+    color: black;
+    background-color: white;
+    text-decoration: none;
     border-radius: 5px;
-    padding: 0.5%;
-}
-
-.tela_criar_sala {
-    display: flex;
-    flex-wrap: wrap;  
-}
-
-.tela_criar_sala {
-    align-self: center;
-}
-
-.add_sala {
-    padding: 2%;
-    border: 2px solid black;
-    border-radius: 8px;
+    max-width: fit-content;
+    min-width: 5svw;
     text-align: center;
+    border: 2px solid black;
 }
 
-*/
+.registro_funcionario_btn {
+    margin-bottom: 2%;
+}
+
+.registro_funcionario_btn:hover, .encaminhar_usuario_btn:hover {
+    background-color: rgb(226, 224, 224);
+}
 
 .salas_status {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    flex-wrap: wrap !important;
+    flex-wrap: wrap;
     gap: 2px;
     max-width: fit-content;
     min-width: 100svw;
 }
+
+.salas_status_coluna { 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 300px;
+}
+
+/*TABELA SALAS*/
 
 .salas {
     display: flex;
@@ -236,10 +196,6 @@ form > select {
     border-radius: 7px;
 }
 
-.preto {
-    color: black;
-}
-
 .erro {
     display: flex;
     border: 2px solid black;
@@ -280,8 +236,27 @@ form > select {
     .senai_logo {
         width: 18.9svw;
     }
+
     .img_perfil {
         width: 3.5svw;
+    }
+
+    .tamanho_fixo {
+        width: 100px;
+    }
+
+    aside {
+        max-width: fit-content;
+        min-width: 20svw;
+    }
+
+    .tamanho_fixo {
+        width: 12svw;
+    }
+
+    .salas_status_coluna {
+        flex-direction: column;
+        gap: 0px;
     }
 }
 
@@ -298,7 +273,12 @@ form > select {
     }
 
     aside {
-        margin: auto;
+        max-width: fit-content;
+        min-width: 25svw;
+    }
+
+    .tamanho_fixo {
+        width: 80px;
     }
 
     .registro, .img_perfil, .senai_logo {
@@ -307,10 +287,7 @@ form > select {
 
     .salas_status {
         display: flex;
-        flex-direction: column;
-    }
-    .salas_status > h3 {
-        display: flex;
+
     }
 }
 
@@ -320,5 +297,21 @@ form > select {
     }
     a {
         font-size: 10pt;
+    }
+
+    .tamanho_fixo {
+        width: 50px;
+    }
+    aside {
+        max-width: fit-content;
+        min-width: 30svw;
+    }
+
+}
+
+@media only screen and (max-width: 280px) {
+    aside {
+        max-width: fit-content;
+        min-width: 40svw;
     }
 }
