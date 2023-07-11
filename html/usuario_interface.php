@@ -13,7 +13,6 @@ include "../php/conectar_banco_de_dados.php"
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5">
     <link rel="stylesheet" href="../css/usuario.css">
     <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
     <title>Meus Agendamentos</title>
@@ -43,75 +42,79 @@ include "../php/conectar_banco_de_dados.php"
 
         include "../php/conectar_banco_de_dados.php";
         $email = $_SESSION['email_funcionario'];
-        $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email'");
+        $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email'"); //total de X do usuário
         $quantidade_salas_agendadas = mysqli_num_rows($quantidade_salas_agendadas);
+
+        //$data = mysqli_query($ConexaoSQL, "SELECT agendamentos.inicio FROM agendamentos inner join funcionarios WHERE email = '$email'");
+
+        $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' ORDER BY inicio asc");            
         
-        $a = 0;
-
         for ($i = 1; $i <= $quantidade_salas_agendadas; $i++) {  
-            $a++;
-            $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND agendamentos.id = '$a'");
-            
-            while(mysqli_num_rows($codigo_sala) == 0) {
-                    $a++;
-                    $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND agendamentos.id = '$a'");
-                }
-                
-                $codigo_sala_assoc = mysqli_fetch_assoc($codigo_sala);
-                $codigo_sala_result = $codigo_sala_assoc['codigo'];
-                
-                $data = mysqli_query($ConexaoSQL, "SELECT agendamentos.inicio FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email' and agendamentos.id = '$a'");
-                $data_assoc = mysqli_fetch_assoc($data);
-                $data_result = $data_assoc['inicio'];
-                
-                $horarios = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN horario on agendamentos.id_horario = horario.id WHERE email = '$email' and agendamentos.id = '$a'");
-                $horarios_assoc = mysqli_fetch_assoc($horarios);
-                $horarios_result = $horarios_assoc['inicio'];
 
-                $verificar_data = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN salas on agendamentos.id_sala = salas.id INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE agendamentos.inicio = '$data_result' AND email = '$email' AND salas.codigo = '$codigo_sala_result'"); //VERIFICA QUANTAS VEZES REPETIU AS LINHAS
+            print_r($quantidade_salas_agendadas);
+            echo "<br>";
 
-                echo mysqli_num_rows($verificar_data);
-                
-                echo 
+            $codigo_sala_assoc = mysqli_fetch_assoc($codigo_sala);
+            $ultima_data = $codigo_sala_assoc['inicio'];
+
+            //$data_assoc = mysqli_fetch_assoc($data);
+            //$data_result = $data_assoc['inicio'];
+
+            //$data_linha = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, id_horario FROM agendamentos INNER JOIN funcionarios INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' and agendamentos.inicio = '$data_result' AND agendamentos.id_sala = '$codigo_sala_result'");
+
+            //print_r($codigo_sala_assoc['codigo']);
+            //echo '<br>';
+
+            //for ($t=0; $t < 2; $t++) { 
+            //do {
+                echo
                 "<tr>
-                    <td>".$codigo_sala_result."</td>
-                    <td>".$data_result."</td>".
-                    "<td>".verificar_horario(1)."</td>".
-                    "<td>".verificar_horario(2)."</td>".
-                    "<td>".verificar_horario(3)."</td>".
-                    "<td>".verificar_horario(4)."</td>".
-                    "<td>".verificar_horario(5)."</td>".
-                    "<td>".verificar_horario(6)."</td>".
+                    <td>".$codigo_sala_assoc['codigo']."</td>
+                    <td>".$codigo_sala_assoc['inicio']."</td>";
+    
+                //for($l = 1; $l <= 6; $l++) {
+                    echo
+                    "<td>".verificar_horario(1,$codigo_sala_assoc['id_horario'])."</td>".
+                    "<td>".verificar_horario(2,$codigo_sala_assoc['id_horario'])."</td>".
+                    "<td>".verificar_horario(3,$codigo_sala_assoc['id_horario'])."</td>".
+                    "<td>".verificar_horario(4,$codigo_sala_assoc['id_horario'])."</td>".
+                    "<td>".verificar_horario(5,$codigo_sala_assoc['id_horario'])."</td>".
+                    "<td>".verificar_horario(6,$codigo_sala_assoc['id_horario'])."</td>";
+               // }
+                echo
                 "</tr>";
-                        
-
-            }
+                if($ultima_data == null) {
+                    $ultima_data = $codigo_sala_assoc['inicio'];
+                }
+                            
+            //}
+                //} while ($ultima_data = $codigo_sala_assoc['inicio']);
+            
                     
-            function verificar_horario($teste) {
-                global $horarios_result;
-                if($teste == 1 && $horarios_result == "7:00") {
+                
+            }
+            function verificar_horario($teste, $horarios_result) {
+                if($teste == 1 && $horarios_result == "1") {
                     return "X";
                 }
-                else if($teste == 2 && $horarios_result == "7:50") {
+                else if($teste == 2 && $horarios_result == "2") {
                     return "X";
                 }
-                else if($teste == 3 && $horarios_result == "8:40") {
+                else if($teste == 3 && $horarios_result == "3") {
                     return "X";
                 }
-                else if($teste == 4 && $horarios_result == "9:50") {
+                else if($teste == 4 && $horarios_result == "4") {
                     return "X";
                 }
-                else if($teste == 5 && $horarios_result == "10:40") {
+                else if($teste == 5 && $horarios_result == "5") {
                     return "X";
                 }
-                else if($teste == 6 && $horarios_result == "11:30") {
+                else if($teste == 6 && $horarios_result == "6") {
                     return "X";
                 } else {
                     return "";
                 }
-
-            }
-
+        }
             ?>
             </table>
     </main>
