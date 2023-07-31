@@ -46,7 +46,7 @@ include "../php/conectar_banco_de_dados.php"
         $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email'"); //total de X do usuário
         $quantidade_salas_agendadas = mysqli_num_rows($quantidade_salas_agendadas);
 
-        $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' ORDER BY codigo"); 
+        $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' ORDER BY inicio asc"); 
 
         $horarios_armazenados = [];
         $codigo2 = '';
@@ -58,7 +58,7 @@ include "../php/conectar_banco_de_dados.php"
             $codigo1 = $codigo_sala_assoc['codigo'];
             $inicio1 = $codigo_sala_assoc['inicio'];
             
-            $horario = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND inicio = '$inicio1' ORDER BY codigo");
+            $horario = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND inicio = '$inicio1' ORDER BY inicio");
             $num = mysqli_num_rows($horario);
             
             
@@ -85,6 +85,7 @@ include "../php/conectar_banco_de_dados.php"
             $horarios_armazenados = array();
             $codigo2 = $codigo1;
             $inicio2 = $inicio1;
+    
             
         }
         function marcar_horario($num_horario) {
