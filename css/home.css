@@ -232,6 +232,18 @@ aside {
     background-color: red;
 }
 
+#mudar_foto {
+    position: relative;
+}
+
+#file {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0% 0%;
+    position: fixed;
+}
+
 @media only screen and (max-width: 1380px) {
     .senai_logo {
         width: 18.9svw;
@@ -251,7 +263,7 @@ aside {
     }
 
     .tamanho_fixo {
-        width: 12svw;
+        width: fit-content;
     }
 
     .salas_status_coluna {
@@ -277,10 +289,6 @@ aside {
         min-width: 25svw;
     }
 
-    .tamanho_fixo {
-        width: 80px;
-    }
-
     .registro, .img_perfil, .senai_logo {
         display: none;
     }
@@ -299,9 +307,6 @@ aside {
         font-size: 10pt;
     }
 
-    .tamanho_fixo {
-        width: 50px;
-    }
     aside {
         max-width: fit-content;
         min-width: 30svw;

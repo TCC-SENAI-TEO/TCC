@@ -40,80 +40,79 @@ include "../php/conectar_banco_de_dados.php"
         
         <?php
 
-        include "../php/conectar_banco_de_dados.php";
-        $email = $_SESSION['email_funcionario'];
+            include "../php/conectar_banco_de_dados.php";
+            $email = $_SESSION['email_funcionario'];
 
-        $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email'"); //total de X do usuário
-        $quantidade_salas_agendadas = mysqli_num_rows($quantidade_salas_agendadas);
+            $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email'"); //total de X do usuário
+            $quantidade_salas_agendadas = mysqli_num_rows($quantidade_salas_agendadas);
 
-        $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' ORDER BY inicio asc"); 
+            $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' ORDER BY inicio asc"); 
 
-        $horarios_armazenados = [];
-        $codigo2 = '';
-        $inicio2 = '';
+            $horarios_armazenados = [];
+            $codigo2 = '';
+            $inicio2 = '';
 
-        for($i = 1; $i <= $quantidade_salas_agendadas; $i++) {  
-            
-            $codigo_sala_assoc = mysqli_fetch_assoc($codigo_sala);
-            $codigo1 = $codigo_sala_assoc['codigo'];
-            $inicio1 = $codigo_sala_assoc['inicio'];
-            
-            $horario = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND inicio = '$inicio1' ORDER BY inicio");
-            $num = mysqli_num_rows($horario);
-            
-            
-            if($codigo1 != $codigo2 || $inicio1 != $inicio2) {
+            for($i = 1; $i <= $quantidade_salas_agendadas; $i++) {  
+                
+                $codigo_sala_assoc = mysqli_fetch_assoc($codigo_sala);
+                $codigo1 = $codigo_sala_assoc['codigo'];
+                $inicio1 = $codigo_sala_assoc['inicio'];
+                
+                $horario = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND inicio = '$inicio1' ORDER BY inicio");
+                $num = mysqli_num_rows($horario);
+                
+                
+                if($codigo1 != $codigo2 || $inicio1 != $inicio2) {
 
-                for($l = 0; $l < $num ; $l++) {     
-                    $horario_assoc = mysqli_fetch_assoc($horario);
-                    $horarios_armazenados[] = $horario_assoc['id_horario']; //armazena o horario presente nas salas
+                    for($l = 0; $l < $num ; $l++) {     
+                        $horario_assoc = mysqli_fetch_assoc($horario);
+                        $horarios_armazenados[] = $horario_assoc['id_horario']; //armazena o horario presente nas salas
+                    }
+                    echo 
+                    "<tr>
+                    <td>".$codigo1."</td>
+                    <td>".$inicio1."</td>".
+                    "<td>".marcar_horario(1)."</td>".
+                    "<td>".marcar_horario(2)."</td>".
+                    "<td>".marcar_horario(3)."</td>".
+                    "<td>".marcar_horario(4)."</td>".
+                    "<td>".marcar_horario(5)."</td>".
+                    "<td>".marcar_horario(6)."</td>".
+                    "</tr>";
+
+                    
                 }
-                echo 
-                "<tr>
-                <td>".$codigo1."</td>
-                <td>".$inicio1."</td>".
-                "<td>".marcar_horario(1)."</td>".
-                "<td>".marcar_horario(2)."</td>".
-                "<td>".marcar_horario(3)."</td>".
-                "<td>".marcar_horario(4)."</td>".
-                "<td>".marcar_horario(5)."</td>".
-                "<td>".marcar_horario(6)."</td>".
-                "</tr>";
+                $horarios_armazenados = array();
+                $codigo2 = $codigo1;
+                $inicio2 = $inicio1;
 
                 
             }
-            $horarios_armazenados = array();
-            $codigo2 = $codigo1;
-            $inicio2 = $inicio1;
-    
-            
-        }
-        function marcar_horario($num_horario) {
-            global $horarios_armazenados;
-            if(empty($horarios_armazenados)) {
-                return "";
-            } else {
-                foreach($horarios_armazenados as $teste) {
-                    if($num_horario == 1 && $teste == 1) {
-                        return "X";
-                    } else if($num_horario == 2 && $teste == 2) {
-                        return "X";
-                    } else if($num_horario == 3 && $teste == 3) {
-                        return "X";
-                    } else if($num_horario == 4 && $teste == 4) {
-                        return "X";
-                    } else if($num_horario == 5 && $teste == 5) {
-                        return "X";
-                    } else if($num_horario == 6 && $teste == 6) {
-                        return "X";
+            function marcar_horario($num_horario) {
+                global $horarios_armazenados;
+                if(empty($horarios_armazenados)) {
+                    return "";
+                } else {
+                    foreach($horarios_armazenados as $teste) {
+                        if($num_horario == 1 && $teste == 1) {
+                            return "X";
+                        } else if($num_horario == 2 && $teste == 2) {
+                            return "X";
+                        } else if($num_horario == 3 && $teste == 3) {
+                            return "X";
+                        } else if($num_horario == 4 && $teste == 4) {
+                            return "X";
+                        } else if($num_horario == 5 && $teste == 5) {
+                            return "X";
+                        } else if($num_horario == 6 && $teste == 6) {
+                            return "X";
+                        }
+                        
                     }
-                    
                 }
             }
-        }
-            
-        ?>
+            ?>
             </table>
         </main>
-    </body>
-    </html>
+</body>
+</html>

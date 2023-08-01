@@ -21,7 +21,16 @@ include "../php/conectar_banco_de_dados.php"
             <img src="../img/senai.png" alt="Logo Senai" class="senai_logo">
             <h1 class="titulo">Painel central</h1>
             <div class="perfil">
-                <div><img src="../img/imagem_funcionario.png" alt="imagem_funcionario" class="img_perfil"></div>
+                <div id="mudar_foto">
+                    <input type="file" id="file" accept="image/png, image/jpeg">
+                    <?php
+                        $email = $_SESSION['email_funcionario'];
+                        $foto_funcionario = mysqli_query($ConexaoSQL, "SELECT img FROM funcionarios WHERE email = '$email'");
+                        $foto_funcionario = mysqli_fetch_assoc($foto_funcionario);
+                        $foto_funcionario = $foto_funcionario['img'];
+                        echo "<img src=".$foto_funcionario."alt='imagem_funcionario' class='img_perfil'>";
+                    ?>
+                </div>
                 <div class="div_sair">
                     <?php
                        echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
@@ -30,19 +39,16 @@ include "../php/conectar_banco_de_dados.php"
                 </div>
             </div>
         </header>
-
-                <div class="salas_status">
-                    <div class="salas_status_coluna">
-                        <h3 class=" salas_totais" id="salas_totais"></h3>
-                        <h3 class=" sala_disponiveis" id="salas_disponiveis"></h3>
-                    </div>
-                    <div class="salas_status_coluna">
-                    <h3 class=" sala_interditadas" id="salas_interditadas"></h3>
-                    <h3 class=" sala_ocupadas" id="salas_ocupadas"></h3>
-                    </div>
-
+            <div class="salas_status">
+                <div class="salas_status_coluna">
+                    <h3 class=" salas_totais" id="salas_totais"></h3>
+                    <h3 class=" sala_disponiveis" id="salas_disponiveis"></h3>
                 </div>
-
+                <div class="salas_status_coluna">
+                <h3 class=" sala_interditadas" id="salas_interditadas"></h3>
+                <h3 class=" sala_ocupadas" id="salas_ocupadas"></h3>
+                </div>
+            </div>
         <main>
             <aside>
                     <ul class="ul_data">
@@ -178,6 +184,8 @@ include "../php/conectar_banco_de_dados.php"
                 ?>
             </div>
         </main>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="../js/mudar_foto.js"></script>
         <script src="../js/pegar_numeros_sala.js"></script>
         <script src="../js/data.js"></script>
         <script src="../js/fechar_janela.js"></script>
