@@ -28,7 +28,7 @@ include "../php/conectar_banco_de_dados.php"
                     ?>
                     <a class="encaminhar_usuario_btn" href="../html/usuario_interface.php">Meus agendamentos</a>
                     <a href="../php/logout_login.php">Sair</a>
-                    <span  class="chamar_upload">Upload foto de perfil</span>
+                    <span  class="chamar_upload" id="upload_foto_btn">Upload foto de perfil</span>
                 </div>
             </div>
         </header>
@@ -45,8 +45,8 @@ include "../php/conectar_banco_de_dados.php"
         </div>
 
         <main>
-            <form method="../php/enviar_foto.php" action="post" class="tela_upload">
-                <div class="fechar fechar_tela">X</div>
+            <form method="../php/enviar_foto.php" action="post" class="tela_upload" id="tela_upload">
+                <div class="fechar fechar_tela" id="fechar_upload">X</div>
                 <h3>Faça upload da sua foto de perfil abaixo(Max: 2MB): </h3>
                 <input type="file" class="upload_foto" accept="image/png, image/jpeg, image/jpg" name="img">
                 <input type="submit" class="enviar_foto" >
@@ -186,6 +186,6 @@ include "../php/conectar_banco_de_dados.php"
         </main>
         <script src="../js/pegar_numeros_sala.js"></script>
         <script src="../js/data.js"></script>
-        <script src="../js/fechar_janela.js"></script>
+        <script src="../js/janelas.js"></script>
     </body>
 </html>
