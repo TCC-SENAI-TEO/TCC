@@ -13,31 +13,12 @@ Cores status {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-@media only screen and (max-width: 768px) {
-    .titulo {
-        margin: auto !important;
-        font-size: 30pt !important;
-    }
-
-    main {
-        flex-direction: column;
-    }
-
-    .registro, .img_perfil, .senai_logo {
-        display: none;
-    }
-
-    .salas_status {
-        display: flex;
-        flex-direction: column !important;
-    }
-    .salas_status > h3 {
-        display: flex;
-    }
-}
-
 ul {
     list-style: none;
+}
+
+#horario {
+    font-size: larger;
 }
 
 header {
@@ -52,7 +33,6 @@ header {
 
 .titulo {
     font-size: 40pt;
-    margin-left: 4.5svw;
 }
 
 .perfil {
@@ -68,21 +48,21 @@ a {
     color: white;
 }
 
-.teste {
+.div_sair {
     text-align: center;
-} 
+}   
 
 .img_perfil {
     width: 3.5svw;
     padding: 3%;
-    height: 6svh;
+    height: auto;
     border-radius: 100%;
     background-color: rgb(255, 255, 255);
 }
 
 .senai_logo {
     width: 14svw;
-    height: 10svh;
+    height: auto;
 }
 
 main {
@@ -90,36 +70,88 @@ main {
     margin: 2% 0 0 0;
 }
 
-form {
+/* MENU LATERAL*/
+
+aside {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    min-width: 14svw;
+    height: fit-content;
+    background-color: grey;
+    border: 2px solid black;
+    box-shadow: 6px 6px 6px black;
+    gap: 8px;
+}
+
+.verificador_sala {
+    display: flex;
+    padding-top: 3%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: fit-content;
+    min-width: 1svw;
+}
+
+.tamanho_fixo {
+    max-width: fit-content;
+    min-width: 7svw;
+    height: fit-content;
+}
+
+.registrar_sala {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
     gap: 5px;
-    border: solid black 2px;
-    padding: 0.3%;
-    background-color: grey;
+    padding: .3%;
 }
 
-form > input {
+.registro_funcionario_btn, .encaminhar_usuario_btn, .verificar_sala_btn, #cadastrar_sala_btn {
+    color: black;
+    background-color: white;
+    text-decoration: none;
     border-radius: 5px;
-    padding: 0.5%;
+    max-width: fit-content;
+    min-width: 5svw;
+    text-align: center;
+    border: 2px solid black;
 }
 
-.tela_criar_sala {
-    display: flex;
-    flex-wrap: wrap;  
-    flex-basis: 100px;
+.registro_funcionario_btn {
+    margin-bottom: 2%;
+}
+
+.registro_funcionario_btn:hover, .encaminhar_usuario_btn:hover {
+    background-color: rgb(226, 224, 224);
 }
 
 .salas_status {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    flex-wrap: wrap !important;
+    flex-wrap: wrap;
     gap: 2px;
     max-width: fit-content;
     min-width: 100svw;
 }
+
+.salas_status_coluna { 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 300px;
+}
+
+/*TABELA SALAS*/
 
 .salas {
     display: flex;
@@ -142,7 +174,18 @@ form > input {
     padding: 1%;
     width: 10svw;
     box-shadow: 5px 5px 5px black;
-    background-color: #77dd77e1;
+}
+
+.salas_disponivel {
+    background-color: #77dd77;
+}
+
+.salas_interditado {
+    background-color: #fdfd96;
+}
+
+.salas_fechado {
+    background-color: #ff7068ec;
 }
 
 .botao {
@@ -153,20 +196,8 @@ form > input {
     border-radius: 7px;
 }
 
-.tela_criar_sala {
-    align-self: center;
-}
-
-.add_sala {
-    padding: 2%;
-    border: 2px solid black;
-    border-radius: 8px;
-    text-align: center;
-}
-
 .erro {
     display: flex;
-    margin: 2% auto;
     border: 2px solid black;
     padding: 1%;
     background-color: RGB(242, 54, 52);
@@ -180,7 +211,6 @@ form > input {
 
 .certo {
     display: flex;
-    margin: 2% auto 0%;
     border: 2px solid black;
     padding: 1%;
     background-color: RGB(142, 214, 151);
@@ -200,4 +230,88 @@ form > input {
     border-radius: 30px;
     padding: 1% 2%;
     background-color: red;
+}
+
+@media only screen and (max-width: 1380px) {
+    .senai_logo {
+        width: 18.9svw;
+    }
+
+    .img_perfil {
+        width: 3.5svw;
+    }
+
+    .encaminhar_usuario_btn {
+        min-width: fit-content;
+    }
+
+    aside {
+        max-width: fit-content;
+        min-width: 20svw;
+    }
+
+    .tamanho_fixo {
+        width: 12svw;
+    }
+
+    .salas_status_coluna {
+        flex-direction: column;
+        gap: 0px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .titulo {
+        margin: auto;
+        font-size: 30pt;
+    }
+
+    main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    aside {
+        max-width: fit-content;
+        min-width: 25svw;
+    }
+
+    .tamanho_fixo {
+        width: 80px;
+    }
+
+    .registro, .img_perfil, .senai_logo {
+        display: none;
+    }
+
+    .salas_status {
+        display: flex;
+
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .titulo {
+        font-size: 20pt;
+    }
+    a {
+        font-size: 10pt;
+    }
+
+    .tamanho_fixo {
+        width: 50px;
+    }
+    aside {
+        max-width: fit-content;
+        min-width: 30svw;
+    }
+
+}
+
+@media only screen and (max-width: 280px) {
+    aside {
+        max-width: fit-content;
+        min-width: 40svw;
+    }
 }
