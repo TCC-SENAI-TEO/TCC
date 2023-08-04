@@ -52,6 +52,11 @@ a {
     text-align: center;
 }   
 
+.chamar_upload {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .img_perfil {
     width: 3.5svw;
     padding: 3%;
@@ -69,6 +74,30 @@ main {
     display: flex;
     margin: 2% 0 0 0;
 }
+
+/* MENU FLUTUANTE DE UPLOAD */
+
+.tela_upload {
+    position: fixed;
+    display: flex;
+    align-self: center;
+    left: calc(50% - 12.5svw);
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 25svw;
+    box-shadow: 10px 10px 10px black;
+    gap: 40px;
+    border-radius: 8px;
+}
+
+.fechar_tela {
+    align-self: flex-end;
+}
+
+/* FIM MENU FLUTUANTE DE UPLOAD */
 
 /* MENU LATERAL*/
 
@@ -115,7 +144,7 @@ aside {
     padding: .3%;
 }
 
-.registro_funcionario_btn, .encaminhar_usuario_btn, .verificar_sala_btn, #cadastrar_sala_btn {
+.registro_funcionario_btn, .verificar_sala_btn, #cadastrar_sala_btn {
     color: black;
     background-color: white;
     text-decoration: none;
@@ -130,7 +159,7 @@ aside {
     margin-bottom: 2%;
 }
 
-.registro_funcionario_btn:hover, .encaminhar_usuario_btn:hover {
+.registro_funcionario_btn:hover {
     background-color: rgb(226, 224, 224);
 }
 
