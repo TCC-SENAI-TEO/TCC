@@ -85,6 +85,7 @@ main {
     background-color: white;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     height: fit-content;
     width: 25svw;
@@ -93,8 +94,16 @@ main {
     border-radius: 8px;
 }
 
+.tela_upload > h3 {
+    font-size: 11pt;
+}
+
 .fechar_tela {
     align-self: flex-end;
+}
+
+.upload_foto[] {
+    word-wrap: break-word;
 }
 
 /* FIM MENU FLUTUANTE DE UPLOAD */
@@ -274,6 +283,10 @@ aside {
         min-width: fit-content;
     }
 
+    .tela_upload > h3 {
+        font-size: 10pt;
+    }
+
     aside {
         max-width: fit-content;
         min-width: 20svw;
@@ -299,6 +312,10 @@ aside {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .tela_upload > h3 {
+        font-size: 10pt;
     }
 
     aside {

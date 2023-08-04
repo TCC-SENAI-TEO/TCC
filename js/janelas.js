@@ -3,7 +3,7 @@ try {
         var aberto = document.getElementById("tela_upload").style.display = "flex"
     })
 } catch (error) {
-    
+
 }
 
 try {

@@ -45,11 +45,11 @@ include "../php/conectar_banco_de_dados.php"
         </div>
 
         <main>
-            <form method="../php/enviar_foto.php" action="post" class="tela_upload" id="tela_upload">
+            <form action="../php/enviar_foto.php" method="post" class="tela_upload" id="tela_upload">
                 <div class="fechar fechar_tela" id="fechar_upload">X</div>
                 <h3>Faça upload da sua foto de perfil abaixo(Max: 2MB): </h3>
                 <input type="file" class="upload_foto" accept="image/png, image/jpeg, image/jpg" name="img">
-                <input type="submit" class="enviar_foto" >
+                <input type="submit" class="enviar_foto">
             </form>
             <aside>
                     <ul class="ul_data">
