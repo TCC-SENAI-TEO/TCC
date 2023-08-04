@@ -52,6 +52,11 @@ a {
     text-align: center;
 }   
 
+.chamar_upload {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .img_perfil {
     width: 3.5svw;
     padding: 3%;
@@ -69,6 +74,39 @@ main {
     display: flex;
     margin: 2% 0 0 0;
 }
+
+/* MENU FLUTUANTE DE UPLOAD */
+
+.tela_upload {
+    position: fixed;
+    display: none;
+    align-self: center;
+    left: calc(50% - 12.5svw);
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    height: fit-content;
+    width: 25svw;
+    box-shadow: 10px 10px 10px black;
+    gap: 40px;
+    border-radius: 8px;
+}
+
+.tela_upload > h3 {
+    font-size: 11pt;
+}
+
+.fechar_tela {
+    align-self: flex-end;
+}
+
+.upload_foto {
+    word-wrap: break-word;
+}
+
+/* FIM MENU FLUTUANTE DE UPLOAD */
 
 /* MENU LATERAL*/
 
@@ -115,7 +153,7 @@ aside {
     padding: .3%;
 }
 
-.registro_funcionario_btn, .encaminhar_usuario_btn, .verificar_sala_btn, #cadastrar_sala_btn {
+.registro_funcionario_btn, .verificar_sala_btn, #cadastrar_sala_btn {
     color: black;
     background-color: white;
     text-decoration: none;
@@ -130,7 +168,7 @@ aside {
     margin-bottom: 2%;
 }
 
-.registro_funcionario_btn:hover, .encaminhar_usuario_btn:hover {
+.registro_funcionario_btn:hover {
     background-color: rgb(226, 224, 224);
 }
 
@@ -241,8 +279,12 @@ aside {
         width: 3.5svw;
     }
 
-    .tamanho_fixo {
-        width: 100px;
+    .encaminhar_usuario_btn {
+        min-width: fit-content;
+    }
+
+    .tela_upload > h3 {
+        font-size: 10pt;
     }
 
     aside {
@@ -270,6 +312,10 @@ aside {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .tela_upload > h3 {
+        font-size: 10pt;
     }
 
     aside {

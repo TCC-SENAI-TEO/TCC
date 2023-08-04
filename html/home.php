@@ -21,29 +21,52 @@ include "../php/conectar_banco_de_dados.php"
             <img src="../img/senai.png" alt="Logo Senai" class="senai_logo">
             <h1 class="titulo">Painel central</h1>
             <div class="perfil">
-                <div><img src="../img/imagem_funcionario.png" alt="imagem_funcionario" class="img_perfil"></div>
+                <div>
+                    <?php
+                        $email = $_SESSION['email_funcionario'];
+
+                        $pegar_img = mysqli_query($ConexaoSQL, "SELECT img FROM funcionarios img WHERE email = '$email'");
+                        $pegar_img_assoc = mysqli_fetch_assoc($pegar_img);
+                    
+                        file_put_contents('image.png',$pegar_img_assoc['img']);
+
+                        if($pegar_img_assoc['img'] == "") {
+                            echo '<img src="../img/imagem_funcionario.png" alt="imagem_funcionario" class="img_perfil">';
+                        } else {
+                            echo '<img src="image.png" alt="imagem_funcionario" class="img_perfil">';
+                        }
+
+                     ?>
+                </div>
                 <div class="div_sair">
                     <?php
                        echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
                     ?>
+                    <a class="encaminhar_usuario_btn" href="../html/usuario_interface.php">Meus agendamentos</a>
                     <a href="../php/logout_login.php">Sair</a>
+                    <span  class="chamar_upload" id="upload_foto_btn">Upload foto de perfil</span>
                 </div>
             </div>
         </header>
 
-                <div class="salas_status">
-                    <div class="salas_status_coluna">
-                        <h3 class=" salas_totais" id="salas_totais"></h3>
-                        <h3 class=" sala_disponiveis" id="salas_disponiveis"></h3>
-                    </div>
-                    <div class="salas_status_coluna">
-                    <h3 class=" sala_interditadas" id="salas_interditadas"></h3>
-                    <h3 class=" sala_ocupadas" id="salas_ocupadas"></h3>
-                    </div>
-
-                </div>
+        <div class="salas_status">
+            <div class="salas_status_coluna">
+                <h3 class=" salas_totais" id="salas_totais"></h3>
+                <h3 class=" sala_disponiveis" id="salas_disponiveis"></h3>
+            </div>
+            <div class="salas_status_coluna">
+            <h3 class=" sala_interditadas" id="salas_interditadas"></h3>
+            <h3 class=" sala_ocupadas" id="salas_ocupadas"></h3>
+            </div>
+        </div>
 
         <main>
+            <form action="../php/enviar_foto.php" method="post" class="tela_upload" enctype="multipart/form-data" id="tela_upload">
+            <div class="fechar fechar_tela" id="fechar_upload">X</div>
+                <h3>Faça upload da sua foto de perfil abaixo(Max: 2MB): </h3>
+                <input type="file" class="upload_foto" accept="image/png, image/jpeg, image/jpg" name="img">
+                <input type="submit" class="enviar_foto">
+            </form>
             <aside>
                     <ul class="ul_data">
                         <form action="../php/verificar_sala_disponivel.php" method="post" class="verificador_sala">
@@ -61,7 +84,6 @@ include "../php/conectar_banco_de_dados.php"
                         </form>
                         </li>
                     </ul>
-                    <a class="encaminhar_usuario_btn tamanho_fixo" href="../html/usuario_interface.php">Meus agendamentos</a>
                     <?php
 
                         $verificar = $_SESSION['email_funcionario'];
