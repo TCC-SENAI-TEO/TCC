@@ -241,8 +241,8 @@ aside {
         width: 3.5svw;
     }
 
-    .tamanho_fixo {
-        width: 100px;
+    .encaminhar_usuario_btn {
+        min-width: fit-content;
     }
 
     aside {
