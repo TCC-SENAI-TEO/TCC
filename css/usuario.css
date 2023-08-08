@@ -48,10 +48,14 @@ th, td {
     text-align: center;
 }
 
-select {
-    width: 10%;
-    margin: 1% auto 0%;
+.content-opções {
+    margin: 3% auto 0%;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    flex-direction: column;
 }
+
 
 @media only screen and (max-width: 380px) {
     .titulo {

@@ -4,11 +4,15 @@
 }
 
 body {
-    background-image: url("../img/gif_wallpaper1920x1080.gif");
+    background-image: u
+    
+    rl("../img/gif_wallpaper1920x1080.gif");
 }
 
 main {
     display: flex;
+
+
     flex-direction: column;
     border: 2px solid black;
     width: 16svw;

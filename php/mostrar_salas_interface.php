@@ -19,7 +19,7 @@
         <th>11:30</th>
     </tr>";
     
-    include "../php/conectar_banco_de_ados.php";
+    include "../php/conectar_banco_de_dados.php";
     
 
 
@@ -31,8 +31,15 @@
         $email = mysqli_fetch_assoc($email);
         $email = $email['email'];   
     } 
+    
 
     $data_atual = date("Y-m-d");
+    if(isset($_POST['data'])) {
+        $data_atual = $_POST['data'];
+        echo $data_atual;
+    } else {
+        $data_atual = date("Y-m-d"); 
+    }
 
     if(isset($_POST['checkbox'])) {
         $checar_data = $_POST['checkbox'];

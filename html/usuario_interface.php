@@ -23,31 +23,54 @@ include "../php/conectar_banco_de_dados.php"
         <h1 class='titulo'>Usuário</h1>
     </header>
     <main>
-
-        <div class="checkbox">
-            <label>Selecionar Todos</label>
-            <input type="checkbox" id="checar_data" value="checado">
-        </div>
+        
         <div id="info">
             
         </div>
             
-        <select id="selecionar_funcionarios">
-            <option style="display:none;" selected>Selecionar Funcionario</option>
-            <?php
-                include '../php/conectar_banco_de_dados.php';
-                $funcionarios = mysqli_query($ConexaoSQL, "SELECT * FROM funcionarios");
-                $quantidade_funcionarios = mysqli_num_rows($funcionarios);
+        <div class="content-opções">
+            <select id="selecionar_funcionarios" class="opções">
+                <option style="display:none;" selected>Selecionar Funcionario</option>
+                <?php
+                    include '../php/conectar_banco_de_dados.php';
+                    $funcionarios = mysqli_query($ConexaoSQL, "SELECT * FROM funcionarios");
+                    $quantidade_funcionarios = mysqli_num_rows($funcionarios);
             
-                for($a = 1; $a <= $quantidade_funcionarios; $a++) {
-                    $nome_funcionarios_assoc = mysqli_fetch_assoc($funcionarios);
-                    $nome_funcionarios = $nome_funcionarios_assoc['nome'];
-                    echo
-                    "<option value='$nome_funcionarios'>".$nome_funcionarios."</option>";
-                }
+                    for($a = 1; $a <= $quantidade_funcionarios; $a++) {
+                        $nome_funcionarios_assoc = mysqli_fetch_assoc($funcionarios);
+                        $nome_funcionarios = $nome_funcionarios_assoc['nome'];
+                        echo
+                        "<option value='$nome_funcionarios'>".$nome_funcionarios."</option>";
+                    }
             
-            ?>
-        </select>
+                ?>
+            </select>
+            
+            <div class="opções">
+                <label>Selecionar Todos</label>
+                <input type="checkbox" id="checar" value="checado">
+            </div>
+            <div class="opções">
+                <label>Selecionar Data</label>
+                <input type="date" id="escolher_data">
+            </div>
+            <select id="selecionar_sala" class="opções">
+                <option style="display:none;" selected>Selecionar Sala</option>
+                <?php
+                    include '../php/conectar_banco_de_dados.php';
+                    $salas = mysqli_query($ConexaoSQL, "SELECT * FROM salas");
+                    $quantidade_salas = mysqli_num_rows($salas);
+            
+                    for($a = 1; $a <= $quantidade_salas; $a++) {
+                        $codigo_salas_assoc = mysqli_fetch_assoc($salas);
+                        $codigo_salas = $codigo_salas_assoc['codigo'];
+                        echo
+                        "<option value='$codigo_salas'>".$codigo_salas."</option>";
+                    }
+            
+                ?>
+            </select>
+        </div>
             
     </main>
 
