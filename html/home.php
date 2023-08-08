@@ -43,10 +43,8 @@ include "../php/conectar_banco_de_dados.php"
                        echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
                     ?>
                     <a class="encaminhar_usuario_btn" href="../html/usuario_interface.php">Meus agendamentos</a>
-                    <a class="encaminhar_usuario_btn" href="../html/usuario_interface.php">Meus agendamentos</a>
                     <a href="../php/logout_login.php">Sair</a>
-                    <span  class="chamar_upload" id="upload_foto_btn">Upload foto de perfil</span>
-                    <span  class="chamar_upload" id="upload_foto_btn">Upload foto de perfil</span>
+                    <span class="chamar_upload" id="upload_foto_btn">Upload foto de perfil</span>
                 </div>
             </div>
         </header>

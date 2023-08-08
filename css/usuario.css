@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+
+    
 }
 
 header {
@@ -29,6 +31,7 @@ header {
 main {
     display: flex;
     margin-top: 5%;
+    flex-direction: column;
     width: 100%;
 }
 
@@ -41,8 +44,13 @@ table {
 
 th, td {
     border: 2px solid black;
-    width: 50svw;
+    width: 60svw;
     text-align: center;
+}
+
+select {
+    width: 10%;
+    margin: 1% auto 0%;
 }
 
 @media only screen and (max-width: 380px) {
