@@ -4,9 +4,7 @@
 }
 
 body {
-    background-image: u
-    
-    rl("../img/gif_wallpaper1920x1080.gif");
+    background-image: url("../img/gif_wallpaper1920x1080.gif");
 }
 
 main {
