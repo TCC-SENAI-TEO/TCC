@@ -1,3 +1,5 @@
+var data = document.getElementById("data").valueAsDate = new Date();
+
 try {
     var abrir_update = document.getElementById('upload_foto_btn').addEventListener("click", () => {
         var aberto = document.getElementById("tela_upload").style.display = "flex"

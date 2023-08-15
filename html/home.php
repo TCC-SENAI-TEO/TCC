@@ -68,11 +68,10 @@ include "../php/conectar_banco_de_dados.php"
                 <input type="submit" class="enviar_foto">
             </form>
             <aside>
-                    <ul class="ul_data">
-                        <form action="../php/verificar_sala_disponivel.php" method="post" class="verificador_sala">
-                            <li><input type="date" id="data" class="tamanho_fixo"name="data"></li>
+                    <ul class="ul_data, verificador_sala" >
+                            <li><input type="date" id="data" class="tamanho_fixo" name="data"></li>
                             <label for="horario">Horario</label>
-                                <select name="horario" class="tamanho_fixo">
+                                <select name="horario" class="tamanho_fixo" id="selecionar_horario">
                                     <option value="7:00">7:00</option>
                                     <option value="7:50">7:50</option>
                                     <option value="8:40">8:40</option>
@@ -80,12 +79,9 @@ include "../php/conectar_banco_de_dados.php"
                                     <option value="10:40">10:40</option>
                                     <option value="11:30">11:30</option>
                                 </select>
-                               <input type="submit" value="Verificar" class="verificar_sala_btn tamanho_fixo">
-                        </form>
-                        </li>
+                            </li>
                     </ul>
                     <?php
-
                         $verificar = $_SESSION['email_funcionario'];
                         $nivel = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$verificar'");
                         $nivel = mysqli_fetch_assoc($nivel);
@@ -122,86 +118,12 @@ include "../php/conectar_banco_de_dados.php"
                         ?>
                 </aside>
             <div class="salas">
-                <?php 
-                    $quantidade_salas = mysqli_query($ConexaoSQL, "SELECT * from salas");   //faz o query no banco de dados
-                    $quantidade_salas = mysqli_num_rows($quantidade_salas); //pega o numero de linhas afetadas pelo query
-                    
-                    for ($i=1; $i <= $quantidade_salas; $i++) { 
-
-                        $codigo = mysqli_query($ConexaoSQL, "SELECT codigo FROM salas WHERE id = '$i'");
-                        $codigo = mysqli_fetch_array($codigo);
-                        $codigo = $codigo['codigo']; //usar esse
-                        
-                        $descricao = mysqli_query($ConexaoSQL, "SELECT descricao FROM salas WHERE id = '$i'");
-                        $descricao = mysqli_fetch_array($descricao);
-                        $descricao = $descricao['descricao']; //usar esse
-                        
-                        $capacidade = mysqli_query($ConexaoSQL, "SELECT capacidade FROM salas WHERE id = '$i'");
-                        $capacidade = mysqli_fetch_array($capacidade);
-                        $capacidade = $capacidade['capacidade']; //usar esse
-                        
-                        if(isset($_SESSION['horario'])) {
-                            $horario = $_SESSION['horario'];
-                        } else {
-                            $horario = 1;
-                        }
-
-                        if(isset($_SESSION['data'])) {
-                            $data = $_SESSION['data'];
-                        } else {
-                            $data = date('y-m-d');
-                        }
-
-                        $salas_disponiveis = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos WHERE id_horario = '$horario' and inicio = '$data' and id_sala = '$i'");
-                        $horario_incio = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
-                        $horario_incio_assoc = mysqli_fetch_array($horario_incio);
-                        @$horario_inico_result = $horario_incio_assoc['inicio'];
-
-                        $horario_termino = mysqli_query($ConexaoSQL, "SELECT horario.fim FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
-                        $horario_termino_assoc = mysqli_fetch_array($horario_termino);
-                        @$horario_termino_result = $horario_termino_assoc['fim'];
-
-                        $professor = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
-                        $professor_assoc = mysqli_fetch_array($professor);
-                        @$professor_result = $professor_assoc['nome'];
-
-
-                        if($salas_disponiveis = mysqli_num_rows($salas_disponiveis) > 0) {
-                            echo 
-                                "<div class='salas salas_fechado'>".
-                                    "<form /action='../php/agendar_sala_tratamento.php' class='agendamentos' method='post'>".
-                                        "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
-                                        "<p class='tag'><strong>Responsável:</strong> ".$professor_result."</p>".
-                                        "<p class='tag'><strong>Inicio:</strong> ".$horario_inico_result."</p>".
-                                        "<p class='tag'><strong>Termino</strong> ".$horario_termino_result."</p>".
-                                        "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
-                                        "<input type='hidden' name='codigo_sala' value='$codigo'>".
-                                        "<input type='hidden' name='descricao_sala' value='$descricao'>".
-                                        "<input type='submit' value='Agendar' class='botao'>".
-                                    "</form>".
-                                "</div>";         
-                        } else {
-                            echo 
-                                "<div class='salas salas_disponivel'>".
-                                    "<form action='../php/agendar_sala_tratamento.php' class='agendamentos' method='post'>".
-                                        "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
-                                        "<p class='tag'><strong>Responsável:</strong> Livre </p>".
-                                        "<p class='tag'><strong>Inicio:</strong>: Livre</p>".
-                                        "<p class='tag'><strong>Termino</strong>: Livre</p>".
-                                        "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
-                                        "<input type='hidden' name='codigo_sala' value='$codigo'>".
-                                        "<input type='hidden' name='descricao_sala' value='$descricao'>".
-                                        "<input type='submit' value='Agendar' class='botao'>".
-                                    "</form>".
-                                "</div>";   
-                        }            
-                                                      
-                    }
-                ?>
+                
             </div>
         </main>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
         <script src="../js/pegar_numeros_sala.js"></script>
-        <script src="../js/data.js"></script>
         <script src="../js/janelas.js"></script>
+        <script src="../js/verificar_horario_home.js"></script>
     </body>
 </html>
