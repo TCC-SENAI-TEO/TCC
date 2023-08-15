@@ -55,7 +55,6 @@
     }
 
     global $sala;
-    echo $sala;
 
 
     if(isset($_POST['checkbox'])) {
@@ -64,7 +63,9 @@
             $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email'"); 
         } else {
             if($sala != "") {
-                $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas WHERE email = '$email' and DATE(agendamentos.inicio) >= '$data_atual' AND salas.codigo = '$sala'"); 
+                
+                $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' and DATE(agendamentos.inicio) >= '$data_atual' AND salas.codigo = '$sala'"); 
+
             } else {
                 $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email' and DATE(agendamentos.inicio) >= '$data_atual'");
             }
@@ -75,29 +76,28 @@
     }
 
     
-
+    global $quantidade_salas_agendadas;
     $quantidade_salas_agendadas = mysqli_num_rows($quantidade_salas_agendadas);
-    echo $quantidade_salas_agendadas;
-
+    
     global $checar_data;
     if($checar_data == "checado") {
         $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' ORDER BY inicio desc"); 
     } else {
         if($sala != "") {
-            echo "segundo";
+            
             $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND DATE(agendamentos.inicio) >= '$data_atual' AND salas.codigo = '$sala' ORDER BY inicio desc"); 
         } else {
-            echo "primeiro";
+            
             $codigo_sala = mysqli_query($ConexaoSQL, "SELECT codigo, id_sala, inicio, id_horario FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id INNER JOIN salas on agendamentos.id_sala = salas.id WHERE email = '$email' AND DATE(agendamentos.inicio) >= '$data_atual' ORDER BY inicio desc"); 
             
         }
     }
-
+    
     $horarios_armazenados = [];
     $codigo2 = '';
     $inicio2 = '';
-
-
+    
+    
     for($i = 1; $i <= $quantidade_salas_agendadas; $i++) {  
         
         $codigo_sala_assoc = mysqli_fetch_assoc($codigo_sala);
