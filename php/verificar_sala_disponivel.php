@@ -17,7 +17,13 @@
         $data = date('Y-m-d');
     }
     global $data;
+    $dia_data = DateTime::createFromFormat("Y-m-d", $data);
+    $dia_data_format = $dia_data->format("d");
+    $data_semanal = date('Y-m-d', strtotime($data. ' + 7 days'));
 
+    $date_inicial = date('Y-m-d');
+    $date_inicial = $dia_data->format("Y-m-d");
+    
     switch($horario) {
         case '7:00':$horario = 1;
         break;
@@ -54,7 +60,7 @@
         $horario_incio = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
         
         $horario_incio_assoc = mysqli_fetch_array($horario_incio);
-        @$horario_inico_result = $horario_incio_assoc['inicio'];
+        @$horario_inicio_result = $horario_incio_assoc['inicio'];
 
         $horario_termino = mysqli_query($ConexaoSQL, "SELECT horario.fim FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
         $horario_termino_assoc = mysqli_fetch_array($horario_termino);
@@ -66,11 +72,11 @@
 
         if($salas_disponiveis = mysqli_num_rows($salas_disponiveis) > 0) {
             echo 
-                "<div class='salas salas_fechado'>".
-                    "<form /action='../php/agendar_sala_tratamento.php' class='agendamentos' method='post'>".
+                "<div class='salas salas_fechado flex_div'>".
+                    "<form /action='../php/agendar_sala_tratamento.php' method='post'>".
                         "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
                         "<p class='tag'><strong>Responsável:</strong> ".$professor_result."</p>".
-                        "<p class='tag'><strong>Inicio:</strong> ".$horario_inico_result."</p>".
+                        "<p class='tag'><strong>Inicio:</strong> ".$horario_inicio_result."</p>".
                         "<p class='tag'><strong>Termino</strong> ".$horario_termino_result."</p>".
                         "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
                         "<input type='hidden' name='codigo_sala' value='$codigo'>".
@@ -80,8 +86,8 @@
                 "</div>";         
         } else {
             echo 
-                "<div class='salas salas_disponivel'>".
-                    "<form action='../php/agendar_sala_tratamento.php' class='agendamentos' method='post'>".
+                "<div class='salas salas_disponivel flex_div'>".
+                    "<form action='../php/agendar_sala_tratamento.php' method='post'>".
                         "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
                         "<p class='tag'><strong>Responsável:</strong> Livre </p>".
                         "<p class='tag'><strong>Inicio:</strong>: Livre</p>".
@@ -91,6 +97,38 @@
                         "<input type='hidden' name='descricao_sala' value='$descricao'>".
                         "<input type='submit' value='Agendar' class='botao'>".
                     "</form>".
+                    "<section>";
+
+                    
+                    
+                    $marcar_datas_ocupadas = mysqli_query($ConexaoSQL, "SELECT agendamentos.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE agendamentos.inicio >= '2023-08-18' and agendamentos.inicio <= '2023-08-25' and agendamentos.id_horario = '$horario' and agendamentos.id_sala = '$i'"); 
+                    $armazenar_dias_ocupados = [];
+                    
+                    
+                    for ($l = 1; $l <= 9; $l++) {
+
+                            $datas_da_semana = $dia_data_format;
+                            
+                            @$marcar_datas_ocupadas_assoc = mysqli_fetch_assoc($marcar_datas_ocupadas);     //TA DANDO ERRO, PRECISO CONSERTAR PARA QUE QUANDO CHAMAR O QUERY ELE CONSIGA COLORIR A DATA
+
+                            if(mysqli_num_rows($marcar_datas_ocupadas) > 0) {
+
+                                $timestamp = @date('d', strtotime($marcar_datas_ocupadas_assoc['inicio']));
+                                
+
+                                if($datas_da_semana == $timestamp) {
+                                    echo "<div class='data_indisponivel'>".$datas_da_semana."</div>";
+                                } else {
+                                    echo "<div>".$datas_da_semana."</div>";
+                                }
+
+                            } else {
+                                echo "<div>".$datas_da_semana."</div>";
+                            }
+                        
+                            
+                        }
+                    echo "</section>".
                 "</div>";   
         }            
                                     

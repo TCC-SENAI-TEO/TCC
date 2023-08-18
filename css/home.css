@@ -199,12 +199,11 @@ aside {
     margin: auto;
 }
 
-.salas > div{
+.flex_div{
     display: flex;
-    flex-direction: column;
     flex-grow: 1;
     flex-shrink: 1;
-    flex-basis: 250px;
+    flex-basis: 400px;
     gap: 5px;
     margin-left: 2%;
     margin-top: 2%;
@@ -212,6 +211,26 @@ aside {
     padding: 1%;
     width: 10svw;
     box-shadow: 5px 5px 5px black;
+}
+
+.salas > section {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 0 auto;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: 1%;
+}
+
+.salas > section > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    padding: 3%;
+    width: 20%;
 }
 
 .salas_disponivel {
@@ -222,7 +241,7 @@ aside {
     background-color: #fdfd96;
 }
 
-.salas_fechado {
+.salas_fechado, .data_indisponivel {
     background-color: #ff7068ec;
 }
 
