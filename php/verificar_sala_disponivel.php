@@ -19,7 +19,7 @@
     global $data;
     $dia_data = DateTime::createFromFormat("Y-m-d", $data);
     $dia_data_format = $dia_data->format("d");
-    $data_semanal = date('Y-m-d', strtotime($data. ' + 7 days'));
+    
 
     $date_inicial = date('Y-m-d');
     $date_inicial = $dia_data->format("Y-m-d");
@@ -73,7 +73,7 @@
         if($salas_disponiveis = mysqli_num_rows($salas_disponiveis) > 0) {
             echo 
                 "<div class='salas salas_fechado flex_div'>".
-                    "<form /action='../php/agendar_sala_tratamento.php' method='post'>".
+                    "<form action='../php/agendar_sala_tratamento.php' method='post'>".
                         "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
                         "<p class='tag'><strong>Responsável:</strong> ".$professor_result."</p>".
                         "<p class='tag'><strong>Inicio:</strong> ".$horario_inicio_result."</p>".
@@ -83,7 +83,7 @@
                         "<input type='hidden' name='descricao_sala' value='$descricao'>".
                         "<input type='submit' value='Agendar' class='botao'>".
                     "</form>".
-                "</div>";         
+                "<section>";        
         } else {
             echo 
                 "<div class='salas salas_disponivel flex_div'>".
@@ -97,40 +97,46 @@
                         "<input type='hidden' name='descricao_sala' value='$descricao'>".
                         "<input type='submit' value='Agendar' class='botao'>".
                     "</form>".
-                    "<section>";
+                "<section>";
+        }
 
-                    
-                    
-                    $marcar_datas_ocupadas = mysqli_query($ConexaoSQL, "SELECT agendamentos.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE agendamentos.inicio >= '2023-08-18' and agendamentos.inicio <= '2023-08-25' and agendamentos.id_horario = '$horario' and agendamentos.id_sala = '$i'"); 
-                    $armazenar_dias_ocupados = [];
-                    
-                    
-                    for ($l = 1; $l <= 9; $l++) {
+    
+                    for ($l = 1; $l <= 9; $l++) { //desenha as datas
+                        $verificar = false;
+                        $datas_da_semana = $dia_data_format + $l;
 
-                            $datas_da_semana = $dia_data_format;
-                            
-                            @$marcar_datas_ocupadas_assoc = mysqli_fetch_assoc($marcar_datas_ocupadas);     //TA DANDO ERRO, PRECISO CONSERTAR PARA QUE QUANDO CHAMAR O QUERY ELE CONSIGA COLORIR A DATA
-
-                            if(mysqli_num_rows($marcar_datas_ocupadas) > 0) {
-
-                                $timestamp = @date('d', strtotime($marcar_datas_ocupadas_assoc['inicio']));
-                                
-
-                                if($datas_da_semana == $timestamp) {
-                                    echo "<div class='data_indisponivel'>".$datas_da_semana."</div>";
-                                } else {
-                                    echo "<div>".$datas_da_semana."</div>";
-                                }
-
-                            } else {
-                                echo "<div>".$datas_da_semana."</div>";
-                            }
-                        
-                            
+                        $data_teste = new DateTime(); // pega a data atual
+                        $ano = $data_teste->format('Y'); // pega o ano atual
+                        $mes = $data_teste->format('m'); // pega o mês atual
+                        $dia = $datas_da_semana; // define o novo dia
+                        $data_teste->setDate($ano, $mes, $dia); // altera apenas o dia da data atual
+                        $data_true = $data_teste->format('Y-m-d');
+                        if($datas_da_semana > 31) {
+                            $datas_da_semana = $datas_da_semana - 31;
                         }
+                        
+
+                        $marcar_datas_ocupadas = mysqli_query($ConexaoSQL, "SELECT agendamentos.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE agendamentos.inicio = '$data_true' and agendamentos.id_horario = '$horario' and agendamentos.id_sala = '$i'"); 
+                        
+                        for ($j=0; $j < mysqli_num_rows($marcar_datas_ocupadas); $j++) { 
+                            
+                            $marcar_datas_ocupadas_assoc = mysqli_fetch_assoc($marcar_datas_ocupadas);
+                            
+                            if(@$marcar_datas_ocupadas_assoc['inicio'] == $data_teste->format('Y-m-d')) {
+                                echo "<div class='data_indisponivel'>".$datas_da_semana."</div>";
+                                $verificar = true;
+                                
+                            }   
+
+                        }
+                        if($verificar != true) {
+                            echo "<div class='data_disponivel'>".$datas_da_semana."</div>";
+                        }
+                        
+                    }
                     echo "</section>".
-                "</div>";   
-        }            
+                    "</div>";   
+                    
                                     
     }    
     

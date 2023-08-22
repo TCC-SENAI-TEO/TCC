@@ -228,7 +228,6 @@ aside {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid black;
     padding: 3%;
     width: 20%;
 }
@@ -241,8 +240,18 @@ aside {
     background-color: #fdfd96;
 }
 
-.salas_fechado, .data_indisponivel {
+.salas_fechado {
     background-color: #ff7068ec;
+}
+
+.data_indisponivel {
+    background-color: #ff7068ec;
+    border: solid black 1.5px;
+}
+
+.data_disponivel {
+    background-color: #FFFFFF;
+    border: solid black 1.5px;
 }
 
 .botao {
