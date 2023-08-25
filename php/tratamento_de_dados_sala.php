@@ -5,5 +5,10 @@
     $_SESSION['codigo_sala'] = $codigo_sala;
     $_SESSION['descricao_sala'] = $descricao_sala;
 
-    header("location: ../html/agendamento.php");
+    if(isset($_POST['identificar_reporte'])) {
+        header("location: ../html/reportar_sala.php");
+    } else {
+        header("location: ../html/agendamento.php");
+    }
+
 ?>

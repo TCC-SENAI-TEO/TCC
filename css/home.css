@@ -201,6 +201,7 @@ aside {
 
 .flex_div{
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 400px;
@@ -297,6 +298,13 @@ aside {
     padding: 1% 2%;
     background-color: red;
 }
+
+div > ul  {
+    display: flex;
+    gap: 5px;
+}
+
+
 
 @media only screen and (max-width: 1380px) {
     .senai_logo {

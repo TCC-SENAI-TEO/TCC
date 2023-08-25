@@ -1,3 +1,4 @@
+var data = document.getElementById("data").valueAsDate = new Date();
 
 $(document).ready(function() {
     $.get("../php/verificar_sala_disponivel", function(data) {
@@ -11,9 +12,9 @@ $(document).ready(function() {
         $("#salas_interditadas").html("Salas Interditadas: 0");
         $("#salas_ocupadas").html("Salas Ocupadas: " + numero_salas_fechado);
     });
+
     
- });
- 
+});
 
 $("#data, #selecionar_horario").change(() => {
     var enviar_data = $('#data').val();
@@ -41,3 +42,7 @@ $("#data, #selecionar_horario").change(() => {
     })
 
 })
+
+
+
+

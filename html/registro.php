@@ -59,7 +59,6 @@ if($_SESSION['login'] != true || $verificar != 1) { //verifica se o usuario fez 
                     </div>";
             }
         ?>
-    
-    <script src=""></script>
+    <script src="../js/fechar_janelas.js"></script>
 </body>
 </html>

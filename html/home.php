@@ -121,9 +121,8 @@ include "../php/conectar_banco_de_dados.php"
                 
             </div>
         </main>
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-        <script src="../js/pegar_numeros_sala.js"></script>
-        <script src="../js/janelas.js"></script>
-        <script src="../js/verificar_horario_home.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <script src="../js/home.js"></script>
+        <script src="../js/fechar_janelas.js"></script>
     </body>
 </html>

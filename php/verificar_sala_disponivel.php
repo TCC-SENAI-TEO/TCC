@@ -73,8 +73,11 @@
         if($salas_disponiveis = mysqli_num_rows($salas_disponiveis) > 0) {
             echo 
                 "<div class='salas salas_fechado flex_div'>".
-                    "<form action='../php/agendar_sala_tratamento.php' method='post'>".
-                        "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
+                    "<form action='../php/tratamento_de_dados_sala.php' method='post'>".
+                        "<ul class='report'>".
+                            "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
+                            "<li><button class='reportar'>Reportar</button></li>".
+                        "</ul>".
                         "<p class='tag'><strong>Responsável:</strong> ".$professor_result."</p>".
                         "<p class='tag'><strong>Inicio:</strong> ".$horario_inicio_result."</p>".
                         "<p class='tag'><strong>Termino</strong> ".$horario_termino_result."</p>".
@@ -87,8 +90,17 @@
         } else {
             echo 
                 "<div class='salas salas_disponivel flex_div'>".
-                    "<form action='../php/agendar_sala_tratamento.php' method='post'>".
-                        "<h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4>".
+                "<ul>".
+                    "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
+                    "<li><form action='../php/tratamento_de_dados_sala.php' method='post'>".
+                    "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                    "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                    "<input type='hidden' name='identificar_reporte' value='enviar_reporte'>".
+                    "<input type='submit' value='Reclamar' >".
+                    "</form>".
+                "</li>".
+                "</ul>".
+                    "<form action='../php/tratamento_de_dados_sala.php' method='post'>".
                         "<p class='tag'><strong>Responsável:</strong> Livre </p>".
                         "<p class='tag'><strong>Inicio:</strong>: Livre</p>".
                         "<p class='tag'><strong>Termino</strong>: Livre</p>".

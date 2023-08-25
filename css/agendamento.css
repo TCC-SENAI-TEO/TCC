@@ -10,6 +10,10 @@ header {
     flex-direction: row-reverse;
 }
 
+main {
+    text-align: center;
+}
+
 .titulo {
     margin: auto;
     font-size: 40pt;
