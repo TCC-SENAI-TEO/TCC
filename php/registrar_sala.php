@@ -11,10 +11,15 @@
         session_start();
         $_SESSION['error_codigo'] = 1;
         header("Location: ../html/home.php"); //caso já existir ocorrera um erro e sera disponibilizado o mesmo para o usuasrio
+
+    } else if(isset($_POST['codigo_sala']) || isset($_POST['descricao_sala']) || isset($_POST['quantidade_sala'])) {
+
+        $_SESSION['error_codigo'] = 2;
+        header("Location: ../html/home.php");
     } else {
         $EnviandoDados = mysqli_query($ConexaoSQL, "INSERT INTO salas(codigo,descricao,capacidade) VALUES ('$codigo_sala','$descrição','$capacidade')");
         session_start();
-        $_SESSION['error_codigo'] = 2;
+        $_SESSION['error_codigo'] = 3;
         header("Location: ../html/home.php");
     }
 

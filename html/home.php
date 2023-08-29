@@ -103,13 +103,19 @@ include "../php/conectar_banco_de_dados.php"
                                 </div>";
                                 $_SESSION['error_codigo'] = 0;
                 
-                        } else if(@$_SESSION['error_codigo'] == 2) {
+                        } else if(@$_SESSION['error_codigo'] == 3) {
                             echo"<div class='certo' id='certo'>
                                     <span>A criação da sala foi bem sucedida</span>
                                     <div class='fechar' id='fechar_certo'>X</div>
                                 </div>";
                                 $_SESSION['error_codigo'] = 0;
 
+                        } else if(@$_SESSION['error_codigo'] == 2){
+                            echo"<div class='erro' id='erro'>
+                            <span>Insira dados validos para a criação da sala</span>
+                            <div class='fechar' id='fechar_erro'>X</div>
+                            </div>";
+                        $_SESSION['error_codigo'] = 0;
                         }
                         if($nivel == 1) {
                             echo 
