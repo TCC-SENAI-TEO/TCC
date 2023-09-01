@@ -27,17 +27,18 @@ function enviar_todos_dados() {
     console.log(enviar_checkbox, enviar_data, enviar_sala, enviar_funcionario)
 
     $.ajax({
-        type: "post",
-        url: "../php/mostrar_salas_interface.php",
+        type: "POST",
+        url: "../php/update_reclamacoes.php",
         data: {nome_usuario: enviar_funcionario, data: enviar_data, checkbox: enviar_checkbox, sala: enviar_sala},
         success: function(response) {
             console.log("deu certo")
+           
+            
         }, 
         error: function(error) {
             console.log("deu errado")
         }
     }).done(function(e) {
-        $("#info").html(e)
     })
 
 }

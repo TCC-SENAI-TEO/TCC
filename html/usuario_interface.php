@@ -3,6 +3,7 @@ session_start(); //inicia a sessão do usuario para que se possa pegar as inform
 if($_SESSION['login'] != true) { //verifica se o usuario fez login anteriormente
     header("Location: ../html/login.php");
 }
+
 include "../php/conectar_banco_de_dados.php"
 ?>
 

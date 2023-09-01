@@ -42,6 +42,7 @@ include "../php/conectar_banco_de_dados.php"
                     <?php
                        echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
                     ?>
+                    <a href="../html/reclamacoes_adm.php">Reclamações   </a>
                     <a class="encaminhar_usuario_btn" href="../html/usuario_interface.php">Meus agendamentos</a>
                     <a href="../php/logout_login.php">Sair</a>
                     <span class="chamar_upload" id="upload_foto_btn">Upload foto de perfil</span>
@@ -86,6 +87,7 @@ include "../php/conectar_banco_de_dados.php"
                         $nivel = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$verificar'");
                         $nivel = mysqli_fetch_assoc($nivel);
                         $nivel = $nivel['nivel'];
+                        $_SESSION['nivel_funcionario'] = $nivel;
                         if($nivel == 1) {
                                 echo           
                                     '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
