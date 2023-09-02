@@ -1,20 +1,72 @@
 <?php    
+    include "../php/conectar_banco_de_dados.php";
 
     echo 
-    "<tr>
+    '<tr>
         <th>Sala</th>
         <th>Data</th>
         <th>Reclamante</th>
         <th>Denuncia</th>
         <th>Urgencia</th>
         <th>Status</th>
-    </tr>";
+    </tr>';
 
-    include "../php/conectar_banco_de_dados.php";
+    $pendente;
+    $em_andamento;
+    $pendente;
 
-    $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email");
+    if(isset($_POST['pendente'])) {
+        if($_POST['pendente'] > 0) {
+            $pendente = 1;
+            
+        }
+    }
+    if(isset($_POST['em_andamento'])) {
+        if($_POST['em_andamento'] > 0) {
+            $em_andamento = 2;
+            
+        }
+    }
+    if(isset($_POST['concluido'])) {
+        if($_POST['concluido'] > 0) {
+            $concluido = 3;
+            
+        }
+    }
 
-    if(mysqli_num_rows($denuncias) > 0) {
+    global $pendente;
+    global $em_andamento;
+    global $concluido;
+
+    if($pendente > 0 && $em_andamento > 0 && $concluido > 0) {
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 1 OR manutencao.status_denuncia = 2 OR manutencao.status_denuncia = 3");
+
+    } else if($pendente > 0 && $em_andamento > 0) {
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 1 OR manutencao.status_denuncia = 2");
+
+    } else if($pendente > 0 && $concluido > 0) {
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 1 OR manutencao.status_denuncia = 3");
+
+    } else if($em_andamento > 0 && $concluido > 0) {
+
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 2 OR manutencao.status_denuncia = 3");
+
+    } else if($pendente > 0) {
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 1");
+
+    } else if($em_andamento > 0) {
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 2");
+
+    } else if($concluido > 0) {
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 3");
+
+    } else {
+        $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia != 3");
+    }
+
+    
+
+if(mysqli_num_rows($denuncias) > 0) {
 
         for ($i = 0; $i < mysqli_num_rows($denuncias); $i++) { 
             $denuncias_fetch = mysqli_fetch_assoc($denuncias);
@@ -65,7 +117,7 @@
             "<td>".$nome_funcionario."</td>".
             "<td>".$texto_denuncia."</td>".
             "<td>".$nivel_urgencia."</td>".
-            "<td>
+            "<td class='urgencia'>
             <select class='botao' id=".$id_sql.">".definir_status()."</select>
             </td>". 
             "</tr>";
@@ -73,8 +125,6 @@
             
         }
         
-    } else {
-        echo "nao ha denuncias";
     }
 
     function definir_status() {
@@ -99,4 +149,4 @@
         }
     }
 
-    ?>
+?>

@@ -27,8 +27,23 @@ include "../php/conectar_banco_de_dados.php";
 
     <main>
         <table id="tabela_info">
-
+            <!--Table que receba a resposta do ajax para mostrar as informações ao ADM-->
         </table>
+
+        <div class="filtro-tabela">
+            <label>Filtrar Status</label><br>
+
+            <input type="checkbox" id="Pendente" value="Pendente">
+            <label for="Pendente"> Pendente </label><br>
+
+            <input type="checkbox" id="Em_Andamento" value="Em Andamento">
+            <label for="Em Andamento"> Em Andamento </label><br>
+
+            <input type="checkbox" id="Concluido" value="Concluido">
+            <label for="Concluido"> Concluido </label>
+
+        </div>
+
     </main>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

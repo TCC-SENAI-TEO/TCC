@@ -41,8 +41,19 @@ include "../php/conectar_banco_de_dados.php"
                 <div class="div_sair">
                     <?php
                        echo "<p class='registro'>".$_SESSION['email_funcionario']."</p>";
+
+                       $verificar = $_SESSION['email_funcionario'];
+                       $nivel = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$verificar'");
+                       $nivel = mysqli_fetch_assoc($nivel);
+                       $nivel = $nivel['nivel'];
+                       
+                       $_SESSION['nivel_funcionario'] = $nivel;
+
+                       if($_SESSION['nivel_funcionario'] == 1) {
+                        echo "<a href='../html/reclamacoes_adm.php'>Reclamações</a>";
+                       }
                     ?>
-                    <a href="../html/reclamacoes_adm.php">Reclamações   </a>
+                    
                     <a class="encaminhar_usuario_btn" href="../html/usuario_interface.php">Meus agendamentos</a>
                     <a href="../php/logout_login.php">Sair</a>
                     <span class="chamar_upload" id="upload_foto_btn">Upload foto de perfil</span>
@@ -83,12 +94,7 @@ include "../php/conectar_banco_de_dados.php"
                             </li>
                     </ul>
                     <?php
-                        $verificar = $_SESSION['email_funcionario'];
-                        $nivel = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$verificar'");
-                        $nivel = mysqli_fetch_assoc($nivel);
-                        $nivel = $nivel['nivel'];
-                        $_SESSION['nivel_funcionario'] = $nivel;
-                        if($nivel == 1) {
+                        if($_SESSION['nivel_funcionario'] == 1) {
                                 echo           
                                     '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
                                     '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3" class="tamanho_fixo">'.

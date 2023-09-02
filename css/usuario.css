@@ -56,6 +56,13 @@ th, td {
     flex-direction: column;
 }
 
+.filtro-tabela {
+    border: 2px solid black;
+    margin: 2% auto;
+    padding: 0.5%;
+
+}
+
 
 @media only screen and (max-width: 380px) {
     .titulo {
