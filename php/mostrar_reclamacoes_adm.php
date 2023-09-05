@@ -48,7 +48,6 @@
         $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 1 OR manutencao.status_denuncia = 3");
 
     } else if($em_andamento > 0 && $concluido > 0) {
-
         $denuncias = mysqli_query($ConexaoSQL, "SELECT * from manutencao INNER JOIN funcionarios ON reclamante = funcionarios.email WHERE manutencao.status_denuncia = 2 OR manutencao.status_denuncia = 3");
 
     } else if($pendente > 0) {

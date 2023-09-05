@@ -28,46 +28,18 @@
                 echo "<input type='email' disabled placeholder='email' value='$email'>";
             ?>
             <aside>
-                <ul class='div_horario'>
-                    <label class="data_txt" for="data_inicio">Data de inicio: </label>
-                    <input type="date" name="data_inicio" class='date'>
-                </ul>
-                <ul class='div_horario'>
-                    <label class="data_txt" for="data_termino">Data de termino: </label>
-                    <input type="date" name="data_termino" class='date'>
-                </ul>
-            </aside>
-            <section>
-                <ul>
-                    <label for="horarios[]">7:00</label>
-                    <input type="checkbox" name="horarios[]" value="7:00">
-                </ul>
-                <ul>
-                    <label for="horarios[]">7:50</label>
-                    <input type="checkbox" name="horarios[]" value="7:50">
-                </ul>
-                <ul>
-                    <label for="horarios[]">8:40</label>
-                    <input type="checkbox" name="horarios[]" value="8:40">
-                </ul>
-
-                <ul>
-                    <label for="horarios[]">9:50</label>
-                    <input type="checkbox" name="horarios[]" value="9:50">
-                </ul>
-
-                <ul>
-                    <label for="horarios[]">10:40</label>
-                    <input type="checkbox" name="horarios[]" value="10:40">
-                </ul>
-
-                <ul>
-                    <label for="horarios[]">11:30</label>
-                    <input type="checkbox" name="horarios[]" value="11:30">
-                </ul>
+            <ul class='div_horario'>
+                <label class="data_txt" for="data_inicio">Data de inicio: </label>
+                <input type="date" name="data_inicio" class='date' id="data_escolhida">
+            </ul>
+        </aside>
+            <section id="info">
+            <!--aqui recebe as informações do ajax para escrever as informações ao usuario e podendo ligar ou desligar as checkbox-->
             </section>
+
             <input type="submit" name="submit" value="Agendar">
         </form>
+
         <?php
             if(@$_SESSION['error_agendar_sala'] == 1) {
             echo "<div class='erro' id='erro'>
@@ -85,7 +57,9 @@
                 echo "";
             }
         ?>
-        <script src="../js/fechar_janela.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="../js/ajax_agendar_salas.js"></script>
+        <script src="../js/fechar_janelas.js"></script>
     </main>
 </body>
 </html>
