@@ -42,6 +42,32 @@
                 "<textarea rows='4' cols='50' name='txt_reporte' form='formulario' placeholder='Digite Sua Reclamação'></textarea>".
                 "<input type='submit' value='Enviar'>".
                 "</form>";
+
             ?>
-            
+        <?php
+        
+        if(isset($_SESSION['erro_reporte'])) {
+            $erro = $_SESSION['erro_reporte'];
+            if($erro == 0) {
+                echo
+                "<div class='certo' id='certo'>
+                    <span>A sua reclamação foi enviada com Sucesso</span>
+                    <div class='fechar' id='fechar_certo'>X</div>
+                </div>";
+                unset($_SESSION['erro_reporte']);
+                
+            } else if($erro == 1) {
+                echo
+                "<div class='erro' id='erro'>
+                    <span>Não foi possível enviar sua reclamação</span>
+                    <div class='fechar' id='fechar_erro'>X</div>
+                </div>";
+                unset($_SESSION['erro_reporte']);
+                
+            }
+
+        }
+        
+        ?>
+        <script src="../js/fechar_janelas.js"></script>
     </main>

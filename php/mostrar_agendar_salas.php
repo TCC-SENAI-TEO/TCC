@@ -1,4 +1,5 @@
 <?php
+
     if(session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -12,7 +13,10 @@
         $data_escolhida = date("Y-m-d");
     }
 
-    $verificar_horario_disponivel = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos WHERE inicio = '$data_escolhida'");
+    $codigo_sala = $_POST['codigo_sala'];
+    
+
+    $verificar_horario_disponivel = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join salas on agendamentos.id_sala = salas.id WHERE inicio = '$data_escolhida' AND codigo = '$codigo_sala'");
     $lista_horarios_fechados = [];
     
     

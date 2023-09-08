@@ -80,7 +80,9 @@ include "../php/conectar_banco_de_dados.php"
                 <input type="submit" class="enviar_foto">
             </form>
             <aside>
-                    <ul class="ul_data, verificador_sala" >
+                    <h3>Verificar Horario disponível</h3>
+                    <ul class="ul_data, verificador_sala">
+                        
                             <li><input type="date" id="data" class="tamanho_fixo" name="data"></li>
                             <label for="horario">Horario</label>
                                 <select name="horario" class="tamanho_fixo" id="selecionar_horario">
@@ -132,7 +134,7 @@ include "../php/conectar_banco_de_dados.php"
                         ?>
                 </aside>
             <div class="salas">
-                
+                    <!--Aqui onde é mostrado as informações -->
             </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>

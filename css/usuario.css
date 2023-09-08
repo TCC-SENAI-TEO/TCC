@@ -63,6 +63,42 @@ th, td {
 
 }
 
+.erro {
+    display: flex;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(242, 54, 52);
+    color: white;
+    align-items: center;
+    min-width: fit-content;
+    font-size: large;
+    word-wrap: break-word;
+    width: 12svw;
+}
+
+.certo {
+    display: flex;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(142, 214, 151);
+    color: white;
+    align-items: center;
+    width: 12svw;
+    min-width: fit-content;
+    text-align: center;
+    font-size: large;
+    word-wrap: break-word;
+}
+
+.fechar {
+    align-self: flex-end;
+    margin-bottom: auto;
+    font-size: small;
+    border-radius: 30px;
+    padding: 1% 2%;
+    background-color: red;
+}
+
 
 @media only screen and (max-width: 380px) {
     .titulo {

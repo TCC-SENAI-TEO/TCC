@@ -18,12 +18,13 @@
     <header>
         <?php
             echo "<h1 class='titulo'> Sala ".$_SESSION['descricao_sala']." - ".$_SESSION['codigo_sala']."</h1>";
+            echo "<input type='hidden' id='codigo_sala' value=".$_SESSION['codigo_sala'].">"
         ?>
         <a class="voltar" href="home.php">Voltar</a>
     </header>
     <main>
         <form action="../php/agendar_sala.php" method="post">
-            <?php
+            <?php 
                 $email = $_SESSION['email_funcionario'];
                 echo "<input type='email' disabled placeholder='email' value='$email'>";
             ?>
@@ -34,7 +35,7 @@
             </ul>
         </aside>
             <section id="info">
-            <!--aqui recebe as informações do ajax para escrever as informações ao usuario e podendo ligar ou desligar as checkbox-->
+                <!--aqui recebe as informações do ajax para escrever as informações ao usuario e podendo ligar ou desligar as checkbox-->
             </section>
 
             <input type="submit" name="submit" value="Agendar">

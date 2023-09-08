@@ -202,7 +202,7 @@ aside {
 
 .flex_div{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 400px;
@@ -214,6 +214,8 @@ aside {
     width: 10svw;
     box-shadow: 5px 5px 5px black;
 }
+
+
 
 .salas > section {
     display: flex;

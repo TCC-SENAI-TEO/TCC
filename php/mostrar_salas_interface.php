@@ -21,8 +21,6 @@
     
     include "../php/conectar_banco_de_dados.php";
     
-
-
     $email = $_SESSION['email_funcionario'];
 
     if(isset($_POST['nome_usuario'])) {
@@ -137,6 +135,7 @@
 
         
     }
+
     function marcar_horario($num_horario) {
         global $horarios_armazenados;
         if(empty($horarios_armazenados)) {
