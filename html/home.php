@@ -2,8 +2,10 @@
 session_start(); //inicia a sessão do usuario para que se possa pegar as informações contidas nela posteriormente
 if($_SESSION['login'] != true) { //verifica se o usuario fez login anteriormente
     header("Location: ../html/login.php");
+    
 }
 include "../php/conectar_banco_de_dados.php"
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -82,9 +84,7 @@ include "../php/conectar_banco_de_dados.php"
             <aside>
                     <h3>Verificar Horario disponível</h3>
                     <ul class="ul_data, verificador_sala">
-                        
                             <li><input type="date" id="data" class="tamanho_fixo" name="data"></li>
-                            <label for="horario">Horario</label>
                                 <select name="horario" class="tamanho_fixo" id="selecionar_horario">
                                     <option value="7:00">7:00</option>
                                     <option value="7:50">7:50</option>
@@ -95,17 +95,15 @@ include "../php/conectar_banco_de_dados.php"
                                 </select>
                             </li>
                     </ul>
+                    <div id="container-editar-salas">
+                    <h3>Editar/Registrar Sala</h3>
+                        <div id="editar_salas">
+                            <!--recebe o ajaz de ediçao das salas--->
+                        </div>
+                    </div>
+                    <div id="registrar_funcionario">
+                    <h3>Regitrar Funcionario</h3>
                     <?php
-                        if($_SESSION['nivel_funcionario'] == 1) {
-                                echo           
-                                    '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
-                                    '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3" class="tamanho_fixo">'.
-                                    '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala" class="tamanho_fixo">'.
-                                    '<input type="number" name="quantidade_sala" id="numero_quantidade_sala" placeholder="Capacidade da sala" min=1 class="tamanho_fixo">'.
-                                    '<input type="submit" value="Cadastrar" id="cadastrar_sala_btn" class="tamanho_fixo">'.
-                                    '</form>';
-
-                        }
                         if(@$_SESSION['error_codigo'] == 1) {
                             echo"<div class='erro' id='erro'>
                                     <span>A sala inserida já foi registrada</span>
@@ -132,12 +130,14 @@ include "../php/conectar_banco_de_dados.php"
                             '<a href="../html/registro.php" class="registro_funcionario_btn tamanho_fixo">Registrar</a>';
                         }
                         ?>
+                    </div>
                 </aside>
             <div class="salas">
                     <!--Aqui onde é mostrado as informações -->
             </div>
+            <div id="teste"></div>
         </main>
-        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         <script src="../js/home.js"></script>
         <script src="../js/fechar_janelas.js"></script>
     </body>

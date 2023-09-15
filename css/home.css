@@ -13,6 +13,10 @@ Cores status {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 ul {
     list-style: none;
 }
@@ -143,6 +147,12 @@ aside {
     height: fit-content;
 }
 
+#registrar_funcionario {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .registrar_sala {
     display: flex;
     flex-direction: column;
@@ -154,7 +164,19 @@ aside {
     padding: .3%;
 }
 
-.registro_funcionario_btn, .verificar_sala_btn, #cadastrar_sala_btn {
+#container-editar-salas {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.registrar_sala > ul {
+    display: flex;
+    gap: 1px;
+}
+
+.registro_funcionario_btn, .verificar_sala_btn, #cadastrar_sala_btn, #editar_sala_btn, #apagar_sala_btn {
     color: black;
     background-color: white;
     text-decoration: none;
@@ -192,7 +214,12 @@ aside {
 
 /*TABELA SALAS*/
 
-.salas {
+
+.sala {
+    z-index: 1000;
+}
+
+.salas, .sala {
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
@@ -200,7 +227,10 @@ aside {
     margin: auto;
 }
 
+
+
 .flex_div{
+    z-index: 22;
     display: flex;
     flex-direction: row;
     flex-grow: 1;
@@ -217,7 +247,7 @@ aside {
 
 
 
-.salas > section {
+.salas > section, .sala > section {
     display: flex;
     flex-wrap: wrap;
     margin: 0 0 0 auto;
@@ -228,7 +258,7 @@ aside {
     padding: 1%;
 }
 
-.salas > section > div {
+.salas > section > div, .sala > section > div {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -18,6 +18,8 @@ if(isset($email) && isset($codigo_sala) && isset($nivel_denuncia) && $denuncia !
     $_SESSION['erro_reporte'] = 1;
 }
 
+
+
 header("Location: ../html/reportar_sala.php");
 
 ?>

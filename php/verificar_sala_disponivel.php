@@ -1,5 +1,6 @@
 <?php
     include '../php/conectar_banco_de_dados.php';
+    
     if(session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -72,7 +73,7 @@
 
         if($salas_disponiveis = mysqli_num_rows($salas_disponiveis) > 0) {
             echo 
-            "<div class='salas salas_fechado flex_div'>".
+            "<div class='sala salas_fechado flex_div'>".
             "<div class='container-1'>".
             "<ul>".
                 "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
@@ -98,7 +99,7 @@
  
         } else {
             echo 
-                "<div class='salas salas_disponivel flex_div'>".
+                "<div class='sala salas_disponivel flex_div' id='$codigo' tag='$descricao' cap='$capacidade'>".
                 "<div class='container-1'>".
                 "<ul>".
                     "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
@@ -162,6 +163,7 @@
                     
                                     
     }    
+
     
 
 ?>
