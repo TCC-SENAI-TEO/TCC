@@ -96,13 +96,11 @@ include "../php/conectar_banco_de_dados.php"
                             </li>
                     </ul>
                     <div id="container-editar-salas">
-                    <h3>Editar/Registrar Sala</h3>
                         <div id="editar_salas">
                             <!--recebe o ajaz de ediçao das salas--->
                         </div>
                     </div>
                     <div id="registrar_funcionario">
-                    <h3>Regitrar Funcionario</h3>
                     <?php
                         if(@$_SESSION['error_codigo'] == 1) {
                             echo"<div class='erro' id='erro'>
@@ -127,6 +125,7 @@ include "../php/conectar_banco_de_dados.php"
                         }
                         if($nivel == 1) {
                             echo 
+                            "<h3>Regitrar Funcionario</h3>".
                             '<a href="../html/registro.php" class="registro_funcionario_btn tamanho_fixo">Registrar</a>';
                         }
                         ?>
@@ -135,7 +134,6 @@ include "../php/conectar_banco_de_dados.php"
             <div class="salas">
                     <!--Aqui onde é mostrado as informações -->
             </div>
-            <div id="teste"></div>
         </main>
         <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         <script src="../js/home.js"></script>

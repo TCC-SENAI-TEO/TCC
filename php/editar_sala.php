@@ -33,6 +33,7 @@
     
     if($_SESSION['nivel_funcionario'] == 1 && $edit == false) {
         echo   
+            '<h3>Editar/Registrar Sala</h3>'.
             '<form action="../php/registrar_sala.php" method="post" class="registrar_sala">'.
             '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="Código da sala" min="3" class="tamanho_fixo">'.
             '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="Descrição da sala" class="tamanho_fixo">'.
@@ -46,6 +47,7 @@
         $linha_sql_id = $linha_sql_assoc['id'];
 
         echo   
+        '<h3>Editar/Registrar Sala</h3>'.
         '<form action="../php/info_editar_salas.php" method="post" class="registrar_sala">'.
         '<input type="text" name="codigo_sala" id="texto_codigo_sala" placeholder="'.$codigo_sala.'" min="3" class="tamanho_fixo" value='.$codigo_sala.'>'.
         '<input type="text" name="descricao_sala" id="texto_descricao_sala" placeholder="'.$descricao_sala.'" class="tamanho_fixo" value='.$descricao_sala.'>'.
