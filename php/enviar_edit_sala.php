@@ -5,6 +5,8 @@
     $codigo_sala_original = $_POST["codigo_sala_original"];
     $descricao_sala = $_POST["descricao_sala"];
     $quantidade_sala = $_POST["capacidade"];
+    $status_sala = $_POST["status_sala"];
+    $motivo_manutencao = $_POST["motivo_manutencao"];
 
 
     $confirmar_edit =  $_POST['confirmar_edit'];
@@ -23,7 +25,7 @@
 
     }
     if($confirmar_edit == true) {
-        $edit_row = mysqli_query($ConexaoSQL, "UPDATE salas SET codigo = '$codigo_sala' ,descricao = '$descricao_sala' ,capacidade = '$quantidade_sala' WHERE id = '$id_sql_id'");
+        $edit_row = mysqli_query($ConexaoSQL, "UPDATE salas SET codigo = '$codigo_sala' ,descricao = '$descricao_sala' ,capacidade = '$quantidade_sala' status_sala = '$status_sala',motivo_manutencao = '$motivo_manutencao' WHERE id = '$id_sql_id'");
         $confirmar_delete = false;
     }
 

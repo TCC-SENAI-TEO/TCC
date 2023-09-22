@@ -148,4 +148,6 @@ if(mysqli_num_rows($denuncias) > 0) {
         }
     }
 
+    
+
 ?>

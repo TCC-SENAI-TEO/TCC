@@ -57,6 +57,10 @@
         $capacidade = mysqli_fetch_array($capacidade);
         $capacidade = $capacidade['capacidade']; //usar esse
 
+        $status_sala = mysqli_query($ConexaoSQL, "SELECT status_sala FROM salas WHERE id = '$i'");
+        $status_sala = mysqli_fetch_array($status_sala);
+        $status_sala = $status_sala['status_sala']; //usar esse
+
         $salas_disponiveis = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos WHERE id_horario = '$horario' and inicio = '$data' and id_sala = '$i'");
         $horario_incio = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
         
@@ -73,7 +77,7 @@
 
         if($salas_disponiveis = mysqli_num_rows($salas_disponiveis) > 0) {
             echo 
-            "<div class='sala salas_fechado flex_div'>".
+            "<div class='sala salas_fechado flex_div' id='$codigo' tag='$descricao' cap='$capacidade' status='$status_sala'>".
             "<div class='container-1'>".
             "<ul>".
                 "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
@@ -99,7 +103,7 @@
  
         } else {
             echo 
-                "<div class='sala salas_disponivel flex_div' id='$codigo' tag='$descricao' cap='$capacidade'>".
+                "<div class='sala salas_disponivel flex_div' id='$codigo' tag='$descricao' cap='$capacidade' status='$status_sala'>".
                 "<div class='container-1'>".
                 "<ul>".
                     "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".

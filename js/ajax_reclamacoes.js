@@ -44,11 +44,11 @@ function fazer_botao_funcionar() {
             type: "post",
             url: "../php/update_reclamacoes.php",
             data: {linha_sql: enviar_linha_sql, status: enviar_status},
-            success: function () {
-                
+            success: function (response) {
+                console.log("AJAX sucess 1")
             },
             error: function(error) {
-                
+                console.log("AJAX ERROR 1")
             }
         }).done(function() {
             $.ajax({
@@ -56,9 +56,9 @@ function fazer_botao_funcionar() {
                 url: "../php/mostrar_reclamacoes_adm.php",
                 data: {pendente: Pendente, em_andamento: Em_Andamento, concluido: Concluido},
                 success: function (response) {
-    
+                    console.log("Ajax sucess 2")
                 }, error: function (param) { 
-                    
+                    console.log("AJAX ERROR 2")
                 }
             }).done(function (e) {
                 $("#tabela_info").html(e);
@@ -106,9 +106,9 @@ $(document).ready(function () {
             url: "../php/mostrar_reclamacoes_adm.php",
             data: {pendente: Pendente, em_andamento: Em_Andamento, concluido: Concluido},
             success: function (response) {
-
+                console.log("Ajax enviado com sucesso 3")
             }, error: function (param) { 
-                
+                console.log("AJAX ERROR 3")
             }
         }).done(function (e) {
             $("#tabela_info").html(e);

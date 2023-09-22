@@ -1,7 +1,7 @@
 <?php
-    $host = 'tcc23.mysql.uhserver.com';
-    $nome = 'bancogabriel';
-    $password = 'Escola@3';
-    $nomeSQL = 'tcc23';
+    $host = 'localhost';
+    $nome = 'root';
+    $password = '';
+    $nomeSQL = 'tcc';
     $ConexaoSQL = new mysqli($host, $nome, $password, $nomeSQL);
 ?>

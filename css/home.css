@@ -116,6 +116,12 @@ main {
 
 /* MENU LATERAL*/
 
+select, option {
+    font-size: 12pt;
+    border-radius: 0px;
+    padding: 2%;
+}
+
 aside {
     display: flex;
     flex-direction: column;
