@@ -61,7 +61,12 @@
         $status_sala = mysqli_fetch_array($status_sala);
         $status_sala = $status_sala['status_sala']; //usar esse
 
-        $salas_disponiveis = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos WHERE id_horario = '$horario' and inicio = '$data' and id_sala = '$i'");
+        $motivo_manutencao = mysqli_query($ConexaoSQL, "SELECT motivo_manutencao FROM salas WHERE id = '$i'");
+        $motivo_manutencao = mysqli_fetch_array($motivo_manutencao);
+        $motivo_manutencao = $motivo_manutencao['motivo_manutencao']; //usar esse
+
+        $salas_disponiveis = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join salas on id_sala = salas.id WHERE id_horario = '$horario' and inicio = '$data' and id_sala = '$i'");
+
         $horario_incio = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
         
         $horario_incio_assoc = mysqli_fetch_array($horario_incio);
@@ -100,32 +105,88 @@
                 "</form>".
             "</div>".
             "<section>";
- 
+
         } else {
-            echo 
-                "<div class='sala salas_disponivel flex_div' id='$codigo' tag='$descricao' cap='$capacidade' status='$status_sala'>".
-                "<div class='container-1'>".
-                "<ul>".
-                    "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
-                    "<li><form action='../php/tratamento_de_dados_sala.php' method='post'>".
-                    "<input type='hidden' name='codigo_sala' value='$codigo'>".
-                    "<input type='hidden' name='descricao_sala' value='$descricao'>".
-                    "<input type='hidden' name='identificar_reporte' value='enviar_reporte'>".
-                    "<input type='submit' value='Reclamar'>".
-                    "</form>".
-                "</li>".
-                "</ul>".
-                    "<form action='../php/tratamento_de_dados_sala.php' method='post'>".
-                        "<p class='tag'><strong>Responsável:</strong> Livre </p>".
-                        "<p class='tag'><strong>Inicio:</strong>: Livre</p>".
-                        "<p class='tag'><strong>Termino</strong>: Livre</p>".
-                        "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
+            if($status_sala == 2) {
+                echo 
+                    "<div class='sala salas_interditado flex_div' id='$codigo' tag='$descricao' cap='$capacidade' status='$status_sala'>".
+                    "<div class='container-1'>".
+                    "<ul>".
+                        "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
+                        "<li><form action='../php/tratamento_de_dados_sala.php' method='post'>".
                         "<input type='hidden' name='codigo_sala' value='$codigo'>".
                         "<input type='hidden' name='descricao_sala' value='$descricao'>".
-                        "<input type='submit' value='Agendar' class='botao'>".
-                    "</form>".
-                "</div>".
-                "<section>";
+                        "<input type='hidden' name='identificar_reporte' value='enviar_reporte'>".
+                        "<input type='submit' value='Reclamar' disabled>".
+                        "</form>".
+                    "</li>".
+                    "</ul>".
+                        "<form action='../php/tratamento_de_dados_sala.php' method='post'>".
+                            "<p class='tag'><strong>Responsável:</strong> "."Interditado"."</p>".
+                            "<p class='tag'><strong>Inicio:</strong>: "."Interditado"."</p>".
+                            "<p class='tag'><strong>Termino</strong>: "."interditado"."</p>".
+                            "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
+                            "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                            "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                            "<p class='tag'><strong>Motivo</strong>: ".$motivo_manutencao."</p>".
+                            "<input type='submit' value='Agendar' class='botao' disabled>".
+                        "</form>".
+                    "</div>".
+                    "<section>";
+            } else if($status_sala == 1) {
+                echo 
+
+                "<div class='sala salas_disponivel flex_div' id='$codigo' tag='$descricao' cap='$capacidade' status='$status_sala'>".
+                    "<div class='container-1'>".
+                    "<ul>".
+                        "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
+                        "<li><form action='../php/tratamento_de_dados_sala.php' method='post'>".
+                        "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                        "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                        "<input type='hidden' name='identificar_reporte' value='enviar_reporte'>".
+                        "<input type='submit' value='Reclamar'>".
+                        "</form>".
+                    "</li>".
+                    "</ul>".
+                        "<form action='../php/tratamento_de_dados_sala.php' method='post'>".
+                            "<p class='tag'><strong>Responsável:</strong> Livre </p>".
+                            "<p class='tag'><strong>Inicio:</strong>: Livre</p>".
+                            "<p class='tag'><strong>Termino</strong>: Livre</p>".
+                            "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
+                            "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                            "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                            "<input type='submit' value='Agendar' class='botao'>".
+                        "</form>".
+                    "</div>".
+                    "<section>";
+
+                } else {
+                    echo 
+                    "<div class='sala salas_fechado flex_div' id='$codigo' tag='$descricao' cap='$capacidade' status='$status_sala'>".
+                    "<div class='container-1'>".
+                    "<ul>".
+                        "<li><h4 class='tag'>Sala ".$codigo." - ".$descricao."</h4></li>".
+                        "<li><form action='../php/tratamento_de_dados_sala.php' method='post'>".
+                        "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                        "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                        "<input type='hidden' name='identificar_reporte' value='enviar_reporte'>".
+                        "<input type='submit' value='Reclamar' disabled>".
+                        "</form>".
+                    "</li>".
+                    "</ul>".
+                        "<form action='../php/tratamento_de_dados_sala.php' method='post'>".
+                            "<p class='tag'><strong>Responsável:</strong> "."Não há responsáveis"."</p>".
+                            "<p class='tag'><strong>Inicio:</strong>: "."Fechado"."</p>".
+                            "<p class='tag'><strong>Termino</strong>: "."Fechado"."</p>".
+                            "<p class='tag'><strong>Quantidade</strong>: ".$capacidade."</p>".
+                            "<input type='hidden' name='codigo_sala' value='$codigo'>".
+                            "<input type='hidden' name='descricao_sala' value='$descricao'>".
+                            "<input type='submit' value='Agendar' class='botao' disabled>".
+                        "</form>".
+                    "</div>".
+                    "<section>";
+                    
+            }
         }
 
     

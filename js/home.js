@@ -2,6 +2,9 @@ var data = document.getElementById("data").valueAsDate = new Date();
 var controle_numeral = 0
 var enviar_controle_edit;
 
+
+
+
 $(document).ready(function() {
     $.get("../php/verificar_sala_disponivel", function(data) {
         $(".salas").html(data);
@@ -239,3 +242,5 @@ setTimeout(() => {
 
     
 }, 300);
+
+
