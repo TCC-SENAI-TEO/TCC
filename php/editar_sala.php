@@ -41,23 +41,23 @@
         if($verificador == "Aberto" || $verificador == 1) {
             return 
             '<select name="status_sala" class="definir_status">'.
-            '<option value="1">Aberto</option>'.
+            '<option value="0">Aberto</option>'.
             '<option value="2">Manutenção</option>'.
-            '<option value="3">Fechado</option>'.
+            '<option value="1">Fechado</option>'.
             '</select>';
         } else if($verificador == "Manutenção" || $verificador == 2) {
             return
             '<select name="status_sala" class="definir_status">'.
             '<option value="2">Manutenção</option>'.
-            '<option value="1">Aberto</option>'.
-            '<option value="3">Fechado</option>'.
+            '<option value="0">Aberto</option>'.
+            '<option value="1">Fechado</option>'.
             '</select>';
         } else {
             return
             '<select name="status_sala" class="definir_status">'.
-            '<option value="3">Fechado</option>'.
+            '<option value="1">Fechado</option>'.
             '<option value="2">Manutenção</option>'.
-            '<option value="1">Aberto</option>'.
+            '<option value="0">Aberto</option>'.
             '</select>';
         }
     }
@@ -86,7 +86,7 @@
         $linha_sql_id = $linha_sql_assoc['id'];
 
         switch ($status_sala) {
-            case 1:
+            case 0:
                 $status_sala = "Aberto";
             break;
             
@@ -94,7 +94,7 @@
                 $staus_sala = "Manutenção";
             break;
 
-            case 3:
+            case 1:
                 $status_sala = "Fechado";
             break;
         }

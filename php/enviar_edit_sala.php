@@ -16,11 +16,18 @@
     $id_sql_assoc = mysqli_fetch_assoc($id_sql);
     $id_sql_id = $id_sql_assoc['id'];
 
+    echo 
+    $codigo_sala."<br>".
+    $codigo_sala_original."<br>".
+    $descricao_sala."<br>".
+    $quantidade_sala."<br>".
+    $status_sala."<br>".
+    $motivo_manutencao."<br>".
+    $confirmar_delete."<br>".
+    $id_sql_id."<br>";
+
     if($confirmar_delete == true) {
         $deletar_sala = mysqli_query($ConexaoSQL, "DELETE FROM salas WHERE id = '$id_sql_id'");
-        $resetar_primary = mysqli_query($ConexaoSQL, "Set @num := 0;
-        Update salas SET id = @num := (@num+1);
-        ALTER TABLE salas AUTO_INCREMENT =1;");
         $confirmar_delete = false;
 
     }
@@ -29,10 +36,5 @@
         $confirmar_delete = false;
     }
 
-    echo $codigo_sala;
-    echo $descricao_sala;
-    echo $quantidade_sala;
-    echo $confirmar_edit;
-    echo $confirmar_delete;
 
 ?>

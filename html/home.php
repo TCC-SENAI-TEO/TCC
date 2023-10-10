@@ -18,7 +18,7 @@ include "../php/conectar_banco_de_dados.php"
         <title>Home</title>
     </head>
     <body>
-
+    <div id="teste123"></div>
         <header>
             <img src="../img/senai.png" alt="Logo Senai" class="senai_logo">
             <h1 class="titulo">Painel central</h1>

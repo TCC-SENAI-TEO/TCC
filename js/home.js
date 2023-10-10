@@ -10,11 +10,12 @@ $(document).ready(function() {
         $(".salas").html(data);
         var numero_salas_disponivel = $(".salas .salas_disponivel").length
         var numero_salas_fechado = $(".salas .salas_fechado").length
-        var salas_totais = numero_salas_disponivel + numero_salas_fechado
+        var numero_salas_interditado = $(".salas .salas_interditado").length
+        var salas_totais = numero_salas_disponivel + numero_salas_fechado + numero_salas_interditado
 
         $("#salas_totais").html("Salas Totais: " + salas_totais);
         $("#salas_disponiveis").html("Salas Disponiveis: " + numero_salas_disponivel);
-        $("#salas_interditadas").html("Salas Interditadas: 0");
+        $("#salas_interditadas").html("Salas Interditadas: " + numero_salas_interditado );
         $("#salas_ocupadas").html("Salas Ocupadas: " + numero_salas_fechado);
     });
 
@@ -45,9 +46,11 @@ $("#data, #selecionar_horario").change(() => {
         var salas_totais = numero_salas_disponivel + numero_salas_fechado
 
         $("#salas_totais").html("Salas Totais: " + salas_totais);
-        $("#salas_disponiveis").html("Salas Disponiveis: " + numero_salas_disponivel);
-        $("#salas_interditadas").html("Salas Interditadas: 0");
+        $("#salas_disponiveis").html("Salas Disponiveis: " + numero_salas_disponivel);  
+        $("#salas_interditadas").html("Salas Interditadas: " + numero_salas_interditado);
         $("#salas_ocupadas").html("Salas Ocupadas: " + numero_salas_fechado);
+
+        
 
         
     })
@@ -120,6 +123,8 @@ setTimeout(() => {
                         enviar_codigo_sala = $("#texto_codigo_sala").val()
                         enviar_status_sala = $(".definir_status").val()
                         let enviar_motivo = $("#motivo_manutencao").val()
+                        console.log(enviar_status_sala)
+                        
                         
         
                         e.preventDefault();
@@ -138,41 +143,13 @@ setTimeout(() => {
         
                             $.get("../php/verificar_sala_disponivel", function(data) {
                                 $(".salas").html(data);
+                                $("#teste123").html(e)
                             })
                         });
-                    
         
                     })
 
-                    $("#apagar_sala_btn").on("click", function(e) {
-                        e.preventDefault();
-                        enviar_capacidade_sala = $("#numero_quantidade_sala").val()
-                        enviar_descricao_sala = $("#texto_descricao_sala").val()
-                        enviar_codigo_sala = $("#texto_codigo_sala").val()
-                        enviar_status_sala = $(".definir_status").val()
-        
-                        var enviar_confirmar_delete = confirm("Tem certeza que deseja apagar a sala " + enviar_codigo_sala + " ?")
-        
-                        $.ajax({
-                            type: "post",
-                            url: "../php/enviar_edit_sala.php",
-                            data: {status_sala: enviar_status_sala, codigo_sala: enviar_codigo_sala, descricao_sala: enviar_descricao_sala, capacidade: enviar_capacidade_sala, confirmar_delete: enviar_confirmar_delete, codigo_sala_origial: enviar_codigo_sala_original},
-                            success: function (response) {
-        
-                            }, error: function(e) {
-        
-                            }
-                        }).done(function(e) {
-                            $.get("../php/verificar_sala_disponivel", function(data) {
-                                $(".salas").html(data);
-                            })
-                            
-                        });
-        
-            
-                    })
-
-                    })
+                })
                 
             })
             
@@ -182,6 +159,7 @@ setTimeout(() => {
                 enviar_codigo_sala = $("#texto_codigo_sala").val()
                 enviar_status_sala = $(".definir_status").val()
                 let enviar_motivo = $("#motivo_manutencao").val()
+                console.log(enviar_status_sala)
                 
 
                 e.preventDefault();
@@ -200,6 +178,7 @@ setTimeout(() => {
 
                     $.get("../php/verificar_sala_disponivel", function(data) {
                         $(".salas").html(data);
+                        $("#teste123").html(e)
                     })
                 });
             
@@ -219,28 +198,27 @@ setTimeout(() => {
                 $.ajax({
                     type: "post",
                     url: "../php/enviar_edit_sala.php",
-                    data: {status_sala: enviar_status_sala, codigo_sala: enviar_codigo_sala, descricao_sala: enviar_descricao_sala, capacidade: enviar_capacidade_sala, confirmar_delete: enviar_confirmar_delete, codigo_sala_origial: enviar_codigo_sala_original},
+                    data: {status_sala: enviar_status_sala, codigo_sala: enviar_codigo_sala, descricao_sala: enviar_descricao_sala, capacidade: enviar_capacidade_sala, confirmar_delete: enviar_confirmar_delete, codigo_sala_original: enviar_codigo_sala_original},
                     success: function (response) {
-
+                        console.log("sucesso no delete")
+                        console.log(enviar_codigo_sala_original)
                     }, error: function(e) {
-
+                        console.log("erro no delete")
+                        console.log(enviar_codigo_sala_original)
                     }
                 }).done(function(e) {
                     $.get("../php/verificar_sala_disponivel", function(data) {
                         $(".salas").html(data);
+                        $("#teste123").html(e)
                     })
                     
                 });
 
-    
             })
 
         });
-
         
     }) 
 
     
 }, 300);
-
-

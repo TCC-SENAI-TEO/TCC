@@ -41,42 +41,45 @@
     }
     
     $quantidade_salas = mysqli_query($ConexaoSQL, "SELECT * from salas");   //faz o query no banco de dados
-    $quantidade_salas = mysqli_num_rows($quantidade_salas); //pega o numero de linhas afetadas pelo query
+    $quantidade_salas_numero = mysqli_num_rows($quantidade_salas); //pega o numero de linhas afetadas pelo query
 
-    for ($i=1; $i <= $quantidade_salas; $i++) { 
+    for ($i=1; $i <= $quantidade_salas_numero; $i++) { 
 
-        $codigo = mysqli_query($ConexaoSQL, "SELECT codigo FROM salas WHERE id = '$i'");
+        $fetch_id = mysqli_fetch_assoc($quantidade_salas);
+        $fetch_id_assoc = $fetch_id["id"];
+
+        $codigo = mysqli_query($ConexaoSQL, "SELECT codigo FROM salas WHERE id = '$fetch_id_assoc'");
         $codigo = mysqli_fetch_array($codigo);
         $codigo = $codigo['codigo']; //usar esse
         
-        $descricao = mysqli_query($ConexaoSQL, "SELECT descricao FROM salas WHERE id = '$i'");
+        $descricao = mysqli_query($ConexaoSQL, "SELECT descricao FROM salas WHERE id = '$fetch_id_assoc'");
         $descricao = mysqli_fetch_array($descricao);
         $descricao = $descricao['descricao']; //usar esse
         
-        $capacidade = mysqli_query($ConexaoSQL, "SELECT capacidade FROM salas WHERE id = '$i'");
+        $capacidade = mysqli_query($ConexaoSQL, "SELECT capacidade FROM salas WHERE id = '$fetch_id_assoc'");
         $capacidade = mysqli_fetch_array($capacidade);
         $capacidade = $capacidade['capacidade']; //usar esse
 
-        $status_sala = mysqli_query($ConexaoSQL, "SELECT status_sala FROM salas WHERE id = '$i'");
+        $status_sala = mysqli_query($ConexaoSQL, "SELECT status_sala FROM salas WHERE id = '$fetch_id_assoc'");
         $status_sala = mysqli_fetch_array($status_sala);
         $status_sala = $status_sala['status_sala']; //usar esse
 
-        $motivo_manutencao = mysqli_query($ConexaoSQL, "SELECT motivo_manutencao FROM salas WHERE id = '$i'");
+        $motivo_manutencao = mysqli_query($ConexaoSQL, "SELECT motivo_manutencao FROM salas WHERE id = '$fetch_id_assoc'");
         $motivo_manutencao = mysqli_fetch_array($motivo_manutencao);
         $motivo_manutencao = $motivo_manutencao['motivo_manutencao']; //usar esse
 
-        $salas_disponiveis = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join salas on id_sala = salas.id WHERE id_horario = '$horario' and inicio = '$data' and id_sala = '$i'");
+        $salas_disponiveis = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join salas on id_sala = salas.id WHERE id_horario = '$horario' and inicio = '$data' and id_sala = '$fetch_id_assoc'");
 
-        $horario_incio = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
+        $horario_incio = mysqli_query($ConexaoSQL, "SELECT horario.inicio FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$fetch_id_assoc'");
         
         $horario_incio_assoc = mysqli_fetch_array($horario_incio);
         @$horario_inicio_result = $horario_incio_assoc['inicio'];
 
-        $horario_termino = mysqli_query($ConexaoSQL, "SELECT horario.fim FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
+        $horario_termino = mysqli_query($ConexaoSQL, "SELECT horario.fim FROM agendamentos inner join horario on agendamentos.id_horario = horario.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$fetch_id_assoc'");
         $horario_termino_assoc = mysqli_fetch_array($horario_termino);
         @$horario_termino_result = $horario_termino_assoc['fim'];
 
-        $professor = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$i'");
+        $professor = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos inner join funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE id_horario = '$horario' and agendamentos.inicio = '$data' and id_sala = '$fetch_id_assoc'");
         $professor_assoc = mysqli_fetch_array($professor);
         @$professor_result = $professor_assoc['nome'];
 
@@ -133,7 +136,7 @@
                         "</form>".
                     "</div>".
                     "<section>";
-            } else if($status_sala == 1) {
+            } else if($status_sala == 0) {
                 echo 
 
                 "<div class='sala salas_disponivel flex_div' id='$codigo' tag='$descricao' cap='$capacidade' status='$status_sala'>".
