@@ -98,7 +98,7 @@ setTimeout(() => {
         }).done(function(e) { 
             $("#editar_salas").html(e)
 
-            $("#editar_salas").on("change","form.registrar_sala", function (a) { 
+            $("#editar_salas").on("change",".definir_status", function (a) { 
 
                 enviar_capacidade_sala = $("#numero_quantidade_sala").val()
                 enviar_descricao_sala = $("#texto_descricao_sala").val()
@@ -178,7 +178,7 @@ setTimeout(() => {
 
                     $.get("../php/verificar_sala_disponivel", function(data) {
                         $(".salas").html(data);
-                        $("#teste123").html(e)
+                        
                     })
                 });
             

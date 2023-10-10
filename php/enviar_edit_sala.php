@@ -16,23 +16,24 @@
     $id_sql_assoc = mysqli_fetch_assoc($id_sql);
     $id_sql_id = $id_sql_assoc['id'];
 
-    echo 
-    $codigo_sala."<br>".
-    $codigo_sala_original."<br>".
-    $descricao_sala."<br>".
-    $quantidade_sala."<br>".
-    $status_sala."<br>".
-    $motivo_manutencao."<br>".
-    $confirmar_delete."<br>".
-    $id_sql_id."<br>";
-
+    
     if($confirmar_delete == true) {
-        $deletar_sala = mysqli_query($ConexaoSQL, "DELETE FROM salas WHERE id = '$id_sql_id'");
-        $confirmar_delete = false;
+        try {
+            $deletar_sala = mysqli_query($ConexaoSQL, "DELETE FROM salas WHERE id = '$id_sql_id'");
+            throw new Exception($ConexaoSQL->error);
 
-    }
+            $confirmar_delete = false;
+            
+        } catch(Exception $log) {
+            echo $log->getMessage();
+        }
+    }    
+
+
+
+
     if($confirmar_edit == true) {
-        $edit_row = mysqli_query($ConexaoSQL, "UPDATE salas SET codigo = '$codigo_sala' ,descricao = '$descricao_sala' ,capacidade = '$quantidade_sala' status_sala = '$status_sala',motivo_manutencao = '$motivo_manutencao' WHERE id = '$id_sql_id'");
+        $edit_row = mysqli_query($ConexaoSQL, "UPDATE salas SET codigo = '$codigo_sala' ,descricao = '$descricao_sala' ,capacidade = '$quantidade_sala' ,status_sala = '$status_sala',motivo_manutencao = '$motivo_manutencao' WHERE id = '$id_sql_id'");
         $confirmar_delete = false;
     }
 
