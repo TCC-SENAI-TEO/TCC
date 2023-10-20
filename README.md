@@ -1,6 +1,6 @@
-# TCC-interface
+# TCC
 
-O projeto neste repositório se consiste em basicamente uma interface de uma aplicação para reservas de salas em qualquer escola, sendo inicialmente projetado para ser utilizado na escola Sesi Aloysio Ribeiro de Almeida.
+O projeto neste repositório se consiste em basicamente uma aplicação para reservas de salas em qualquer escola, sendo inicialmente projetado para ser utilizado na escola Sesi Aloysio Ribeiro de Almeida.
 
 ## Objetivo
 
@@ -26,6 +26,7 @@ A aplicação visa listar todas as salas da escola, e exibir se estão em uso ou
 
 ## Autores: 
 
+- [@Gabriel](https://github.com/Purolinho)
+
 - [@João Marcos](https://github.com/Joao-Sant-Ana)
 
-- [@Gabriel](https://github.com/Purolinho)
