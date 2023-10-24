@@ -1,6 +1,7 @@
+
 <?php
-    if(session_status() == PHP_SESSION_NONE) {
-        session_start();
+    if(session_status() == PHP_SESSION_NONE) { //Verifica se a sessão já foi iniciada
+        session_start(); //Inicia a sessão
     }
 
     echo 
@@ -23,12 +24,12 @@
     
     $email = $_SESSION['email_funcionario'];
 
-    if(isset($_POST['nome_usuario'])) {
+    if(isset($_POST['nome_usuario'])) { //Verifica se a variável esta vazia
         $nome_usuario_ajax = $_POST['nome_usuario'];
         if($nome_usuario_ajax != "Selecionar Funcionario") {
-            $email = mysqli_query($ConexaoSQL, "SELECT email FROM funcionarios WHERE nome = '$nome_usuario_ajax'");
-            $email = mysqli_fetch_assoc($email);
-            $email = $email['email'];   
+            $email = mysqli_query($ConexaoSQL, "SELECT email FROM funcionarios WHERE nome = '$nome_usuario_ajax'"); //Faz uma requisição ao banco de dados
+            $email = mysqli_fetch_assoc($email); //Transforma o objeto sql em um array associativo
+            $email = $email['email'];   //Armazena o valor da key 'email' retornada pelo array associativo
         }
     } 
     
@@ -42,7 +43,7 @@
 
     if(isset($_POST['sala'])) {
         $sala = $_POST['sala'];
-            if($sala == "Selecionar Sala" || $sala == "" || $sala == null) {
+            if($sala == "Selecionar Sala" || $sala == "" || $sala == null) { //Verifica se as varáveis estão vazias
                 $sala = "";
             } else {
                 $sala = $_POST['sala'];
@@ -52,12 +53,12 @@
         $sala = "";
     }
 
-    global $sala;
+    global $sala; //Aumenta o escopo da variável
 
 
     if(isset($_POST['checkbox'])) {
         $checar_data = $_POST['checkbox'];
-        if($checar_data == "checado") {
+        if($checar_data == "checado") { //Caso a checkbox esteja checada ela fara uma requisição diferente ao banco de dados
             $quantidade_salas_agendadas = mysqli_query($ConexaoSQL, "SELECT * FROM agendamentos INNER JOIN funcionarios on agendamentos.id_funcionarios = funcionarios.id WHERE email = '$email'"); 
         } else {
             if($sala != "") {
@@ -74,8 +75,8 @@
     }
 
     
-    global $quantidade_salas_agendadas;
-    $quantidade_salas_agendadas = mysqli_num_rows($quantidade_salas_agendadas);
+    global $quantidade_salas_agendadas; //Aumenta o escopo da variável
+    $quantidade_salas_agendadas = mysqli_num_rows($quantidade_salas_agendadas); //Verifica quantas linhas retornaram da requisição ao banco de dados
     
     global $checar_data;
     if($checar_data == "checado") {
@@ -91,14 +92,14 @@
         }
     }
     
-    $horarios_armazenados = [];
+    $horarios_armazenados = []; //Cria um array para armazenar os horarios
     $codigo2 = '';
     $inicio2 = '';
     
     
     for($i = 1; $i <= $quantidade_salas_agendadas; $i++) {  
         
-        $codigo_sala_assoc = mysqli_fetch_assoc($codigo_sala);
+        $codigo_sala_assoc = mysqli_fetch_assoc($codigo_sala); //Transforma o objeto sql em um array associativo
         $codigo1 = $codigo_sala_assoc['codigo'];
         $inicio1 = $codigo_sala_assoc['inicio'];
         
@@ -129,30 +130,30 @@
 
             
         }
-        $horarios_armazenados = array();
-        $codigo2 = $codigo1;
-        $inicio2 = $inicio1;
+        $horarios_armazenados = array(); //Cria um array que armazena os horarios 
+        $codigo2 = $codigo1; //Recebe o valor anterior  para fazer a comparação com o valor atual
+        $inicio2 = $inicio1;//Recebe o valor anterior  para fazer a comparação com o valor atual
 
         
     }
 
-    function marcar_horario($num_horario) {
-        global $horarios_armazenados;
-        if(empty($horarios_armazenados)) {
+    function marcar_horario($num_horario) { //Função de marcar o horario
+        global $horarios_armazenados; //Aumenta o escopo da variável 
+        if(empty($horarios_armazenados)) { //Verifica se a varável esta vazia
             return "";
         } else {
-            foreach($horarios_armazenados as $teste) {
-                if($num_horario == 1 && $teste == 1) {
+            foreach($horarios_armazenados as $horarios_verificados) {  //Percorre toda a variável $horarios_armazenados e toda vez que houver um horario verificado e um numero_horario correspondente retornara um X, marcando o horario
+                if($num_horario == 1 && $horarios_verificados == 1) {
                     return "X";
-                } else if($num_horario == 2 && $teste == 2) {
+                } else if($num_horario == 2 && $horarios_verificados == 2) {
                     return "X";
-                } else if($num_horario == 3 && $teste == 3) {
+                } else if($num_horario == 3 && $horarios_verificados == 3) {
                     return "X";
-                } else if($num_horario == 4 && $teste == 4) {
+                } else if($num_horario == 4 && $horarios_verificados == 4) {
                     return "X";
-                } else if($num_horario == 5 && $teste == 5) {
+                } else if($num_horario == 5 && $horarios_verificados == 5) {
                     return "X";
-                } else if($num_horario == 6 && $teste == 6) {
+                } else if($num_horario == 6 && $horarios_verificados == 6) {
                     return "X";
                 }
                 

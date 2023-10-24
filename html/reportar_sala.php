@@ -26,8 +26,8 @@
         <h1>Faça sua reclamação</h1>
         <form action="../php/enviar_reporte.php" method="post" id='formulario'>
             <?php
-                $email = $_SESSION['email_funcionario'];
-                $codigo_sala = $_SESSION['codigo_sala'];
+                $email = $_SESSION['email_funcionario']; //Armazena o valor da SESSION['email_funcionario'] na variável $email
+                $codigo_sala = $_SESSION['codigo_sala']; //Armazena o valor da SESSION['codigo_sala'] na variável $codigo_sala
                 echo
                 "<input type='email' disabled placeholder='email' value='$email'>".
                 "<input type='text' disabled placeholder='$codigo_sala' value='$codigo_sala'>".
@@ -46,7 +46,7 @@
             ?>
         <?php
         
-        if(isset($_SESSION['erro_reporte'])) {
+        if(isset($_SESSION['erro_reporte'])) { //Verifica se houve algum erro, caso exista algum erro, ele tera um valor que sera usado como base para imprimir um especifico erro ao usuario
             $erro = $_SESSION['erro_reporte'];
             if($erro == 0) {
                 echo
@@ -62,7 +62,7 @@
                     <span>Não foi possível enviar sua reclamação</span>
                     <div class='fechar' id='fechar_erro'>X</div>
                 </div>";
-                unset($_SESSION['erro_reporte']);
+                unset($_SESSION['erro_reporte']); //retira o valor da variável SESSION['erro_reporte']
                 
             }
 

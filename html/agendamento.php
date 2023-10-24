@@ -1,7 +1,7 @@
 <?php
     session_start();
     if($_SESSION['login'] != true) { //verifica se o usuario fez login anteriormente
-        header("Location: ../html/login.php");
+        header("Location: ../html/login.php");  //caso o usuario nao tenha feito login, voltara para a tela de login
     }
 ?>
 
@@ -42,7 +42,7 @@
         </form>
 
         <?php
-            if(@$_SESSION['error_agendar_sala'] == 1) {
+            if(@$_SESSION['error_agendar_sala'] == 1) { //verifica se houve algum erro, caso exista algum erro, ele tera um valor que sera usado como base para imprimir um especifico erro ao usuario
             echo "<div class='erro' id='erro'>
                     <span> Ocorreu um erro durante a criação da sala, tente novamente</span>
                     <div class='fechar' id='fechar_erro'>X</div>
@@ -55,7 +55,7 @@
             </div>";
             $_SESSION['error_agendar_sala'] = 0;
             } else {
-                echo "";
+                echo "";    //caso nao haja erros ele nao ira imprimir nada
             }
         ?>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

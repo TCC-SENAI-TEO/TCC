@@ -10,7 +10,7 @@
     if($verificar_login = mysqli_num_rows($verificar_login) == 1) { //verifica se o login existe e leva para a pagina home
         session_start();
         $_SESSION['error'] = "0";
-        $_SESSION['email_funcionario'] = $email;
+        $_SESSION['email_funcionario'] = $email;    //Armazena as variáveis SESSION com os valores das variáveis locais
         $_SESSION['nivel_funcionario'] = $nivel;
         $_SESSION['login'] = true;
         header("Location: ../html/home.php");

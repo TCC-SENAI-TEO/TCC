@@ -1,7 +1,8 @@
 <?php 
 session_start(); //inicia a sessão do usuario para que se possa pegar as informações contidas nela posteriormente
 if($_SESSION['login'] != true) { //verifica se o usuario fez login anteriormente
-    header("Location: ../html/login.php");
+    header("Location: ../html/login.php"); //Caso não tenha feito o login, volta para a tela de login
+
 }
 include "../php/conectar_banco_de_dados.php"
 ?>
@@ -25,7 +26,7 @@ include "../php/conectar_banco_de_dados.php"
     <main>
         
         <div id="info">
-            
+            <!--Recebe as informações do AJAX e imprimi aqui-->
         </div>
             
         <div class="content-opções">
@@ -33,14 +34,14 @@ include "../php/conectar_banco_de_dados.php"
                 <option style="display:none;" selected>Selecionar Funcionario</option>
                 <?php
                     include '../php/conectar_banco_de_dados.php';
-                    $funcionarios = mysqli_query($ConexaoSQL, "SELECT * FROM funcionarios");
-                    $quantidade_funcionarios = mysqli_num_rows($funcionarios);
+                    $funcionarios = mysqli_query($ConexaoSQL, "SELECT * FROM funcionarios"); //Faz uma requisição ao banco de dados
+                    $quantidade_funcionarios = mysqli_num_rows($funcionarios); //Verifica quantas linhas foram retornadas da requisição
             
                     for($a = 1; $a <= $quantidade_funcionarios; $a++) {
-                        $nome_funcionarios_assoc = mysqli_fetch_assoc($funcionarios);
-                        $nome_funcionarios = $nome_funcionarios_assoc['nome'];
+                        $nome_funcionarios_assoc = mysqli_fetch_assoc($funcionarios); //Transforma o objeto sql em um array associativo
+                        $nome_funcionarios = $nome_funcionarios_assoc['nome']; //Armazena o valor da key 'nome' do array associativo
                         echo
-                        "<option value='$nome_funcionarios'>".$nome_funcionarios."</option>";
+                        "<option value='$nome_funcionarios'>".$nome_funcionarios."</option>"; //Imprimi o valor da variável $nome_funcionarios
                     }
             
                 ?>
@@ -58,14 +59,14 @@ include "../php/conectar_banco_de_dados.php"
                 <option style="display:none;" selected>Selecionar Sala</option>
                 <?php
                     include '../php/conectar_banco_de_dados.php';
-                    $salas = mysqli_query($ConexaoSQL, "SELECT * FROM salas");
-                    $quantidade_salas = mysqli_num_rows($salas);
+                    $salas = mysqli_query($ConexaoSQL, "SELECT * FROM salas"); //Faz uma requisição ao banco de dados
+                    $quantidade_salas = mysqli_num_rows($salas); //Verifica quantas linhas retornaram da requisição
             
                     for($a = 1; $a <= $quantidade_salas; $a++) {
-                        $codigo_salas_assoc = mysqli_fetch_assoc($salas);
-                        $codigo_salas = $codigo_salas_assoc['codigo'];
+                        $codigo_salas_assoc = mysqli_fetch_assoc($salas); //Transforma o objeto sql em um array associativo
+                        $codigo_salas = $codigo_salas_assoc['codigo']; //Armazena o valor da key 'codigo' do array associativo
                         echo
-                        "<option value='$codigo_salas'>".$codigo_salas."</option>";
+                        "<option value='$codigo_salas'>".$codigo_salas."</option>"; //Imprimi o valor da variável $codigo_salas
                     }
             
                 ?>

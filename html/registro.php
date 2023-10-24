@@ -1,13 +1,13 @@
 <?php 
 session_start(); //inicia a sessão do usuario para que se possa pegar as informações contidas nela posteriormente
 include '../php/conectar_banco_de_dados.php';
-$email = $_SESSION['email_funcionario'];
-$verificar = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$email'");
-$verificar = mysqli_fetch_assoc($verificar);
-$verificar = $verificar['nivel'];
+$email = $_SESSION['email_funcionario']; //Armazena a informaçãoda variável SESSION['email_funcionario']
+$verificar = mysqli_query($ConexaoSQL, "SELECT nivel FROM funcionarios WHERE email = '$email'"); //Faz uma requisição ao banco de dados, no qual, seleciona a coluna nivel da tabela funcionarios onde a coluna email seja igual a variável $email 
+$verificar = mysqli_fetch_assoc($verificar); //Transforma o objeto sql retornado pela variavel $verificar e transforma em um array associativo
+$verificar = $verificar['nivel']; //Armazena o valor da key 'nivel' do array associativo
 
 if($_SESSION['login'] != true || $verificar != 1) { //verifica se o usuario fez login anteriormente
-    header("Location: ../html/login.php");
+    header("Location: ../html/login.php"); //caso não tenha, o usuario retornara a tela de login
 }
 
 ?>
@@ -44,7 +44,7 @@ if($_SESSION['login'] != true || $verificar != 1) { //verifica se o usuario fez 
         </form>
     </main>
         <?php 
-            if(@$_SESSION['error'] == 1) {
+            if(@$_SESSION['error'] == 1) {  //Verifica se houve algum erro, caso exista algum erro, ele tera um valor que sera usado como base para imprimir um especifico erro ao usuario
                 echo"<div class='erro'> 
                         <span>Verifique novamente se inseriou corretamente os dados</span> 
                     </div>";
@@ -53,7 +53,7 @@ if($_SESSION['login'] != true || $verificar != 1) { //verifica se o usuario fez 
                 echo"<div class='erro'> 
                         <span>O Email inserido já está registrado</span> 
                     </div>";
-            }   else if(@$_SESSION['error'] == 3) { //false
+            }   else if(@$_SESSION['error'] == 3) { 
                 echo"<div class='certo'> 
                         <span>O registro foi feito com sucesso!</span> 
                     </div>";

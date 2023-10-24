@@ -1,9 +1,9 @@
 <?php 
 session_start(); //inicia a sessão do usuario para que se possa pegar as informações contidas nela posteriormente
 if($_SESSION['login'] != true) { //verifica se o usuario fez login anteriormente
-    header("Location: ../html/login.php");
+    header("Location: ../html/login.php"); //caso o usuario nao tenha feito login, voltara para a tela de login
 } elseif($_SESSION['nivel_funcionario'] != 1) {
-    header("Location: ../html/home.php");
+    header("Location: ../html/home.php"); //caso o usuario nao seja do nivel 1(administrador) ele voltara ao home
 }
 
 include "../php/conectar_banco_de_dados.php";

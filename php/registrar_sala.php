@@ -1,11 +1,11 @@
 <?php
     include '../php/conectar_banco_de_dados.php';
-    session_start();
-    $codigo_sala = mysqli_real_escape_string($ConexaoSQL, $_POST['codigo_sala']);
+    session_start(); //Inicia a sessão
+    $codigo_sala = mysqli_real_escape_string($ConexaoSQL, $_POST['codigo_sala']); //Recebe as informações do HTML
     $descrição =  mysqli_real_escape_string($ConexaoSQL, $_POST['descricao_sala']);
     $capacidade = mysqli_real_escape_string($ConexaoSQL,$_POST['quantidade_sala']);
 
-    $verificar_codigo = mysqli_query($ConexaoSQL, "SELECT * FROM salas WHERE codigo = '$codigo_sala'");
+    $verificar_codigo = mysqli_query($ConexaoSQL, "SELECT * FROM salas WHERE codigo = '$codigo_sala'"); //Faz uma requisição ao banco de dados
 
     if($verificar_codigo = mysqli_num_rows($verificar_codigo) >= 1) { //verifica se o codigo da sala já existe
         $_SESSION['error_codigo'] = 1;
@@ -21,8 +21,4 @@
         header("Location: ../html/home.php");
 
     }
-
-    echo $codigo_sala;
-    echo $descrição;
-    echo $capacidade;
 ?>

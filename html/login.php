@@ -20,8 +20,8 @@
         </form>
     </main>
         <?php 
-            session_start();
-            if(@$_SESSION['error'] == 1) {
+            session_start();//Inicia a session
+            if(@$_SESSION['error'] == 1) { //verifica se houve erro, e caso tenha tido, imprimi ele ao usuário
                 echo"<div class='erro'> 
                         <span>Login ou senha inválidos</span> 
                     </div>";
