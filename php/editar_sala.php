@@ -109,10 +109,10 @@
         select_manutencao($status_sala).
         txt_manutencao($status_sala).
         '<input type="hidden" name="linha_sql" value='.$linha_sql_id.'>'.
-        '<ul>'.
-            '<li><input type="button" value="Editar ✏️" id="editar_sala_btn" class="tamanho_fixo"></li>'.
-            '<li><input type="button" value="Apagar ❌" id="apagar_sala_btn" class="tamanho_fixo"></li>'.
-        '</ul>'.
+        '<div class="edit_btn">'.
+            '<input type="button" value="Editar ✏️" id="editar_sala_btn" class="tamanho_fixo">'.
+            '<input type="button" value="Apagar ❌" id="apagar_sala_btn" class="tamanho_fixo">'.
+        '</div>'.
         '</form>';
 
     } 

@@ -83,7 +83,7 @@ include "../php/conectar_banco_de_dados.php";
             </form>
             <aside>
                     <h3>Verificar Horario disponível</h3>
-                    <ul class="ul_data, verificador_sala">
+                    <ul class="ul_data verificador_sala">
                             <li><input type="date" id="data" class="tamanho_fixo" name="data"></li>
                                 <select name="horario" class="tamanho_fixo" id="selecionar_horario">
                                     <option value="7:00">7:00</option>

@@ -78,6 +78,7 @@ a {
 main {
     display: flex;
     margin: 2% 0 0 0;
+    padding-inline: 20px;
 }
 
 /* MENU FLUTUANTE DE UPLOAD */
@@ -136,6 +137,7 @@ aside {
     border: 2px solid black;
     box-shadow: 6px 6px 6px black;
     gap: 8px;
+    text-align: center;
 }
 
 .verificador_sala {
@@ -145,7 +147,8 @@ aside {
     justify-content: center;
     align-items: center;
     max-width: fit-content;
-    min-width: 1svw;
+    min-width:100%;
+
 }
 
 .tamanho_fixo {
@@ -173,8 +176,18 @@ aside {
 
 #container-editar-salas {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: fit-content;
+    min-width: 100%;
+}
+
+#editar_salas {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
     justify-content: center;
 }
 
@@ -217,6 +230,12 @@ aside {
     flex-direction: row;
     justify-content: center;
     gap: 300px;
+}
+
+.edit_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 /*TABELA SALAS*/
