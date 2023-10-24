@@ -1,14 +1,14 @@
-var data = document.getElementById("data").valueAsDate = new Date();
-var controle_numeral = 0
+var data = document.getElementById("data").valueAsDate = new Date(); //Define a data para a atual
+var controle_numeral = 0 
 var enviar_controle_edit;
 
 
 
 
 $(document).ready(function() {
-    $.get("../php/verificar_sala_disponivel", function(data) {
-        $(".salas").html(data);
-        var numero_salas_disponivel = $(".salas .salas_disponivel").length
+    $.get("../php/verificar_sala_disponivel", function(data) { //Recebe as informações do arquivo editar_sala
+        $(".salas").html(data); //Imprimi as informações do arquivo
+        var numero_salas_disponivel = $(".salas .salas_disponivel").length //Pega a quantidade de salas com a classe especificadas atreavés do comando .length
         var numero_salas_fechado = $(".salas .salas_fechado").length
         var numero_salas_interditado = $(".salas .salas_interditado").length
         var salas_totais = numero_salas_disponivel + numero_salas_fechado + numero_salas_interditado
@@ -20,20 +20,20 @@ $(document).ready(function() {
     });
 
     $.get("../php/editar_sala", function(data) {
-        $("#editar_salas").html(data)
+        $("#editar_salas").html(data) 
         
     });
     
 });
 
-$("#data, #selecionar_horario").change(() => {
-    var enviar_data = $('#data').val();
+$("#data, #selecionar_horario").change(() => { //Os itens com os IDs "#data" e "#selecionar_horario" recebem um comando de change, para que toda vez que eles sofrerem alguma alteração, executarem o codigo
+    var enviar_data = $('#data').val(); //Pega o valor do ID #data através do comando .val()
     var enviar_horario = $('#selecionar_horario').val();
 
-    $.ajax({
-        type: "post",
-        url: "../php/verificar_sala_disponivel.php",
-        data: {data: enviar_data, horario: enviar_horario},
+    $.ajax({ //Envia as informações para o arquivo desejado
+        type: "post", //Especifica como sera enviado os dados para o arquivo
+        url: "../php/verificar_sala_disponivel.php", //O caminho para qual arquivo sera enviado
+        data: {data: enviar_data, horario: enviar_horario}, //Os dados que seram enviados para o arquivo
         success: function (response) {
             console.log("foi")
         }, error: function (jqXHR, textStatus, errorThrown) {
