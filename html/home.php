@@ -27,7 +27,7 @@ include "../php/conectar_banco_de_dados.php"
                     <?php
                         $email = $_SESSION['email_funcionario'];
 
-                        $pegar_img = mysqli_query($ConexaoSQL, "SELECT img FROM funcionarios img WHERE email = '$email'");
+                        $pegar_img = mysqli_query($ConexaoSQL, "SELECT img FROM funcionarios WHERE email = '$email'");
                         $pegar_img_assoc = mysqli_fetch_assoc($pegar_img);
                     
                         file_put_contents('image.png',$pegar_img_assoc['img']);
