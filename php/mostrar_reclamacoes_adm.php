@@ -113,12 +113,12 @@ if(mysqli_num_rows($denuncias) > 0) { //Verifica quantas linhas retornaram do ba
             
             echo 
             "<tr>".
-            "<td data-cell:'Sala' class='n_linha'>".$codigo_sala."</td>".
-            "<td data-cell:'Data'>".$data_denuncia.  "</td>".
-            "<td data-cell:'Relatante'>".$nome_funcionario."</td>".
-            "<td data-cell:'Denuncia'>".$texto_denuncia."</td>".
-            "<td data-cell:'Urgencia'>".$nivel_urgencia."</td>".
-            "<td data-cell:'Status' class='urgencia'>
+            "<td data-cell='Sala' class='n_linha'>".$codigo_sala."</td>".
+            "<td data-cell='Data'>".$data_denuncia.  "</td>".
+            "<td data-cell='Relatante'>".$nome_funcionario."</td>".
+            "<td data-cell='Denuncia'>".$texto_denuncia."</td>".
+            "<td data-cell='Urgencia'>".$nivel_urgencia."</td>".
+            "<td data-cell='Status' class='urgencia'>
             <select class='botao' id=".$id_sql.">".definir_status()."</select>
             </td>". 
             "</tr>";
