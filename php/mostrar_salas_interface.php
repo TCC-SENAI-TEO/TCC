@@ -6,9 +6,9 @@
 
     echo 
     "<table>
-    <tr>
-        <th colspan='8'>Meus agendamentos</th>
-    </tr>
+    <caption>
+        Meus agendamentos
+    </caption>
     <tr>
         <th>Salas</th>
         <th>Dia</th>
@@ -118,14 +118,14 @@
             }
             echo 
             "<tr>
-            <td>".$codigo1."</td>
-            <td>".$formattedDate."</td>".
-            "<td>".marcar_horario(1)."</td>".
-            "<td>".marcar_horario(2)."</td>".
-            "<td>".marcar_horario(3)."</td>".
-            "<td>".marcar_horario(4)."</td>".
-            "<td>".marcar_horario(5)."</td>".
-            "<td>".marcar_horario(6)."</td>".
+            <td data-cell='Salas'>".$codigo1."</td>
+            <td data-cell='Dia'>".$formattedDate."</td>".
+            "<td data-cell='7:00'>".marcar_horario(1)."</td>".
+            "<td data-cell='7:50'>".marcar_horario(2)."</td>".
+            "<td data-cell='8:40'>".marcar_horario(3)."</td>".
+            "<td data-cell='9:50'>".marcar_horario(4)."</td>".
+            "<td data-cell='10:40'>".marcar_horario(5)."</td>".
+            "<td data-cell='11:30'>".marcar_horario(6)."</td>".
             "</tr>";
 
             
