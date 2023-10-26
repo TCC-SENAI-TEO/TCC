@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    
+}
+
+header {
+    display: flex;
+    color: white;
+    background-color: #005ca9;
+    width: 100%;
+}
+
+.titulo {
+    margin: auto;
+    font-size: 40pt;
+}
+
+.voltar {
+    text-decoration: underline;
+    color: white;
+    font-size: 15pt;
+    align-self: center;
+    margin-left: .5%;
+}
+.voltar:hover {
+    color: rgb(204, 204, 204);
+}
+
+main {
+    display: flex;
+    margin-top: 5%;
+    flex-direction: column;
+    width: 100%;
+}
+
+table {
+    margin: auto;
+    width: 90%;
+    border-collapse:  collapse;
+    border: 2px solid black;
+}
+
+caption {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    padding: .5rem;
+    background: hsl(0, 0%, 69%);
+    font-weight: 700;
+}
+
+caption, th {
+    text-align: left;
+}
+
+tr {
+    border-bottom: 2px solid black;
+}
+
+tr:nth-child(2n) {
+    background: hsl(0, 0%, 69%);
+}
+ 
+th, td {
+    padding: .5rem;
+}
+
+.content-opções {
+    margin: 3% auto 0%;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.filtro-tabela {
+    border: 2px solid black;
+    margin: 2% auto;
+    padding: 0.5%;
+
+}
+
+.erro {
+    display: flex;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(242, 54, 52);
+    color: white;
+    align-items: center;
+    min-width: fit-content;
+    font-size: large;
+    word-wrap: break-word;
+    width: 12svw;
+}
+
+.certo {
+    display: flex;
+    border: 2px solid black;
+    padding: 1%;
+    background-color: RGB(142, 214, 151);
+    color: white;
+    align-items: center;
+    width: 12svw;
+    min-width: fit-content;
+    text-align: center;
+    font-size: large;
+    word-wrap: break-word;
+}
+
+.fechar {
+    align-self: flex-end;
+    margin-bottom: auto;
+    font-size: small;
+    border-radius: 30px;
+    padding: 1% 2%;
+    background-color: red;
+}
+
+@media only screen and (max-width: 600px) {
+    table{
+        border-collapse: collapse;
+    }
+    
+    
+    th{
+        display: none;
+    }
+
+    td{
+        display: block;
+        padding: .25rem .5rem;
+    }
+
+    td::before {
+        content: attr(data-cell) ': ';
+        font-weight: 700;
+    }
+}
+
+
+@media only screen and (max-width: 380px) {
+    .titulo {
+        font-size: 30pt;
+    }
+    
+    .voltar {
+        font-size: 10pt;
+    }
+}
+
