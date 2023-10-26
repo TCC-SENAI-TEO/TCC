@@ -194,7 +194,7 @@ setTimeout(() => {
                 enviar_status_sala = $(".definir_status").val()
 
                 var enviar_confirmar_delete = confirm("Tem certeza que deseja apagar a sala " + enviar_codigo_sala + " ?")
-
+                
                 $.ajax({
                     type: "post",
                     url: "../php/enviar_edit_sala.php",

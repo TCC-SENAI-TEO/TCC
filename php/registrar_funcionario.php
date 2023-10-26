@@ -12,6 +12,7 @@
         header("Location: ../html/registro.php");
 
     } else {
+        
         switch ($nivel) {   //Transforma a varável texto para numero
         case 'Administrador':
                 $nivel = 1;

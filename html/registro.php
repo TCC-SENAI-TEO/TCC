@@ -34,7 +34,7 @@ if($_SESSION['login'] != true || $verificar != 1) { //verifica se o usuario fez 
             <ul>
                 <label for="registrar_nivel">Nivel: </label>
                 <select name="registrar_nivel">
-                    <option value="Adminsitrador">Adminsitrador</option>
+                    <option value="Administrador" selected>Adminsitrador</option>
                     <option value="Docente">Docente</option>
                 </select>
             </ul>
